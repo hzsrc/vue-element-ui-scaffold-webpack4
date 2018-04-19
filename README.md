@@ -12,7 +12,7 @@ npm install
 
 
 # 命令说明
-> ## 本地开发
+## 本地开发
 ```
 npm run dev
 ```
@@ -50,15 +50,15 @@ npm run mock
 
 
 # 项目说明
-> ## 基于webpack4.5构建
+## 基于webpack4.5构建
 更快的构建速度，更小的目标文件下载体积。
 
 
-> ## 多页面实现
+## 多页面实现
 在src/pages目录下添加的js文件，可自动发布为一个html页面。html模板是html.tpl.html。
 
 
-> ## mock数据实现
+## mock数据实现
 项目可采用[dyn-mocker](https://github.com/hzsrc/dyn-mocker)作为后端接口的数据模拟。
 模拟数据位于mock文件夹下，采用js文件实现，易于理解且方便灵活。
 启用方法：运行
@@ -67,6 +67,6 @@ npm run mock
 ```
 命令开启mock服务，同时配置config\prod.env.js中的接口服务地址为：API_SERVER_DEV: '"//localhost:8085"'
 
-> ## element-ui主题自动编译
+## element-ui主题自动编译
 提取并监视了主题文件src\assets\css\element-theme\theme-element-variables.scss，修改即可立马查看效果，无需重新编译element-ui的css文件。
 
