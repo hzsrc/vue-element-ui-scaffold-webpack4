@@ -1,0 +1,6 @@
+Mock对象的字段:
+
+disabled:	1或true表示禁用mock. 此时的请求将反向代理到接口服务器(proxyTarget).
+status:		返回的http状态. 默认为200
+headers:	返回的http头. 默认为Content-Type: application/json; charset=utf-8。可省略。
+body:		返回的http主体. 可为json对象或字符串
