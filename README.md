@@ -2,7 +2,7 @@
 本项目为vue下使用了element-ui并基于webpack4.5构建的多页面、多环境方案脚手架项目
 
 
-# 安装
+# 1. 安装
 ```
 git clone https://github.com/hzsrc/vue-element-ui-scaffold-webpack4.git
 cd vue-element-ui-scaffold-webpack4
@@ -11,7 +11,7 @@ npm install
 
 
 
-# 命令说明
+# 2. 命令说明
 ## 本地开发
 ```
 npm run dev
@@ -49,7 +49,7 @@ npm run mock
 
 
 
-# 项目说明
+# 3. 项目说明
 ## 基于webpack4.5构建
 更快的构建速度，更小的目标文件下载体积。
 
