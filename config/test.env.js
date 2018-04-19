@@ -5,8 +5,8 @@ var devEnv = require('./dev.env')
 module.exports = merge(devEnv, {
     NODE_ENV: '"testing"',
 
-    API_SERVER: '"//eis-service.test61.ums86.com"',
-    API_NODE_SERVER: '"//eis-node-service.test61.ums86.com"',
+    API_SERVER: '"//eis-service.test.xxx.com"',
+    API_NODE_SERVER: '"//eis-node-service.test.xxx.com"',
 
     NeedSrcMap: true, //需要源码映射
 })
