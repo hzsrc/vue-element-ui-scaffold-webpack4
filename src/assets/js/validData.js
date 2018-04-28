@@ -5,18 +5,18 @@ import $x from './$x.js';
 */
 export default {
     //检测是否为手机号码
-    isMdn (str) {
+    isMdn(str) {
         return (str || '').match(/^1\d{10}$/)
     },
     //检测长度是否在min和max之间（包含min、max）
-    checkLen (str, min, max) {
+    checkLen(str, min, max) {
         var len = (str || '').length;
         var ret;
         if (parseInt(min) > 0) ret = len >= min;
         if (ret && parseInt(max) > 0) ret = len <= max;
         return ret;
     },
-    checkValiCode (str) {
+    checkValiCode(str) {
         return this.checkLen(str, $x.CONST.SMS_VALI_CODE_LENGTH, $x.CONST.SMS_VALI_CODE_LENGTH)
     },
     //根据数组弹出提示信息
@@ -33,7 +33,7 @@ export default {
     //     return true
     // },
     //获取密码强度和提示信息
-    getPasswordType (pwd) {
+    getPasswordType(pwd) {
         var strength = 0;
         var matchLen = 0;
         var lower = pwd.match(/[a-z]/g)
@@ -51,14 +51,14 @@ export default {
             matchOk: strength >= 2,
             matchCount: strength,                    //'大写字母、小写字母、数字或标点符号至少包含2种';
             empty: !pwd,
-            isOk () {
+            isOk() {
                 return this.lengthOk && this.charsOk && this.matchOk
             }
         }
     },
 
     //opts: {allowGif: 是否允许gif图片, sizeM: 图片最大M数}。 默认不允许gif，大小2M
-    isValidPic (file, opts = {}) {
+    isValidPic(file, opts = {}) {
         let isImg = /\.(jpg|jpeg|png)$/i.test(file.name);
         if (!isImg && opts.allowGif) {
             isImg = /\.gif$/i.test(file.name)
@@ -77,14 +77,7 @@ export default {
 
         return isImg && isLt2M;
     },
-    isValidEmail (value) {
-        var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
-
-        if (!reg.test(value)) {
-            return false
-        }
-        else {
-            return true
-        }
+    isValidEmail(value) {
+        return /^[\w\.\-]*\w@[\w\.\-]+\.[\w\.\-]+$/.test(value)
     }
 }

@@ -1,10 +1,18 @@
 import $x from './$x.js'
 
-var AliOSS = require('ali-oss/dist/aliyun-oss-sdk.min.js')
-
+var AliOSS; // = require('ali-oss/dist/aliyun-oss-sdk.min.js')
 var oss = {
     //初始化accessKey
     initAccessKey() {
+        if (!AliOSS) {
+            return new Promise((resolve, reject) => {
+                return import(/* webpackChunkName: "oss" */ 'ali-oss/dist/aliyun-oss-sdk.min.js')
+                    .then(r => {
+                        AliOSS = r.default || r;
+                        oss.initAccessKey().then(resolve).catch(reject)
+                    }).catch(reject)
+            })
+        }
         if (this.access && this.expireTime > new Date()) {
             return Promise.resolve()
         }

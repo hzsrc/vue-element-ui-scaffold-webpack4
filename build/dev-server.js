@@ -95,3 +95,6 @@ module.exports = {
         server.close()
     }
 }
+
+require('dyn-mocker').checkStart('./mock/mock-config.js')
+

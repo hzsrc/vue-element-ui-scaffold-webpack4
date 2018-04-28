@@ -79,6 +79,16 @@ var webpackConfig = merge(baseWebpackConfig, {
                     reuseExistingChunk: false, // 选项用于配置在模块完全匹配时重用已有的块，而不是创建新块
                     test: /node_modules[\\/]/
                 },
+                aliOss: {
+                    name: 'ali-oss',
+                    priority: 10,
+                    test: /ali\-oss/,
+                },
+                // common: {
+                //     name: 'common',
+                //     priority: 11,
+                //     test: /assets/,
+                // },
             }
         }
     },

@@ -15,9 +15,6 @@ import tokenUtil from './utils/tokenUtil'
 import msgDlg from './utils/msgDialog'
 import loading from './loading'
 
-//element Message配置
-const ERROR_MSG_OP = {type: 'error'}
-
 //for el-upload
 axios.getYxtHeaders = function () {
     var r = {}
@@ -55,11 +52,11 @@ axios.interceptors.request.use(function (config) {
 // http响应拦截器
 axios.interceptors.response.use(function (res) {
     loading.close(res.config.maskOptions)
-    var data = res.data;
+    var data = res.data || {};
     var retCode = Number(data.returnCode);
     if (retCode == 110 || retCode == 111) { // token失败
         return new Promise((resolve, reject) => {
-            msgDlg.alert('您需要重新登陆', '提示', {
+            msgDlg.alert('登录已过期，请重新登录', '提示', {
                 callback: action => {
                     if (action == 'cancel')
                         reject()
@@ -83,24 +80,26 @@ axios.interceptors.response.use(function (res) {
             console.error(data)
             data.msg = CoveredErrMsg
         }
-
-        if (res.config.showError === 'toast')
-            msgDlg.toast.error(data.msg)
-        else if (res.config.showError)
-            msgDlg.alert(data.msg, ERROR_MSG_OP)
-        else if (isDev)
-            msgDlg.toast.error(data.msg + ' [debug only]')
-
+        showErr(res.config, data.msg);
         return Promise.reject(data)
     }
     return data
-}, fail)
+}, fail);
 
 function fail(error) {
-    if (error.config) loading.close(error.config.maskOptions)
-    if (!error.msg) error.msg = CoveredErrMsg
-    msgDlg.toast.error(CoveredErrMsg, ERROR_MSG_OP)
+    if (error.config) loading.close(error.config.maskOptions);
+    if (!error.msg) error.msg = CoveredErrMsg;
+    showErr(error.config, CoveredErrMsg);
     return Promise.reject(error)
+}
+
+function showErr(config, msg) {
+    if (config && config.showError === 'toast')
+        msgDlg.toast.error(msg);
+    else if (config && config.showError)
+        msgDlg.alert(msg, {type: 'error'});
+    else if (isDev)
+        msgDlg.toast.error(msg + ' [debug only]')
 }
 
 export default axios

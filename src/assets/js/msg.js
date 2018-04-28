@@ -49,8 +49,8 @@ export default {
     //OPERATE_:
     ADDCHILDDEPARTEMT: '添加子部门',
     EDITDEPARTEMTNAME: '修改名称',
-    MOVE: '上移',
-    DOWN: '下移',
+    MOVEUP: '上移',
+    MOVEDOWN: '下移',
     ADDMEMBER: '添加成员',
     EXPORTORIMPORT: '批量导入/导出',
     STICK: '置顶',

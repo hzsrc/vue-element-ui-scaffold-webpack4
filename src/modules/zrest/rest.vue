@@ -80,7 +80,7 @@
         <h2>HTTP响应</h2>
         <el-form labelWidth="120px">
             <el-form-item label="结果">
-                <div class='pre'>{{this.request.method+' '+this.config.server+this.request.url}}<br/>{{response.status}}
+                <div class='pre'>{{response.result}}<br/>{{response.status}}
                 </div>
             </el-form-item>
             <el-form-item label="JSON">
@@ -89,7 +89,7 @@
         </el-form>
 
         <div class="t-center" style="font-size: 10px;color:#ccc">
-            帜讯一信通 - 接口调试工具
+            接口调试工具
             <div class="hide">2018.3. By HuangZheng</div>
         </div>
     </div>
@@ -124,7 +124,8 @@
                 },
                 response: {
                     status: 0,
-                    json: ''
+                    json: '',
+                    result: ''
                 },
                 axiosCfg: {},
             };
@@ -132,7 +133,8 @@
         created() {
             this.config.apiList = this.apiAll = storageUtil.getObj('zrest_apis') || []
             this.request.url = storageUtil.getObj('zrest_lastUrl')
-            this.setApiData()
+            this.setApiData();
+            this.changeServer();
 
             httpUtil.http.interceptors.request.use(config => {
                 this.axiosCfg = config
@@ -157,7 +159,8 @@
                 this.request.headers = headers;
                 this.saveToLocal(config.url, config.data)
 
-                this.response.status = res.status || (res.response.status + ' ' + res.message)
+                this.response.result = this.request.method + ' ' + res.request.responseURL;
+                this.response.status = res.status || (res.response.status + ' ' + res.message);
                 this.response.json = JSON.stringify(res.data, null, 4)
             }
             httpUtil.http.interceptors.response.handlers.splice(0)
@@ -205,11 +208,15 @@
                 }
                 var apis = this.config.apiList
                 var index = apis.findIndex(api => api.url == url)
-                apis.splice(index, 1)
-                apis.splice(0, 0, {url, data: JSON.parse(data)})
+                if (index == -1) {
+                    apis.push({url, data: JSON.parse(data)})
+                }
+                else {
+                    apis[index].data = JSON.parse(data)
+                }
 
-                storageUtil.setObj('zrest_lastUrl', url)
-                storageUtil.setObj('zrest_apis', apis)
+                storageUtil.setObj('zrest_lastUrl', url);
+                storageUtil.setObj('zrest_apis', apis);
             },
             exportConfig() {
                 var r = {request: this.request, config: this.config}
@@ -282,8 +289,8 @@
     }
 
     function parseJSON(s) {
-        s = s.replace(/([{,]\s*)(\w+):/g, '$1"$2":')
-        return JSON.parse(s)
+        //s = s.replace(/([{,]\s*)(\w+):/g, '$1"$2":')
+        return eval('(' + s + ')')
     }
 </script>
 

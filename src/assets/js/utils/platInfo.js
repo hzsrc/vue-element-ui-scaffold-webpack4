@@ -10,7 +10,15 @@ if (![].findIndex) {
                 return -1;
             }
         }
-    })
+    });
+    Object.defineProperty(Array.prototype, 'find', {
+        enumerable: false,
+        get () {
+            return function (fn) {
+                return this[this.findIndex(fn)]
+            }
+        }
+    });
 }
 
 export default {
