@@ -7,7 +7,7 @@
             </div>
         </el-row>
         <el-form v-if="showConfig" labelWidth="120px">
-            <el-form-item label="服务器地址">
+            <el-form-item label="服务器地址2">
                 <el-input size="small" v-model="config.server" @change="changeServer"></el-input>
             </el-form-item>
             <el-form-item label="接口选择">

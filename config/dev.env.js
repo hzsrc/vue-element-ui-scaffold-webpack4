@@ -5,7 +5,7 @@ module.exports = merge(prodEnv, {
     NODE_ENV: '"development"',
 
     //配置开发环境的接口地址
-    //API_SERVER_DEV: '"//localhost:8085"',
+    //API_SERVER_DEV: '"//localhost:8086"',
     API_SERVER_DEV: '"//eis-service.dev61.xxx.com"', //本地开发调试用的服务器地址，修改不会影响发布
     API_NODE_SERVER_DEV: '"//127.0.0.1:7001"', //本地开发调试用的服务器地址，修改不会影响发布
 

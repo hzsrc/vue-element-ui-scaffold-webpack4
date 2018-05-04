@@ -4,6 +4,7 @@ var config = require('../config')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 process.title = 'ePortal-dev-server';
 

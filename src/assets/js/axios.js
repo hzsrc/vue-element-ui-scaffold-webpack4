@@ -55,24 +55,7 @@ axios.interceptors.response.use(function (res) {
     var data = res.data || {};
     var retCode = Number(data.returnCode);
     if (retCode == 110 || retCode == 111) { // token失败
-        return new Promise((resolve, reject) => {
-            msgDlg.alert('登录已过期，请重新登录', '提示', {
-                callback: action => {
-                    if (action == 'cancel')
-                        reject()
-                    else {
-                        var url = appConfig.LOGIN_PATH
-                        var path = location.href.match(/https?:\/\/[^\/]+(\/.+)/i)[1]
-                        if (path && path !== '/main.html#/') {
-                            url += url.indexOf('?') > -1 ? '&' : '?'
-                            url += 'redirectUrl=' + encodeURIComponent(path)
-                        }
-                        location.href = url
-                        resolve()
-                    }
-                }
-            })
-        })
+        return doLogin()
     }
     else if (retCode != 0) { //错误
         //100以下是系统错误，10000以上是其他中心系统错误。其他的是业务错误
@@ -85,6 +68,27 @@ axios.interceptors.response.use(function (res) {
     }
     return data
 }, fail);
+
+function doLogin() {
+    return new Promise((resolve, reject) => {
+        msgDlg.alert('登录已过期，请重新登录', '提示', {
+            callback: action => {
+                //if (action == 'cancel')
+                //    reject()
+                //else {
+                var url = appConfig.LOGIN_PATH
+                var path = location.href.match(/https?:\/\/[^\/]+(\/.+)/i)[1]
+                if (path && path !== '/main.html#/') {
+                    url += url.indexOf('?') > -1 ? '&' : '?'
+                    url += 'redirectUrl=' + encodeURIComponent(path)
+                }
+                location.href = url
+                resolve()
+                //}
+            }
+        })
+    });
+}
 
 function fail(error) {
     if (error.config) loading.close(error.config.maskOptions);

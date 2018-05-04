@@ -21,6 +21,7 @@
     "dependencies": {
         "ali-oss": "^4.11.3",
         "axios": "^0.16.2",
+        "echarts": "^3.8.5",
         "element-theme-chalk": "=2.2.1",
         "element-ui": "=2.0.11",
         "qrcanvas-vue": "^1.1.0",
@@ -28,7 +29,6 @@
         "vue": "^2.5.13",
         "vue-clipboard2": "^0.1.0",
         "vue-cropper": "^0.2.9",
-        "echarts": "^3.8.5",
         "vue-quill-editor": "^3.0.5",
         "vue-router": "^2.3.1",
         "vuedraggable": "^2.14.1"
@@ -88,7 +88,7 @@
         "sinon": "^2.1.0",
         "sinon-chai": "^2.8.0",
         "url-loader": "^1.0.1",
-        "vue-loader": "^14.2.2",
+        "vue-loader": "^15.0.7",
         "vue-style-loader": "^4.1.0",
         "vue-template-compiler": "^2.5.13",
         "webpack": "^4.6.0",
