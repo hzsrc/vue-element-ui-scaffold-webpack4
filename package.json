@@ -1,7 +1,7 @@
 {
-    "name": "eis-ePortal",
-    "version": "1.0.5",
-    "description": "eis-ePortal",
+    "name": "vue-element-ui-scaffold-webpack4",
+    "version": "1.0.6",
+    "description": "vue-element-ui-scaffold-webpack4",
     "author": "huangzheng",
     "private": true,
     "scripts": {
