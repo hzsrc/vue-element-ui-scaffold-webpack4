@@ -1,0 +1,372 @@
+/*移动端，响应式布局
+var rate = 0.6,std; // 375/(1/.16) /100 = 0.6
+var ret = [320, 360, 375, 400, 414, 440, 480, 520, 560, 600, 640, 680, 720, 750].map(i=>{
+  var num = (i/0.6).toFixed(5).replace(/\.[0]+$/,'');
+  if(i==375) std = num
+  return ('@media (min-width:'+i+'px){html{font-size:'+ num +'% !important;}}')
+ }
+).join('\r\n') + '\r\n@media (min-width:768px){html{font-size:'+ std +'% !important;}}';
+copy(ret);
+console.log(ret);
+*/
+/*768以上作为电脑屏，同iphone6的375。以rem为单位，每rem表示100像素*/
+
+@media (min-width: 320px) {
+    html {
+        font-size: 533.33333% !important;
+    }
+}
+
+@media (min-width: 360px) {
+    html {
+        font-size: 600% !important;
+    }
+}
+
+@media (min-width: 375px) {
+    html {
+        font-size: 625% !important;
+    }
+}
+
+@media (min-width: 400px) {
+    html {
+        font-size: 666.66667% !important;
+    }
+}
+
+@media (min-width: 414px) {
+    html {
+        font-size: 690% !important;
+    }
+}
+
+@media (min-width: 440px) {
+    html {
+        font-size: 733.33333% !important;
+    }
+}
+
+@media (min-width: 480px) {
+    html {
+        font-size: 800% !important;
+    }
+}
+
+@media (min-width: 520px) {
+    html {
+        font-size: 866.66667% !important;
+    }
+}
+
+@media (min-width: 560px) {
+    html {
+        font-size: 933.33333% !important;
+    }
+}
+
+@media (min-width: 600px) {
+    html {
+        font-size: 1000% !important;
+    }
+}
+
+@media (min-width: 640px) {
+    html {
+        font-size: 1066.66667% !important;
+    }
+}
+
+@media (min-width: 680px) {
+    html {
+        font-size: 1133.33333% !important;
+    }
+}
+
+@media (min-width: 720px) {
+    html {
+        font-size: 1200% !important;
+    }
+}
+
+@media (min-width: 750px) {
+    html {
+        font-size: 1250% !important;
+    }
+}
+
+/*768以上作为PC端处理*/
+@media (min-width: 768px) {
+    html {
+        font-size: 625% !important;
+    }
+}
+
+html {
+    height: 100%
+}
+
+/*默认字体14px*/
+body {
+    font-size: .14rem;
+    height: 100%;
+    margin: 0;
+    background: #f0f4f5;
+}
+
+/*////响应式布局结束///*/
+
+/*滚动条样式*/
+::-webkit-scrollbar {
+    border-radius: 8px;
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(90deg, #efefef 0%, #fff 78%, #efefef 100%);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, .3);
+    background: linear-gradient(0deg, rgb(227, 182, 143) 0%, rgb(255, 227, 166) 48%, rgb(227, 182, 143) 100%);
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    background: linear-gradient(90deg, rgb(227, 182, 143) 0%, rgb(255, 227, 166) 48%, rgb(227, 182, 143) 100%);
+}
+
+ul {
+    padding-left: 0;
+    margin: 0
+}
+
+li {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+div, section, nav, p {
+    box-sizing: border-box;
+}
+
+body, input, select, textarea, button {
+    font-family: 'Microsoft YaHei', "PingFang SC", "Hiragino Sans GB", -apple-system, Arial;
+}
+
+.full {
+    height: 100%;
+    width: 100%;
+}
+
+/* 高度自适应布局*/
+.full-ctn {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.vfull-head {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    /*height:.3rem;*/
+}
+
+.vfull-body {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    /*padding-top:.3rem;
+    padding-bottom:.2rem;*/
+}
+
+.vfull-foot {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /*height:.2rem;*/
+}
+
+/*宽度自适应布局*/
+
+.hfull-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1;
+    /*width:.3rem;*/
+}
+
+.hfull-body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    /*padding-left:.3rem;
+    padding-right:.2rem;*/
+}
+
+.hfull-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    /*width:.2rem;*/
+}
+
+.lined {
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" viewbox="0,0,1,1"><line y1="100%" x1="0" y2="100%" x2="9999" stroke="#ccc" fill="none"/></svg>');
+    min-height: 1px;
+}
+
+.pre {
+    white-space: pre-wrap;
+    line-height: 1.1em;
+    word-break: break-all;
+}
+
+.hide {
+    display: none;
+}
+
+.hide_v {
+    visibility: hidden;
+}
+
+.inlnb {
+    display: inline-block;
+}
+
+.no-border {
+    border: none;
+}
+
+.bordered {
+    border: .01rem solid #ddd;
+    border-radius: .04rem;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.lay-tbl {
+    display: table;
+}
+
+.lay-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.clearfix-child:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+.b-center {
+    margin: auto;
+}
+
+.t-left {
+    text-align: left;
+}
+
+.t-center {
+    text-align: center;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.t-right {
+    text-align: right;
+}
+
+.v-top {
+    vertical-align: top;
+}
+
+.v-middle {
+    vertical-align: middle;
+}
+
+.v-bottom {
+    vertical-align: bottom;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.h100 {
+    height: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.clear:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.auto-bar {
+    overflow: auto;
+}

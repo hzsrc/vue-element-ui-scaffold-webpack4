@@ -8,9 +8,6 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-//测试环境生成一个rest测试页面
-require('./add-extra-entry')(baseWebpackConfig)
-
 var webpackConfig = merge(baseWebpackConfig, {
     mode: 'production',
     module: {

@@ -78,6 +78,8 @@ exports.getEntryPages = function () {
         var baseName = jsf.slice(0, -3);
         r[baseName] = pagesPath + '/' + jsf
     })
+    //测试环境生成一个rest测试页面
+    require('./add-extra-entry')(r);
     return r;
 }
 

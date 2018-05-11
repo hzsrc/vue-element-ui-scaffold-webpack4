@@ -32,7 +32,7 @@ var ret = {
     },
     dev: {
         env: require('./dev.env'),
-        port: 8091,
+        port: 8092,
         autoOpenBrowser: true,
         assetsSubDirectory: '',
         assetsPublicPath: '/',

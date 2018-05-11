@@ -7,9 +7,6 @@ var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 process.title = 'ePortal-dev-server';
 
-//开发环境生成一个rest测试页面
-require('./add-extra-entry')(baseWebpackConfig)
-
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
     baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])

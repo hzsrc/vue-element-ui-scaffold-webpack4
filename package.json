@@ -5,7 +5,7 @@
     "author": "huangzheng",
     "private": true,
     "scripts": {
-        "dev": "node build/dev-server.js",
+        "dev": "node build/dev-server.js --mock",
         "start": "node build/dev-server.js",
         "build": "cross-env BABEL_ENV=production NODE_ENV=production node build/build.js",
         "build-stress": "cross-env BABEL_ENV=production NODE_ENV=production node build/build.js -config stress.env",
