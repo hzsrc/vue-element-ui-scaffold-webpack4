@@ -61,11 +61,12 @@ npm run mock
 ## mock数据实现
 项目可采用[dyn-mocker](https://github.com/hzsrc/dyn-mocker)作为后端接口的数据模拟。
 模拟数据位于mock文件夹下，采用js文件实现，易于理解且方便灵活。
-启用方法：运行
-```
-npm run mock
-```
-命令开启mock服务，同时配置config\prod.env.js中的接口服务地址为：API_SERVER_DEV: '"//localhost:8085"'
+启用方法：
+1、npm run dev默认会同时启动mock服务。
+2、单独运行：npm run mock
+配置文件：
+1、config/prod.env.js中的接口服务地址为：API_SERVER_DEV: '"//localhost:8085"'
+2、mock/mock-config.js文件配置mock各种参数。
 
 ## element-ui主题自动按需加载编译
 按需加载源直接指向element-ui的scss文件。提取了element-ui主题变量文件到src\assets\css\element-theme\theme-element-variables.scss，修改scss变量即可立马查看效果，无需预先编译element-ui的scss文件为css文件。
