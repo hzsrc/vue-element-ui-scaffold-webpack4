@@ -67,6 +67,5 @@ npm run mock
 ```
 命令开启mock服务，同时配置config\prod.env.js中的接口服务地址为：API_SERVER_DEV: '"//localhost:8085"'
 
-## element-ui主题自动编译
-提取并监视了主题文件src\assets\css\element-theme\theme-element-variables.scss，修改即可立马查看效果，无需重新编译element-ui的css文件。
-
+## element-ui主题自动按需加载编译
+按需加载源直接指向element-ui的scss文件。提取了element-ui主题变量文件到src\assets\css\element-theme\theme-element-variables.scss，修改scss变量即可立马查看效果，无需预先编译element-ui的scss文件为css文件。
