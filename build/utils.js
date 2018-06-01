@@ -73,9 +73,9 @@ exports.styleLoaders = function (options) {
 const pagesPath = './src/pages';
 exports.getEntryPages = function () {
     var r = {};
-    var entrieFiles = fs.readdirSync(pagesPath).filter(f => f.slice(-3) === '.js')
+    var entrieFiles = fs.readdirSync(pagesPath).filter(f => f.match(/\.js$/))
     entrieFiles.forEach(jsf => {
-        var baseName = jsf.slice(0, -3);
+        var baseName = jsf.slice(0, jsf.lastIndexOf('.'));
         r[baseName] = pagesPath + '/' + jsf
     })
     //测试环境生成一个rest测试页面
@@ -92,7 +92,6 @@ exports.htmlPlugins = function (webackConfig) {
             title: baseName
         })
     })
-    //console.log(JSON.stringify([main, ...list], 0, 4))
     return list
 }
 

@@ -64,7 +64,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         splitChunks: {
             chunks: 'async', // 必须三选一： "initial" | "all" | "async"
             minSize: 30000, // 最小尺寸
-            minChunks: 1, // 最小 chunk
+            minChunks: 2, //must be greater than or equal 2. The minimum number of chunks which need to contain a module before it's moved into the commons chunk.
             maxAsyncRequests: 5, // 最大异步请求数
             maxInitialRequests: 3, // 最大初始化请求书
             name: true, // 名称，此选项可接收 function

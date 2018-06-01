@@ -25,7 +25,6 @@ module.exports = merge(baseWebpackConfig, {
         }),
         // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
         new webpack.HotModuleReplacementPlugin(),
-        //new webpack.NoEmitOnErrorsPlugin(),
         // https://github.com/ampedandwired/html-webpack-plugin
         ...utils.htmlPlugins(baseWebpackConfig),
         new FriendlyErrorsPlugin()
@@ -34,6 +33,6 @@ module.exports = merge(baseWebpackConfig, {
         runtimeChunk: false,
         minimize: false,
         noEmitOnErrors: true,
-        splitChunks: false,
+        splitChunks: false
     },
 })

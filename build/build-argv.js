@@ -1,5 +1,4 @@
 var fs = require('fs'), path = require('path')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = function (webpackConfig, next) {
     //node build/build.js -out dist2
