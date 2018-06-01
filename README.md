@@ -59,7 +59,7 @@ npm run mock
 
 
 ## mock数据实现
-项目可采用[dyn-mocker](https://github.com/hzsrc/dyn-mocker)作为后端接口的数据模拟。
+项目可采用[dynamic-mocker](https://github.com/hzsrc/dynamic-mocker)作为后端接口的数据模拟。
 模拟数据位于mock文件夹下，采用js文件实现，易于理解且方便灵活。
 
 启用方法：  
