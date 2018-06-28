@@ -5,9 +5,11 @@
         <hr>
         <button @click="getAndGo" class="mask-target">stage1</button>
         <button @click="getAndGo2">stage2</button>
-        <router-link to="/stage2/stage3">stage3</router-link>
+        <button @click="getAndGo3">stage3</button>
 
-        <a href="/" class="right"><button>Logout</button></a>
+        <a href="/" class="right">
+            <button>Logout</button>
+        </a>
 
         <hr>
         <router-view></router-view>
@@ -30,18 +32,21 @@
         },
         methods: {
             getAndGo() {
-                this.$x.post('/api/get_xxx', {}, {showError: 'toast', maskOptions: {target: '.mask-target'}})
-                    .then(res => {
-                    })
-                    .catch(e => {
-                        this.$router.push('/stage1')
-                    })
+                this.$router.push('/stage1')
             },
             getAndGo2() {
                 this.$x.post('/api/test_delay')
                     .then(res => {
                         this.data = res.data;
-                        this.$router.push('/stage1')
+                        this.$router.push('/stage2')
+                    })
+            },
+            getAndGo3() {
+                this.$x.post('/api/get_xxx', {}, {showError: 'toast', maskOptions: {target: '.mask-target'}})
+                    .then(res => {
+                    })
+                    .catch(e => {
+                        this.$router.push('/stage2/stage3')
                     })
             }
         },

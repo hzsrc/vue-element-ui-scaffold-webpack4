@@ -1,21 +1,21 @@
 import Vue from 'vue'
 import $x from '../assets/js/$x'
-import router from '../router/routermain'
+import router from '../router/routerMain.js'
 import main from '../modules/main.vue'
+import store from '../store/main.js'
 
-require('../assets/css/utils.scss')
+require('../assets/css/index.scss');
 
 // window.Vue = Vue
-// 通用组件
-Vue.prototype.$x = Vue.$x = $x
+
+// 通用组件，便于处理
+Vue.prototype.$x = Vue.$x = store.$x = $x;
 $x.setRouter(router);
-// 事件总线
-Vue.prototype.eventBus = new Vue()
 
 new Vue({
     el: '#app',
-    template: '<main></main>',
     router,
-    components: {main}
+    store,
+    render: h => h(main),
 });
 

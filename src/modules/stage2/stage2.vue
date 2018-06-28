@@ -4,22 +4,69 @@
         <button @click="$router.back()">Back</button>
 
         <router-view></router-view>
+
+
+        <hr/>
+        <div class="cart">
+            <h2>Your Cart</h2>
+            <p v-show="!cartItems.length"><i>Please add some products to cart.</i></p>
+            <ul>
+                <li v-for="product in cartItems" class="cart-item">
+                    {{ product.title }} - {{ product.price }} x {{product.quantity }}
+                    <span @click="removeCartItem(product)" class="right pointer main-color">Remove</span>
+                </li>
+            </ul>
+            <p>Total: {{ total }}</p>
+            <p>
+                <button @click="$router.push('/stage1')">Back</button>
+                <button :disabled="!cartItems.length" @click="purcharse(cartItems)">purcharse</button>
+            </p>
+            <p v-show="checkoutStatus">purcharse {{ checkoutStatus }}.</p>
+        </div>
     </div>
 </template>
 
 <script>
-    //import  from '';
+    import {mapGetters, mapState} from 'vuex'
+
     export default {
         props: {},
         data() {
             return {};
         },
-        methods: {},
-        computed: {},
+        methods: {
+            purcharse(cartItems) {
+                this.$store.dispatch('stage2/purcharse', cartItems)
+            },
+            removeCartItem(cartItems) {
+                this.$store.dispatch('stage2/removeCartItem', cartItems)
+            }
+        },
+        computed: {
+            ...mapState({
+                checkoutStatus: state => state.stage2.checkoutStatus
+            }),
+            ...mapGetters('stage2', {
+                cartItems: 'cartProducts',
+                total: 'cartTotalPrice'
+            })
+        },
         components: {}
     }
 </script>
 
 <style scoped lang="scss">
+    @import "../../assets/css/defines.scss";
 
+    .cart {
+        border: $--table-border;
+    }
+
+    .cart-item {
+        line-height: .3rem;
+    }
+
+    .main-color {
+        color: $color-primary;
+    }
 </style>
