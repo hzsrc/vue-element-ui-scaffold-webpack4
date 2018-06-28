@@ -3,7 +3,7 @@
         <h3>
             Login goes here
         </h3>
-        <a href="pageA.html">pageA</a>
+        <a href="main.html">main</a>
         <br>
         <a href="pageB.html">pageB</a></div>
 </template>

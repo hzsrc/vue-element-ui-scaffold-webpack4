@@ -1,3 +1,5 @@
+//Login page
+
 import Vue from 'vue';
 import login from '../modules/login/login.vue'
 

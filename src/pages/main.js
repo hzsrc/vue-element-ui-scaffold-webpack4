@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import $x from '../assets/js/$x'
-import router from '../router/routerA'
-import mainPage from '../modules/pageA'
+import router from '../router/routermain'
+import mainPage from '../modules/main'
 
 require('../assets/css/utils.scss')
 
