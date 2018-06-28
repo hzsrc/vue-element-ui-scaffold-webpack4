@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import $x from '../assets/js/$x'
 import router from '../router/routermain'
-import mainPage from '../modules/main'
+import main from '../modules/main.vue'
 
 require('../assets/css/utils.scss')
 
@@ -14,8 +14,8 @@ Vue.prototype.eventBus = new Vue()
 
 new Vue({
     el: '#app',
-    template: '<main-page></main-page>',
+    template: '<main></main>',
     router,
-    components: {mainPage}
+    components: {main}
 });
 
