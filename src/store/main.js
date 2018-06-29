@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import stage1 from './modules/stage1'
-import stage2 from './modules/stage2'
+import productList from './modules/productList'
+import myCart from './modules/myCart'
 
 //import createLogger from '../../../src/plugins/logger'
 
@@ -11,8 +11,8 @@ const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
     modules: {
-        stage1,
-        stage2,
+        productList,
+        myCart,
     },
     strict: debug,
     //plugins: debug ? [createLogger()] : []

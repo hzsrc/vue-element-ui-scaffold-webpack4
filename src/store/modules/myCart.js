@@ -8,7 +8,7 @@ const state = {
 const getters = {
     cartProducts: (state, getters, rootState) => {
         return state.items.map(({productId, quantity}) => {
-            const product = rootState.stage1.all.find(product => product.id === productId)
+            const product = rootState.productList.all.find(product => product.id === productId)
             return {
                 title: product.title,
                 price: product.price,
@@ -49,14 +49,14 @@ const actions = {
         if (product.inventory > 0) {
             commit('pushProductToCart', product)
             // remove 1 item from stock
-            commit('stage1/increseProductInventory', {id: product.id, number: -1}, {root: true})
+            commit('productList/increseProductInventory', {id: product.id, number: -1}, {root: true})
         }
     },
 
     removeCartItem({state, commit}, item) {
         commit('setPurcharseStatus', null)
         commit('removeCartItem', item)
-        commit('stage1/increseProductInventory', {id: item.productId, number: 1}, {root: true})
+        commit('productList/increseProductInventory', {id: item.productId, number: 1}, {root: true})
     },
 };
 

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>This is stage1 here</h3>
+        <h3>This is productList here</h3>
         <button @click="$router.back()">Back</button>
 
 
@@ -19,7 +19,7 @@
                 <br/><br/>
             </li>
         </ul>
-        <button @click="$router.push('/stage2')">Go purcharse</button>
+        <button @click="$router.push('/myCart')">Go my cart</button>
     </div>
 </template>
 
@@ -32,13 +32,13 @@
             return {};
         },
         created() {
-            this.$store.dispatch('stage1/getAllProducts')
+            this.$store.dispatch('productList/getAllProducts')
         },
-        methods: mapActions('stage2', [
+        methods: mapActions('myCart', [
             'addProductToCart'
         ]),
         computed: mapState({
-            products: state => state.stage1.all
+            products: state => state.productList.all
         }),
         components: {}
     }

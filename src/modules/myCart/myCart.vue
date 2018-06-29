@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>This is stage2 here</h3>
+        <h3>This is myCart here</h3>
         <button @click="$router.back()">Back</button>
 
         <router-view></router-view>
@@ -18,7 +18,7 @@
             </ul>
             <p>Total: {{ total }}</p>
             <p>
-                <button @click="$router.push('/stage1')">Back</button>
+                <button @click="$router.push('/productList')">Back</button>
                 <button :disabled="!cartItems.length" @click="purcharse(cartItems)">purcharse</button>
             </p>
             <p v-show="checkoutStatus">purcharse {{ checkoutStatus }}.</p>
@@ -36,17 +36,17 @@
         },
         methods: {
             purcharse(cartItems) {
-                this.$store.dispatch('stage2/purcharse', cartItems)
+                this.$store.dispatch('myCart/purcharse', cartItems)
             },
             removeCartItem(cartItems) {
-                this.$store.dispatch('stage2/removeCartItem', cartItems)
+                this.$store.dispatch('myCart/removeCartItem', cartItems)
             }
         },
         computed: {
             ...mapState({
-                checkoutStatus: state => state.stage2.checkoutStatus
+                checkoutStatus: state => state.myCart.checkoutStatus
             }),
-            ...mapGetters('stage2', {
+            ...mapGetters('myCart', {
                 cartItems: 'cartProducts',
                 total: 'cartTotalPrice'
             })
