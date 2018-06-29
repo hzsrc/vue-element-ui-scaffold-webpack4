@@ -5,10 +5,10 @@ import spinRoute from './spinRoute';
 Vue.use(Router)
 
 //同步加载，合并打包
-import productList from '../modules/productList/productList.vue';
+import stage1 from '../modules/stage1/stage1.vue';
 
 // 组件懒加载：组件会被webpack打包多个js，当路由被访问的时候只加载相应组件js
-const myCart = resolve => require(['../modules/myCart/myCart.vue'], resolve);
+const stage2 = resolve => require(['../modules/stage2/stage2.vue'], resolve);
 
 //组件懒加载，下载js时显示spin状态
 const stage3 = resolve => {
@@ -19,12 +19,12 @@ const stage3 = resolve => {
 const router = new Router({
     mode: 'hash',
     routes: [
-        {path: '/productList', component: productList},               //sync
+        {path: '/stage1', component: stage1},               //sync
         {
-            path: '/myCart',
-            component: myCart,                              //async
+            path: '/stage2',
+            component: stage2,                              //async
             children: [
-                {path: '/myCart/stage3', component: stage3},  //async + spin
+                {path: '/stage2/stage3', component: stage3},  //async + spin
             ]
         },
     ],
