@@ -46,7 +46,7 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
     serverSideRender: false,
     watchOptions: {
         ignored: /node_modules/, //忽略不用监听变更的目录
-        aggregateTimeout: 500, //防止重复保存频繁重新编译,500ms内重复保存不打包
+        aggregateTimeout: 500, //防止重复保存频繁重新编译,500毫米内重复保存不打包
         poll: 1000 //每秒询问的文件变更的次数
     },
     writeToDisk: false,
@@ -113,6 +113,6 @@ module.exports = {
     }
 }
 
-if (process.argv.indexOf('--mock') > -1)
+if (process.argv.indexOf('--mock') > -1 && require('fs').existsSync('./mock/mock-config.js'))
     require('dynamic-mocker').checkStart('./mock/mock-config.js')
 
