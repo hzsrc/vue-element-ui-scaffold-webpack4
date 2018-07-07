@@ -1,4 +1,4 @@
-//生成主题颜色变量，供生成过程中使用
+﻿//生成主题颜色变量，供生成过程中使用
 require('./make-element-theme.js')();
 
 require('./check-versions')()
@@ -29,11 +29,27 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
-var compiler = webpack(webpackConfig)
+var compiler = webpack(webpackConfig);
+
+//进度
+var readline = require('readline');
+compiler.apply(new webpack.ProgressPlugin((percentage, msg) => {
+    //移动光标
+    readline.clearLine(process.stdout);
+    console.log('  ' + (percentage * 100).toFixed(2) + '%', msg);
+    readline.moveCursor(process.stdout, 0, -1);
+}));
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
     publicPath: webpackConfig.output.publicPath,
-    quiet: true
+    quiet: true,
+    serverSideRender: false,
+    watchOptions: {
+        ignored: /node_modules/, //忽略不用监听变更的目录
+        aggregateTimeout: 500, //防止重复保存频繁重新编译,500ms内重复保存不打包
+        poll: 1000 //每秒询问的文件变更的次数
+    },
+    writeToDisk: false,
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
@@ -86,9 +102,9 @@ devMiddleware.waitUntilValid(() => {
         opn(uri)
     }
     _resolve()
-})
+});
 
-var server = app.listen(port)
+var server = app.listen(port);
 
 module.exports = {
     ready: readyPromise,
