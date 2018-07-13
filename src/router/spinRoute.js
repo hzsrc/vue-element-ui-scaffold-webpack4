@@ -8,7 +8,7 @@ const index = resolve => {
 */
 
 'user strict';
-import loading from '../assets/js/loading';
+import loading from '../assets/js/utils/loading';
 
 export default {
     show() {
