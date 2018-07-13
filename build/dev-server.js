@@ -1,4 +1,4 @@
-//生成主题颜色变量，供生成过程中使用
+﻿//生成主题颜色变量，供生成过程中使用
 require('./make-element-theme.js')();
 
 require('./check-versions')()
@@ -8,7 +8,7 @@ config.dev.env.API_SERVER = config.dev.env.API_SERVER_DEV; //使用本地开发�
 config.dev.env.API_NODE_SERVER = config.dev.env.API_NODE_SERVER_DEV; //使用本地开发用的服务地址
 
 if (!process.env.NODE_ENV) {
-    process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
+	process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
 
 var opn = require('opn')
@@ -17,8 +17,8 @@ var express = require('express')
 var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = process.env.NODE_ENV === 'testing'
-    ? require('./webpack.prod.conf')
-    : require('./webpack.dev.conf')
+	? require('./webpack.prod.conf')
+	: require('./webpack.dev.conf')
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
@@ -29,16 +29,23 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
-var compiler = webpack(webpackConfig)
+var compiler = webpack(webpackConfig);
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
-    publicPath: webpackConfig.output.publicPath,
-    quiet: true
+	publicPath: webpackConfig.output.publicPath,
+	quiet: true,
+	serverSideRender: false,
+	watchOptions: {
+		ignored: /node_modules/, //忽略不用监听变更的目录
+		aggregateTimeout: 500, //防止重复保存频繁重新编译,500毫米内重复保存不打包
+		poll: 1000 //每秒询问的文件变更的次数
+	},
+	writeToDisk: false,
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
-    log: () => {
-    }
+	log: () => {
+	}
 })
 /* webpack 4 reload everytime*/
 // force page reload when html-webpack-plugin template changes
@@ -75,28 +82,28 @@ var uri = 'http://localhost:' + port
 
 var _resolve
 var readyPromise = new Promise(resolve => {
-    _resolve = resolve
+	_resolve = resolve
 })
 
 console.log('> Starting dev server...')
 devMiddleware.waitUntilValid(() => {
-    console.log('> Listening at ' + uri + '\n')
-    // when env is testing, don't need open it
-    if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
-        opn(uri)
-    }
-    _resolve()
-})
+	console.log('> Listening at ' + uri + '\n')
+	// when env is testing, don't need open it
+	if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
+		opn(uri)
+	}
+	_resolve()
+});
 
-var server = app.listen(port)
+var server = app.listen(port);
 
 module.exports = {
-    ready: readyPromise,
-    close: () => {
-        server.close()
-    }
+	ready: readyPromise,
+	close: () => {
+		server.close()
+	}
 }
 
-if (process.argv.indexOf('--mock') > -1)
-    require('dynamic-mocker').checkStart('./mock/mock-config.js')
+if (process.argv.indexOf('--mock') > -1 && require('fs').existsSync('./mock/mock-config.js'))
+	require('dynamic-mocker').checkStart('./mock/mock-config.js')
 

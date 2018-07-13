@@ -1,4 +1,7 @@
 var path = require('path')
+var readline = require('readline');
+var webpack = require('webpack');
+
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
@@ -68,6 +71,13 @@ module.exports = {
         ]
     },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+		//显示构建进度
+		new webpack.ProgressPlugin((percentage, msg) => {
+			//移动光标
+			readline.clearLine(process.stdout);
+			console.log('  ' + (percentage * 100).toFixed(2) + '%', msg);
+			readline.moveCursor(process.stdout, 0, -1);
+		})
     ],
 }
