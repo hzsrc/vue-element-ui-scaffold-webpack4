@@ -13,7 +13,7 @@ import appConfig from '../../../config/app-config'
 import CONST from './CONST'
 import tokenUtil from './utils/tokenUtil'
 import msgDlg from './utils/msgDialog'
-import loading from './loading'
+import loading from './utils/loading'
 
 //for el-upload
 axios.getYxtHeaders = function () {

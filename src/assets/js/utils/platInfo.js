@@ -2,7 +2,7 @@
 if (![].findIndex) {
     Object.defineProperty(Array.prototype, 'findIndex', {
         enumerable: false,
-        get () {
+        get() {
             return function (fn) {
                 for (var i = 0; i < this.length; i++) {
                     if (fn(this[i], i)) return i;
@@ -13,7 +13,7 @@ if (![].findIndex) {
     });
     Object.defineProperty(Array.prototype, 'find', {
         enumerable: false,
-        get () {
+        get() {
             return function (fn) {
                 return this[this.findIndex(fn)]
             }
@@ -22,11 +22,7 @@ if (![].findIndex) {
 }
 
 export default {
-    getPlat () {
-        return {
-            android: false,
-            iphone: false,
-            isMobile: this.android || this.iphone
-        }
+    getPlat() {
+        return {}
     }
 };

@@ -4,7 +4,8 @@ var fs = require('fs');
 function makeThemeVers(color, isBuild) {
     var src = './src/assets/css/element-theme/theme-element-variables.scss';
     var dest = './node_modules/element-theme-chalk/src/common/var.scss';
-    //替换颜色
+	if (!fs.existsSync(src)) return;
+	//替换颜色
     if (color && color.match(/^#|^rgb/)) {
         replaceFile('./src/assets/css/defines.scss'
             , str => str.replace(/(\$color\-primary: ).+;/g, '$1' + color + ';')
