@@ -1,12 +1,10 @@
-import config from '../../../config/app-config.js'
 import CONST from './CONST.js'
-import msg from './msg.js'
 import storageUtil from './utils/storageUtil.js'
 import frequence from './utils/frequence.js'
 import platInfo from './utils/platInfo.js'
 import tokenUtil from './utils/tokenUtil.js'
 import domUtil from './utils/domUtil.js'
-import loading from './loading.js'
+import loading from './utils/loading.js'
 import urlClick from './utils/urlClick.js'
 import msgDialog from './utils/msgDialog.js'
 import httpUtil from './utils/httpUtil.js'
@@ -26,11 +24,9 @@ var mixed = {
     ...frequence,
     ...msgDialog,
     ...urlClick,
-    config,
     ...httpUtil,
     storageUtil,
     CONST,
-    msg,
     tokenUtil,
     ...domUtil,
     loading

@@ -19,19 +19,6 @@ export default {
     checkValiCode(str) {
         return this.checkLen(str, $x.CONST.SMS_VALI_CODE_LENGTH, $x.CONST.SMS_VALI_CODE_LENGTH)
     },
-    //根据数组弹出提示信息
-    // checkMsg (arrMsg) {
-    //     if (arrMsg.length > 0) {
-    //         var option = {
-    //             message: arrMsg.join('； '),
-    //             type: 'error',
-    //             duration: 6000
-    //         }
-    //         $x.toast(option);
-    //         return false;
-    //     }
-    //     return true
-    // },
     //获取密码强度和提示信息
     getPasswordType(pwd) {
         var strength = 0;
