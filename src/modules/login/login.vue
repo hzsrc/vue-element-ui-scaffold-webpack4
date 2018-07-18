@@ -1,26 +1,29 @@
-<template>
-    <div>
-        <h3>
-            Login goes here
-        </h3>
-        <a href="main.html">main</a>
-        <br>
-        <a href="pageB.html">pageB</a></div>
-</template>
-
 <script>
-    //import  from '';
     export default {
-        props: {},
         data() {
-            return {};
+            return {
+                /*IFDEBUG
+                    devMsg: '(by js-conditional-compile-loader)',
+                FIDEBUG*/
+                name: 'dude',
+            };
         },
-        methods: {},
-        computed: {},
-        components: {}
+        render(h) {
+            return (
+                <div>
+                    <h3>
+                        Hi {this.name}, Login goes here
+                    </h3>
+                    <a href="main.html">main</a>
+                    <br/>
+                    <a href="pageB.html">pageB</a>
+                    {
+                        /*IFDEBUG
+                            <div><hr/>This message is only shown while process.env.NODE_ENV == 'development'. {this.devMsg}</div>
+                        FIDEBUG*/
+                    }
+                </div>
+            )
+        },
     }
 </script>
-
-<style scoped lang="scss">
-
-</style>

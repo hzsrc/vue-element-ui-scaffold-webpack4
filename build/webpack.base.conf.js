@@ -45,12 +45,12 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                loader: 'babel-loader?cacheDirectory',
                 include: [resolve('src'), resolve('test')],
                 exclude: file => (
                     /node_modules/.test(file) &&
                     !/\.vue\.js/.test(file)
                 ),
+                use: ['babel-loader?cacheDirectory', 'js-conditional-compile-loader']
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
