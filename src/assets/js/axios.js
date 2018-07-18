@@ -1,7 +1,7 @@
 /*
 自定义的axios 第3个参数（config）字段意义：
 {
-showError:   true表示ajax出错时，弹出alert框提示。默认不弹出
+showError:   默认弹出toast框提示。showError='alert'表示弹出alert框。showError===false默认不弹出
 noToken：    true表示请求时，不在header中带入token。默认带入
 maskOptions:  表示请求时显示遮罩层的选项。默认{body: true}
 }
@@ -13,7 +13,7 @@ import appConfig from '../../../config/app-config'
 import CONST from './CONST'
 import tokenUtil from './utils/tokenUtil'
 import msgDlg from './utils/msgDialog'
-import loading from './utils/loading'
+import loading from './loading'
 
 //for el-upload
 axios.getYxtHeaders = function () {
@@ -53,17 +53,17 @@ axios.interceptors.request.use(function (config) {
 axios.interceptors.response.use(function (res) {
     loading.close(res.config.maskOptions)
     var data = res.data || {};
-    var retCode = Number(data.returnCode);
-    if (retCode == 110 || retCode == 111) { // token失败
+    var retCode = Number(data.errcode);
+    if (retCode == 401) { // token失败
         return doLogin()
     }
-    else if (retCode != 0) { //错误
-        //100以下是系统错误，10000以上是其他中心系统错误。其他的是业务错误
-        if (!isDev && (retCode <= 100 || retCode >= 10000) || !data.msg) {
+    else if (retCode != 200) { //错误
+        //-1是系统错误。其他的是业务错误
+        if (!isDev && (retCode == -1) || !data.errmsg) {
             console.error(data)
-            data.msg = CoveredErrMsg
+            data.errmsg = CoveredErrMsg
         }
-        showErr(res.config, data.msg);
+        showErr(res.config, data.errmsg);
         return Promise.reject(data)
     }
     return data
@@ -92,18 +92,18 @@ function doLogin() {
 
 function fail(error) {
     if (error.config) loading.close(error.config.maskOptions);
-    if (!error.msg) error.msg = CoveredErrMsg;
+    if (!error.errmsg) error.errmsg = CoveredErrMsg;
     showErr(error.config, CoveredErrMsg);
     return Promise.reject(error)
 }
 
-function showErr(config, msg) {
-    if (config && config.showError === 'toast')
-        msgDlg.toast.error(msg);
-    else if (config && config.showError)
-        msgDlg.alert(msg, {type: 'error'});
+function showErr(config, errmsg) {
+    if (config && config.showError)
+        msgDlg.toast.error(errmsg);
+    else if (config && config.showError === 'alert')
+        msgDlg.alert(errmsg, {type: 'error'});
     else if (isDev)
-        msgDlg.toast.error(msg + ' [debug only]')
+        msgDlg.toast.error(errmsg + ' [debug only]')
 }
 
 export default axios

@@ -1,10 +1,8 @@
 import CONST from './CONST.js'
 import storageUtil from './utils/storageUtil.js'
-import frequence from './utils/frequence.js'
-import platInfo from './utils/platInfo.js'
-import tokenUtil from './utils/tokenUtil.js'
+import frequence from './frequence.js'
+import platInfo from './utils/platform.js'
 import domUtil from './utils/domUtil.js'
-import loading from './utils/loading.js'
 import urlClick from './utils/urlClick.js'
 import msgDialog from './utils/msgDialog.js'
 import httpUtil from './utils/httpUtil.js'
@@ -27,9 +25,7 @@ var mixed = {
     ...httpUtil,
     storageUtil,
     CONST,
-    tokenUtil,
     ...domUtil,
-    loading
 }
 
 var $x = domUtil
