@@ -25,6 +25,9 @@
         <div class="custom-color2">
             my custom color 2
         </div>
+
+        <br/>
+        <a href="./"><< Back</a>
     </div>
 </template>
 

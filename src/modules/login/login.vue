@@ -24,6 +24,13 @@
                             <div><hr/>This message is only shown while process.env.NODE_ENV == 'development'. {this.devMsg}</div>
                         FIDEBUG*/
                     }
+
+                    <footer style="position: fixed;bottom:30px;">
+                        Github source code：
+                        <a href="https://github.com/hzsrc/vue-element-ui-scaffold-webpack4">
+                            vue-element-ui-scaffold-webpack4
+                        </a>
+                    </footer>
                 </div>
             )
         },
