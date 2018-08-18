@@ -11,11 +11,14 @@ const config = {
         respData.headers['Access-Control-Allow-Origin'] = req.headers['origin'] || req.headers['Origin'];
         respData.headers['Access-Control-Allow-Credentials'] = 'true';
         respData.headers['Access-Control-Max-Age'] = '600';
-        respData.headers['Access-Control-Allow-Headers'] = 'Content-Type,Content-Length,Authorization,Access,X-Requested-With,xxx-token';
+        respData.headers['Access-Control-Allow-Headers'] = 'Content-Type,Content-Length,Authorization,Access,X-Requested-With,token';
         //respData.headers["Access-Control-Allow-Methods"] = "PUT,POST,GET,DELETE,PATCH,OPTIONS";
 
         respData.headers['P3P'] = 'CP="CAO PSA OUR"';
         //CP="ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI"
+    },
+    mapFile(pathname, req) {
+        return pathname
     }
 }
 module.exports = config;

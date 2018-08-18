@@ -3,6 +3,8 @@ var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 const {VueLoaderPlugin} = require('vue-loader');
+var appConfig = require('../config/app-config')
+const ThemeColorReplacer = require('webpack-theme-color-replacer')
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -73,7 +75,15 @@ module.exports = {
         ]
     },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        //生成仅包含颜色的替换样式（主题色等）
+        new ThemeColorReplacer({
+            fileName: appConfig.themeFile,
+            matchColors: [
+                ...ThemeColorReplacer.getElementUISeries(appConfig.themeColor),  //element-ui主色系列
+                '#0cdd3a',  //自定义颜色
+            ],
+        })
     ],
 
     node: {

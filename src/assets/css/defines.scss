@@ -1,5 +1,6 @@
-@import "./element-theme/theme-element-variables.scss";
+@import "./element-theme/theme-changed.scss";
+//导入element-theme-chalk的变量名
+@import "~element-theme-chalk/src/common/var.scss";
 
-//主色
-$color-primary: $--color-primary;
-
+//自定义颜色变量
+$my-custom-color: #0cdd3a;

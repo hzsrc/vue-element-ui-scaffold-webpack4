@@ -31,6 +31,6 @@
     }
 
     .main-color {
-        color: $color-primary;
+        color: $--color-primary;
     }
 </style>
