@@ -82,6 +82,7 @@ module.exports = {
             matchColors: [
                 ...ThemeColorReplacer.getElementUISeries(appConfig.themeColor),  //element-ui主色系列
                 '#0cdd3a',  //自定义颜色
+                '#c655dd',
             ],
         })
     ],
