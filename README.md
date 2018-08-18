@@ -46,13 +46,13 @@ npm run build-dev
 ```
 npm run mock
 ```
-当后端服务尚未完成时，可用于模拟后端接口数据调试前端功能。
+当后端接口服务尚未完成时，可用于模拟后端接口数据调试前端功能。
 
 
 
 # 3. 项目说明
-## 基于webpack4.10构建
-更快的构建速度，更小的目标文件下载体积。
+## 基于webpack4构建
+构建速度比之前版本明显加快。同时可优化了splitChunks参数，使目标文件总的下载体积减少。
 
 
 ## 多页面实现
@@ -72,4 +72,8 @@ npm run mock
 2、mock/mock-config.js文件配置mock各种参数。
 
 ## element-ui主题自动按需加载编译
-按需加载源直接指向element-ui的scss文件。提取了element-ui主题变量文件到src\assets\css\element-theme\theme-element-variables.scss，修改scss变量即可立马查看效果，无需预先编译element-ui的scss文件为css文件。
+css按需加载的来源直接指向element-ui的scss文件，而不是预编译的css文件。通过build/make-element-theme.js在编译时将src/assets/css/element-theme/theme-changed.scss文件 附加到element-ui主题变量文件element-theme-chalk/src/common/var.scss之前，实现了在修改scss变量后即可立马查看效果，无需预先编译element-ui的scss文件为css文件。同时可以在项目任意地方引用element-ui的scss变量。
+
+## 动态调整主题色
+利用webpack-theme-color-replacer插件，在webpack构建时提取css中含有主题色的样式规则，生成一个css/theme-colors.css文件。然后在网页运行时，下载这个css文件，动态替换其中的颜色为自定义主题色。由于只提取了颜色相关的css，故速度比下载element-ui整个css要快很多。而且不仅仅是element-ui的样式，项目中的样式主题色也可以一并替换掉。
+
