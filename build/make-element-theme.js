@@ -2,33 +2,41 @@
 var fs = require('fs');
 
 function makeThemeVers(color, isBuild) {
-    var src = './src/assets/css/element-theme/theme-element-variables.scss';
-    var dest = './node_modules/element-theme-chalk/src/common/var.scss';
-	if (!fs.existsSync(src)) return;
-	//替换颜色
-    if (color && color.match(/^#|^rgb/)) {
-        replaceFile('./src/assets/css/defines.scss'
-            , str => str.replace(/(\$color\-primary: ).+;/g, '$1' + color + ';')
-        );
-        replaceFile(src
-            , str => str.replace(/(\-\-color\-primary: ).+;/g, '$1' + color + ';')
-            , dest)
-    }
-    else {
-        replaceFile(src, null, dest)
+    var preFile = './src/assets/css/element-theme/theme-changed.scss';
+    var varFile = './node_modules/element-theme-chalk/src/common/var.scss';
+    var srcFile = './node_modules/element-theme-chalk/src/common/var-backup.scss';
+
+    //原始文件备份
+    if (!fs.existsSync(srcFile)) {
+        replaceFile(varFile, null, srcFile)
     }
 
+    //覆盖颜色
+    var replaceFn;
+    if (color && color.match(/^#|^rgb/)) {
+        replaceFn = str => str.replace(/(\$\-\-color-primary: ).+;/g, '$1' + color + ';')
+    }
+    prependWith(srcFile, preFile, varFile, replaceFn);
+
     if (!isBuild) {
-        fs.watch(src, (file) => {
-            if (file && fs.existsSync(src)) replaceFile(src, null, dest)
+        fs.watch(preFile, (type, name) => {
+            if (fs.existsSync(preFile)) {
+                prependWith(srcFile, preFile, varFile, replaceFn);
+            }
         })
     }
 }
 
-function replaceFile(file, replaceFn, targetFile) {
-    var str = fs.readFileSync(file, 'utf-8');
+function replaceFile(srcFile, replaceFn, targetFile) {
+    var str = fs.readFileSync(srcFile, 'utf-8');
     if (replaceFn) str = replaceFn(str);
-    fs.writeFileSync(targetFile || file, str, 'utf-8')
+    fs.writeFileSync(targetFile || srcFile, str, 'utf-8')
+}
+
+function prependWith(srcFile, preFile, targetFile, replaceFn) {
+    var preContent = fs.readFileSync(preFile, 'utf-8');
+    if (replaceFn) preContent = replaceFn(preContent);
+    replaceFile(srcFile, str => preContent + str, targetFile)
 }
 
 module.exports = makeThemeVers;

@@ -1,7 +1,4 @@
 var path = require('path')
-var readline = require('readline');
-var webpack = require('webpack');
-
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
@@ -50,7 +47,12 @@ module.exports = {
                     /node_modules/.test(file) &&
                     !/\.vue\.js/.test(file)
                 ),
-                use: ['babel-loader?cacheDirectory', 'js-conditional-compile-loader']
+                use: [
+                    //step-2
+                    'babel-loader?cacheDirectory',
+                    //step-1
+                    'js-conditional-compile-loader',
+                ],
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -71,13 +73,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new VueLoaderPlugin(),
-		//显示构建进度
-		new webpack.ProgressPlugin((percentage, msg) => {
-			//移动光标
-			readline.clearLine(process.stdout);
-			console.log('  ' + (percentage * 100).toFixed(2) + '%', msg);
-			readline.moveCursor(process.stdout, 0, -1);
-		})
+        new VueLoaderPlugin()
     ],
 }

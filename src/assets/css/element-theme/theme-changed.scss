@@ -1,0 +1,6 @@
+//可在本文件中覆盖element-theme-chalk同名变量
+//会将此文件附加在 "~element-theme-chalk/src/common/var.scss" 之前（make-element-theme.js实现）;
+
+//覆盖主色
+$--color-primary: #ed4040; //去掉 !default
+

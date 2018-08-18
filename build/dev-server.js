@@ -1,4 +1,4 @@
-﻿//生成主题颜色变量，供生成过程中使用
+//生成主题颜色变量，供生成过程中使用
 require('./make-element-theme.js')();
 
 require('./check-versions')()
@@ -29,7 +29,7 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
-var compiler = webpack(webpackConfig);
+var compiler = webpack(webpackConfig)
 
 //进度
 var readline = require('readline');
@@ -45,8 +45,8 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
     quiet: true,
     serverSideRender: false,
     watchOptions: {
-        ignored: /node_modules/, //忽略不用监听变更的目录
-        aggregateTimeout: 500, //防止重复保存频繁重新编译,500毫米内重复保存不打包
+        //ignored: 'node_modules/**/*.js', //忽略不用监听变更的目录
+        aggregateTimeout: 500, //防止重复保存频繁重新编译,500毫秒内重复保存不打包
         poll: 1000 //每秒询问的文件变更的次数
     },
     writeToDisk: false,
@@ -59,7 +59,7 @@ var hotMiddleware = require('webpack-hot-middleware')(compiler, {
 /* webpack 4 reload everytime*/
 // force page reload when html-webpack-plugin template changes
 /*compiler.plugin('compilation', function (compilation) {
-    compilation.plugin('html-webpack-plugin-after-emit', function (data) {debugger
+    compilation.plugin('html-webpack-plugin-after-emit', function (data) {
         hotMiddleware.publish({action: 'reload'})
     })
 })//*/
@@ -102,9 +102,9 @@ devMiddleware.waitUntilValid(() => {
         opn(uri)
     }
     _resolve()
-});
+})
 
-var server = app.listen(port);
+var server = app.listen(port)
 
 module.exports = {
     ready: readyPromise,
@@ -113,6 +113,6 @@ module.exports = {
     }
 }
 
-if (process.argv.indexOf('--mock') > -1 && require('fs').existsSync('./mock/mock-config.js'))
+if (process.argv.indexOf('--mock') > -1)
     require('dynamic-mocker').checkStart('./mock/mock-config.js')
 

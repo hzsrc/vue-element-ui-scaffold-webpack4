@@ -40,7 +40,7 @@ var webpackConfig = merge(baseWebpackConfig, {
                 ? []
                 : [new OptimizeCSSPlugin({
                     cssProcessorOptions: {
-                        safe: true,
+                        //safe: true,
                         map: false,
                     }
                 })]
