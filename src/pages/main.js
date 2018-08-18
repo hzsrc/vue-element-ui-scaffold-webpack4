@@ -9,7 +9,6 @@ require('../assets/css/index.scss');
 
 // 通用组件，便于处理
 Vue.prototype.$x = Vue.$x = $x;
-$x.setRouter(router);
 
 new Vue({
     el: '#app',

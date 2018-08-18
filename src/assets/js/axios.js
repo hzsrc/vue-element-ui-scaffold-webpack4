@@ -18,7 +18,7 @@ import loading from './loading'
 //for el-upload
 axios.getYxtHeaders = function () {
     var r = {}
-    r[CONST.TOKEN_HEADER] = tokenUtil.get()
+    r[CONST.TOKEN_HEADER] = tokenUtil.token
     return r
 }
 
@@ -38,11 +38,11 @@ const CoveredErrMsg = '服务器开小差啦，请稍后重试！'
 // http请求拦截器
 axios.interceptors.request.use(function (config) {
     if (!config.noToken) {
-        config.headers[CONST.TOKEN_HEADER] = tokenUtil.get()
+        config.headers[CONST.TOKEN_HEADER] = tokenUtil.token
     }
-    if (config.isToNode) {
-        config.headers[CONST.CHANNEL_HEADER] = tokenUtil.getChannel()
-    }
+    // if (config.isToNode) {
+    //     config.headers[CONST.CHANNEL_HEADER] = tokenUtil.channel
+    // }
     //遮罩层
     loading.show(config.maskOptions)
 
@@ -53,17 +53,17 @@ axios.interceptors.request.use(function (config) {
 axios.interceptors.response.use(function (res) {
     loading.close(res.config.maskOptions)
     var data = res.data || {};
-    var retCode = Number(data.errcode);
-    if (retCode == 401) { // token失败
+    var retCode = Number(data.returnCode);
+    if (retCode == 110 || retCode == 111) { // token失败
         return doLogin()
     }
-    else if (retCode != 200) { //错误
-        //-1是系统错误。其他的是业务错误
-        if (!isDev && (retCode == -1) || !data.errmsg) {
+    else if (retCode != 0) { //错误
+        //100以下是系统错误，10000以上是其他中心系统错误。其他的是业务错误
+        if ((!isDev && (retCode <= 100 || retCode >= 10000)) || !data.msg) {
             console.error(data)
-            data.errmsg = CoveredErrMsg
+            data.msg = CoveredErrMsg
         }
-        showErr(res.config, data.errmsg);
+        showErr(res.config, data.msg);
         return Promise.reject(data)
     }
     return data
@@ -98,7 +98,7 @@ function fail(error) {
 }
 
 function showErr(config, errmsg) {
-    if (config && config.showError)
+    if (config && config.showError === undefined)
         msgDlg.toast.error(errmsg);
     else if (config && config.showError === 'alert')
         msgDlg.alert(errmsg, {type: 'error'});

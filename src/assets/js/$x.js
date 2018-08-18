@@ -1,11 +1,12 @@
 import CONST from './CONST.js'
 import storageUtil from './utils/storageUtil.js'
-import frequence from './frequence.js'
 import platInfo from './utils/platform.js'
+import tokenUtil from './utils/tokenUtil.js'
 import domUtil from './utils/domUtil.js'
-import urlClick from './utils/urlClick.js'
 import msgDialog from './utils/msgDialog.js'
 import httpUtil from './utils/httpUtil.js'
+import platform from './utils/platform';
+import frequence from './utils/frequence';
 
 const util = {
     clone(obj, deep) {
@@ -19,12 +20,13 @@ const util = {
 var mixed = {
     plat: platInfo.getPlat(),
     ...util,
+    ...platform,
     ...frequence,
     ...msgDialog,
-    ...urlClick,
     ...httpUtil,
     storageUtil,
     CONST,
+    tokenUtil,
     ...domUtil,
 }
 
