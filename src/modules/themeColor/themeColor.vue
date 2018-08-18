@@ -22,6 +22,9 @@
         <div class="custom-color">
             my custom color
         </div>
+        <div class="custom-color2">
+            my custom color 2
+        </div>
     </div>
 </template>
 
@@ -60,6 +63,10 @@
 
     .custom-color {
         background: $my-custom-color;
+    }
+
+    .custom-color2 {
+        background: $my-custom-color2;
     }
 
     .pd-20 {

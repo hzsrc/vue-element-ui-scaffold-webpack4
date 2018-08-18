@@ -49,7 +49,7 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
         aggregateTimeout: 500, //防止重复保存频繁重新编译,500毫秒内重复保存不打包
         poll: 1000 //每秒询问的文件变更的次数
     },
-    writeToDisk: true,
+    writeToDisk: false,
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {

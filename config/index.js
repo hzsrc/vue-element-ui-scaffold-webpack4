@@ -16,7 +16,7 @@ var ret = {
         env: getBuildEnv(),
         assetsRoot: path.resolve(__dirname, '../dist'),
         assetsSubDirectory: '',
-        assetsPublicPath: '/',
+        assetsPublicPath: '',
         productionSourceMap: getBuildEnv().NeedSrcMap,
         // Gzip off by default as many popular static hosts such as
         // Surge or Netlify already gzip all static assets for you.

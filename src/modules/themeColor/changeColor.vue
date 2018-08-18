@@ -19,7 +19,19 @@
         },
         methods: {
             changeColor(newVal) {
-                replacer.elementUI.changeColor(newVal, this.oldColor, appConfig.themeFile);
+                var options = {
+                    primary: {
+                        oldColor: this.oldColor,
+                        newColor: newVal,
+                    },
+                    cssUrl: appConfig.themeFile,
+                    others: {
+                        oldColors: ['#0cdd3a', '#c655dd'],
+                        newColors: ['#ff0000', '#ffff00'],
+                    }
+                };
+                replacer.elementUI.changeColor(options);
+
                 this.oldColor = newVal
             }
         },
