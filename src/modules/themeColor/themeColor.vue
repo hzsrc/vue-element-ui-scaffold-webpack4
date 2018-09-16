@@ -3,7 +3,7 @@
         <div>
             <span class="v-top" style="line-height: 30px">Change theme color to: </span>
             <change-color></change-color>
-			In development, you need to build first (npm run build) to make the css file in dist target.
+			<div>In development, you need to build first (npm run build) to make the css file in dist target.</div>
         </div>
         <hr/>
         <h2>element-ui css:</h2>
