@@ -78,3 +78,8 @@ css按需加载的来源直接指向element-ui的scss文件，而不是预编译
 ## 动态调整主题色
 利用webpack-theme-color-replacer插件，在webpack构建时提取css中含有主题色的样式规则，生成一个css/theme-colors.css文件。然后在网页运行时，下载这个css文件，动态替换其中的颜色为自定义主题色。由于只提取了颜色相关的css，故速度比下载element-ui整个css要快很多。而且不仅仅是element-ui的样式，项目中的样式主题色也可以一并替换掉。
 
+## 响应式布局
+框架采用vw+rem方案，几行css实现响应式布局，简洁而高效。无需@media媒体查询，无需js动态调整样式。    
+同时使用postcss-pxtorem插件自动将css中的单位由px转化为rem。pc和移动端通用（移动端最好将element-ui换为其他UI框架）。    
+1rem = 100px，调试时换算方便。
+

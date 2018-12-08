@@ -1,7 +1,6 @@
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
-var vueLoaderConfig = require('./vue-loader.conf')
 const {VueLoaderPlugin} = require('vue-loader');
 var appConfig = require('../config/app-config')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
@@ -40,7 +39,7 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
-                options: vueLoaderConfig
+                options: {}
             },
             {
                 test: /\.js$/,
@@ -84,6 +83,10 @@ module.exports = {
                 '#0cdd3a',  //自定义颜色
                 '#c655dd',
             ],
+            cssPrefix: true,
+            // resolveCss(resultCss) { // optional. Resolve result css code as you wish.
+            //     return resultCss + youCssCode
+            // }
         })
     ],
 

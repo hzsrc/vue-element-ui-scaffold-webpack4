@@ -296,12 +296,12 @@
 
 <style scoped lang="scss">
     .zrest {
-        padding: .1rem;
+        padding: 10px;
     }
 
     .pre {
         border: 1px solid #ddd;
-        min-height: .4rem;
-        padding: .05rem;
+        min-height: 40px;
+        padding: 5px;
     }
 </style>

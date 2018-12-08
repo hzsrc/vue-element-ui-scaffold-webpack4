@@ -27,7 +27,7 @@
     }
 
     .cart-item {
-        line-height: .3rem;
+        line-height: 30px;
     }
 
     .main-color {

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+require('../assets/css/index.scss');
 new Vue({
     el: '#app',
     template:

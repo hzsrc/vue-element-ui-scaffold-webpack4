@@ -1,5 +1,5 @@
 <template>
-    <div class="main-page">
+    <div class="pd-10 main-page">
         <h3>Home Page</h3>
         <header>Ajax Result: {{data}}</header>
         <hr>
@@ -51,6 +51,6 @@
 
 <style scoped lang="scss">
     .main-page {
-        padding: .2rem;
+
     }
 </style>

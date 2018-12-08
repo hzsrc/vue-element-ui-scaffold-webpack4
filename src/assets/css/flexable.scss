@@ -1,0 +1,121 @@
+/*移动端，响应式布局
+var rate = 0.6,std; // 375/(1/.16) /100 = 0.6
+var ret = [320, 360, 375, 400, 414, 440, 480, 520, 560, 600, 640, 680, 720, 750].map(i=>{
+  var num = (i/0.6).toFixed(5).replace(/\.[0]+$/,'');
+  if(i==375) std = num
+  return ('@media (min-width:'+i+'px){html{font-size:'+ num +'% !important;}}')
+ }
+).join('\r\n') + '\r\n@media (min-width:768px){html{font-size:'+ std +'% !important;}}';
+copy(ret);
+console.log(ret);
+*/
+
+/*768以上作为电脑屏，同iphone6的375。以rem为单位，每rem表示100像素*/
+
+//@media (max-width: 319px) {
+//    html {
+//        font-size: 533.33333% !important;
+//    }
+//}
+//@media (min-width: 320px) {
+//    html {
+//        font-size: 533.33333% !important;
+//    }
+//}
+//
+//@media (min-width: 360px) {
+//    html {
+//        font-size: 600% !important;
+//    }
+//}
+//
+//@media (min-width: 375px) {
+//    html {
+//        font-size: 625% !important;
+//    }
+//}
+//
+//@media (min-width: 400px) {
+//    html {
+//        font-size: 666.66667% !important;
+//    }
+//}
+//
+//@media (min-width: 414px) {
+//    html {
+//        font-size: 690% !important;
+//    }
+//}
+//
+//@media (min-width: 440px) {
+//    html {
+//        font-size: 733.33333% !important;
+//    }
+//}
+//
+//@media (min-width: 480px) {
+//    html {
+//        font-size: 800% !important;
+//    }
+//}
+//
+//@media (min-width: 520px) {
+//    html {
+//        font-size: 866.66667% !important;
+//    }
+//}
+//
+//@media (min-width: 560px) {
+//    html {
+//        font-size: 933.33333% !important;
+//    }
+//}
+//
+//@media (min-width: 600px) {
+//    html {
+//        font-size: 1000% !important;
+//    }
+//}
+//
+//@media (min-width: 640px) {
+//    html {
+//        font-size: 1066.66667% !important;
+//    }
+//}
+//
+//@media (min-width: 680px) {
+//    html {
+//        font-size: 1133.33333% !important;
+//    }
+//}
+//
+//@media (min-width: 720px) {
+//    html {
+//        font-size: 1200% !important;
+//    }
+//}
+//
+//@media (min-width: 750px) {
+//    html {
+//        font-size: 1250% !important;
+//    }
+//}
+
+// 上述媒体查询用这一句css全搞定啦~
+// 100vw / 375px = 0.2666667 vw/px
+// 为便于换算，设定1rem = 100px, 即 1rem = 26.66667vw
+html {
+    font-size: 26.66667vw !important;
+}
+
+/*768以上作为PC端处理*/
+@media (min-width: 768px) {
+    html {
+        font-size: 625% !important;
+    }
+}
+
+/*默认字体14px*/
+body {
+    font-size: 14px;
+}

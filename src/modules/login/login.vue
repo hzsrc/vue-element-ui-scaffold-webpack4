@@ -9,8 +9,9 @@
             };
         },
         render(h) {
+            // jsx sample
             return (
-                <div class="bg">
+                <div class="pd-10 bg">
                     <h3>
                         Hi {this.name}, Login goes here
                     </h3>
@@ -41,6 +42,9 @@
 
     .bg {
         background: $--color-primary-light-6;
-        padding: 20px;
+
+        h3{
+            font-size: 20px
+        }
     }
 </style>

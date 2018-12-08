@@ -1,5 +1,5 @@
 <template>
-    <div class="pd-20">
+    <div class="pd-10">
         <div>
             <span class="v-top" style="line-height: 30px">Change theme color to: </span>
             <change-color></change-color>
@@ -71,10 +71,6 @@
 
     .custom-color2 {
         background: $my-custom-color2;
-    }
-
-    .pd-20 {
-        padding: 20px;
     }
 
     nav {
