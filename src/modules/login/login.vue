@@ -38,7 +38,7 @@
     }
 </script>
 <style scoped lang="scss">
-    @import "../../assets/css/defines.scss";
+    @import "../../css/defines.scss";
 
     .bg {
         background: $--color-primary-light-6;

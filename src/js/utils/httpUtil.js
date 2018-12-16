@@ -1,5 +1,5 @@
 import axios from '../axios';
-import appConfig from '../../../../config/app-config'
+import appConfig from '../../../config/app-config'
 
 function parseUrl(url, config) {
     return !config || !config.isToNode ? url : (appConfig.API_NODE_SERVER + url)

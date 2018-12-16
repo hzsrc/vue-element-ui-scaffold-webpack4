@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import rest from './rest.vue';
 
-require('../../assets/css/utils.scss');
+require('../../css/utils.scss');
 
 
 new Vue({

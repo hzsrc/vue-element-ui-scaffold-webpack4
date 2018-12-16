@@ -50,7 +50,7 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../../assets/css/defines.scss";
+    @import "../../css/defines.scss";
 
     .series-primary {
         background: $--color-primary;

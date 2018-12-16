@@ -1,13 +1,13 @@
 const WebpackIconfontPluginNodejs = require('webpack-iconfont-plugin-nodejs');
 const path = require('path');
-
+var dir = 'src/iconfont'
 module.exports = new WebpackIconfontPluginNodejs({
-  fontName: 'flaginfo-app-icon',
-  svgs: path.resolve(__dirname, '../src/assets/fonts/svg/*.svg'),
-  template: path.resolve(__dirname, '../src/assets/fonts/template.scss.njk'),
-  fontsOutput: path.resolve(__dirname, '../src/assets/fonts'),
-  cssOutput: path.resolve(__dirname, '../src/styles/font.css'),
-  htmlOutput: path.resolve(__dirname, '../src/assets/fonts/font-preview.html'),
-  formats: ['ttf', 'woff', 'svg'],
-  cssPrefix: 'van-icon'
+    fontName: 'my-app-icon',
+    svgs: path.join(dir, 'svgs/*.svg'),
+    template: path.join(dir, 'fonts/css.njk'),
+    fontsOutput: path.join(dir, 'fonts/'),
+    cssOutput: path.join(dir, 'fonts/font.css'),
+    htmlOutput: path.join(dir, 'fonts/_font-preview.html'),
+    formats: ['ttf', 'woff', 'svg'],
+    cssPrefix: 'my-icon'
 })

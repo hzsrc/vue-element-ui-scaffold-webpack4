@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import $x from '../assets/js/$x'
+import $x from '../js/$x'
 import router from '../router/routerMain.js'
 import main from '../modules/main.vue'
 
-require('../assets/css/index.scss');
+require('../css/index.scss');
 
 // window.Vue = Vue
 

@@ -2,7 +2,7 @@
 var fs = require('fs');
 
 function makeThemeVers(color, isBuild) {
-    var preFile = './src/assets/css/element-theme/theme-changed.scss';
+    var preFile = './src/css/element-theme/theme-changed.scss';
     var varFile = './node_modules/element-theme-chalk/src/common/var.scss';
     var srcFile = './node_modules/element-theme-chalk/src/common/var-backup.scss';
 

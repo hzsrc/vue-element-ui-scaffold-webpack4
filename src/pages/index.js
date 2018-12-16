@@ -2,7 +2,7 @@
 
 import Vue from 'vue';
 import login from '../modules/login/login.vue'
-require('../assets/css/index.scss');
+require('../css/index.scss');
 
 new Vue({
     el: '#app',
