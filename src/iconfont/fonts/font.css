@@ -1,6 +1,7 @@
 @font-face {
     font-family: my-app-icon;
-    src: url("my-app-icon.woff?57488b65") format("woff"),
+    src: url("my-app-icon.woff2?57488b65") format("woff2"),
+             url("my-app-icon.woff?57488b65") format("woff"),
              url("my-app-icon.ttf?57488b65") format("truetype"),
              url("my-app-icon.svg?57488b65#my-app-icon") format("svg");
     font-weight: normal;
