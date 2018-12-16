@@ -1,4 +1,5 @@
 <script>
+    import footCode from '../../component/footCode'
     export default {
         data() {
             return {
@@ -25,15 +26,11 @@
                         FIDEBUG*/
                     }
 
-                    <footer style="position: fixed;bottom:30px;">
-                        Github source code：
-                        <a href="https://github.com/hzsrc/vue-element-ui-scaffold-webpack4">
-                            vue-element-ui-scaffold-webpack4
-                        </a>
-                    </footer>
+                    <foot-code></foot-code>
                 </div>
             )
         },
+        components: {footCode}
     }
 </script>
 <style scoped lang="scss">

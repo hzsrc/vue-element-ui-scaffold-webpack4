@@ -53,16 +53,20 @@
             </section>
 
         </div>
+
+        <foot-code></foot-code>
     </div>
 </template>
 <script>
     import fontList from '../../iconfont/fonts/fonts.js';
+    import footCode from '../../component/footCode'
 
     export default {
         data() {
             return {
                 fontList
             }
-        }
+        },
+        components: {footCode}
     }
 </script>

@@ -28,6 +28,9 @@
 
         <br/>
         <a href="./"><< Back</a>
+
+        <foot-code></foot-code>
+
     </div>
 </template>
 
@@ -35,6 +38,7 @@
     import { Button, Tag, Input } from 'element-ui';
     import Vue from 'vue'
     import changeColor from './changeColor.vue'
+    import footCode from '../../component/footCode'
 
     Vue.use(Button).use(Tag).use(Input)
 
@@ -45,7 +49,7 @@
         },
         methods: {},
         computed: {},
-        components: {changeColor}
+        components: {changeColor, footCode}
     }
 </script>
 
