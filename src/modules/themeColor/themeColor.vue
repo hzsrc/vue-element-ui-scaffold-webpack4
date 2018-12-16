@@ -3,7 +3,6 @@
         <div>
             <span class="v-top" style="line-height: 30px">Change theme color to: </span>
             <change-color></change-color>
-			<div>In development, you need to build first (npm run build) to make the css file in dist target.</div>
         </div>
         <hr/>
         <h2>element-ui css:</h2>
@@ -51,7 +50,7 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../../assets/css/defines.scss";
+    @import "../../css/defines.scss";
 
     .series-primary {
         background: $--color-primary;

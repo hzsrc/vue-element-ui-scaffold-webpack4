@@ -9,7 +9,7 @@ maskOptions:  表示请求时显示遮罩层的选项。默认{body: true}
 */
 
 import axios from 'axios'
-import appConfig from '../../../config/app-config'
+import appConfig from '../../config/app-config'
 import CONST from './CONST'
 import tokenUtil from './utils/tokenUtil'
 import msgDlg from './utils/msgDialog'

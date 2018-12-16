@@ -1,4 +1,8 @@
-@import "./defines.scss";
+@import "defines";
+
+.primay-color {
+    color: $--color-primary;
+}
 
 body {
     //在这里写覆盖饿了么的全局样式

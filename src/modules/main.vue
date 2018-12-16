@@ -1,6 +1,6 @@
 <template>
     <div class="pd-10 main-page">
-        <h3>Home Page</h3>
+        <h3><i class="primay-color my-icon-success"></i> Home Page</h3>
         <header>Ajax Result: {{data}}</header>
         <hr>
         <button @click="getAndGo" class="mask-target">stage1</button>

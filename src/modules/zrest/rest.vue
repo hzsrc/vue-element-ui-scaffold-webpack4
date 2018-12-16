@@ -96,11 +96,11 @@
 </template>
 
 <script>
-    import httpUtil from '../../assets/js/utils/httpUtil';
+    import httpUtil from '../../js/utils/httpUtil';
     import Vue from 'vue'
     import { Row, Col, Input, Button, Form, FormItem, Select, Option } from 'element-ui'
-    import storageUtil from '../../assets/js/utils/storageUtil';
-    import msgDlg from '../../assets/js/utils/msgDialog'
+    import storageUtil from '../../js/utils/storageUtil';
+    import msgDlg from '../../js/utils/msgDialog'
 
     Vue.use(Row).use(Col).use(Input).use(Button).use(Form).use(FormItem).use(Select).use(Option)
 

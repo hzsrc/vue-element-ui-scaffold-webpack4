@@ -84,7 +84,7 @@ var webpackConfig = merge(baseWebpackConfig, {
                 // common: {
                 //     name: 'common',
                 //     priority: 11,
-                //     test: /assets/,
+                //     test: /js/,
                 // },
             }
         }
