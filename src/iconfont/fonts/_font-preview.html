@@ -7,39 +7,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="font.css">
     <style>
-        .flex-tb{
-            display:flex;
-            flex-flow: wrap;
+        .info {
+            padding: 0 20px;
         }
-        .flex-tb > section{
+
+        .flex-tb {
+            display: flex;
+            flex-flow: wrap;
+            margin-bottom: 150px;
+        }
+
+        .flex-tb > section {
             display: flex;
             flex-flow: column;
             flex: 0 0 240px;
             align-items: center;
             margin-bottom: 50px;
         }
+
         .flex-tb > section > header {
             height: 30px;
             outline: none;
         }
+
         .flex-tb i {
-            font-size:40px;
-            font-style: normal;
+            font-size: 40px;
             line-height: 1;
             display: block;
         }
+
         .flex-tb div:hover {
             position: absolute;
             background: #fff;
             border: 1px solid #ddd;
         }
+
         .flex-tb div:hover > i {
             font-size: 200px;
         }
     </style>
 <body>
-    <div class="bgc1 clearfix">
-        <h2>my-app-icon (5)</h2>
+    <div class="info">
+        <h3>my-app-icon (5)</h3>
         <div>Class name prefix: my-icon-</div>
     </div>
     <hr/>

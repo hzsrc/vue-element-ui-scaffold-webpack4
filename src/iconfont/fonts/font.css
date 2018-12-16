@@ -11,6 +11,7 @@
     font-family: 'vant-icon', 'my-app-icon', 'icoflaginfo' !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
 }
 
 

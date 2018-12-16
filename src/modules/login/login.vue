@@ -12,14 +12,13 @@
             // jsx sample
             return (
                 <div class="pd-10 bg">
-                    <h3>
+                    <h3><i className="my-icon-warning"></i>
                         Hi {this.name}, Login goes here
                     </h3>
-                    <a href="main.html">main</a>
-                    <br/>
-                    <a href="pageB.html">pageB</a>
-                    <br/>
-                    <a href="themeColor.html">theme colors</a>
+                    <div><a href="main.html">main</a></div>
+                    <div><a href="pageB.html">pageB</a></div>
+                    <div><a href="themeColor.html">theme colors</a></div>
+                    <div><a href="iconfontPreview.html">iconfont</a></div>
                     {
                         /*IFDEBUG
                             <div><hr/>This message is only shown while process.env.NODE_ENV == 'development'. {this.devMsg}</div>
