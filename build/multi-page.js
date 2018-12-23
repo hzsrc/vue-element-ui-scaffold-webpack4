@@ -19,15 +19,18 @@ function readPages() {
                     var baseName = pageFile.slice(0, pageFile.lastIndexOf('.'));
                     pageList.push({
                         entry: fullPath,
-                        chunkName: baseName
+                        chunkName: baseName,
+                        template: 'html.tpl.html',
                     })
                 }
             }
             else { //文件夹
                 try {
-                    var pageConfig = require(fullPath + '/index.js');
-                    pageConfig.chunkName = path.basename(pageFile)
-                    pageList.push(pageConfig)
+                    pageList.push({
+                        entry: fullPath + '/entry.js',
+                        chunkName: path.basename(pageFile),
+                        template: fullPath + '/template.html',
+                    })
                 }
                 catch (e) {
                     console.error(fullPath + '/index.js not found.\n', e)
@@ -49,10 +52,11 @@ exports.htmlPlugins = function (webackConfig) {
     var exChunks = config.isBuild ? ['manifest', 'vendor'] : [];
     var list = readPages().map(page => {
         // see https://github.com/ampedandwired/html-webpack-plugin
-        var defaultOptions = {
+        var options = {
             filename: page.chunkName + '.html',
+            template: page.template,
+            title: appConfig.title,
             chunks: [...exChunks, page.chunkName],
-            template: 'html.tpl.html',
             inject: true,
             // minify: {
             //     removeComments: true,
@@ -61,11 +65,8 @@ exports.htmlPlugins = function (webackConfig) {
             //     // more options:
             //     // https://github.com/kangax/html-minifier#options-quick-reference
             // },
-            title: '企业信息服务平台',
             appConfig: appConfig,
         }
-        var options = Object.assign(defaultOptions, page.html);
-
         return new HtmlWebpackPlugin(options);
     });
     return list
