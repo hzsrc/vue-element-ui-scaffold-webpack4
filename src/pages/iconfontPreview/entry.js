@@ -1,5 +1,5 @@
-require('../css/index.scss');
-import iconfontPreview from '../modules/iconfontPreview/iconfontPreview';
+require('../../css/index.scss');
+import iconfontPreview from '../../modules/iconfontPreview/iconfontPreview';
 import Vue from 'vue';
 
 

@@ -1,4 +1,5 @@
 var utils = require('./utils')
+var multiPage = require('./multi-page')
 var webpack = require('webpack')
 var config = require('../config')
 var merge = require('webpack-merge')
@@ -27,7 +28,7 @@ module.exports = merge(baseWebpackConfig, {
         // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
         new webpack.HotModuleReplacementPlugin(),
         // https://github.com/ampedandwired/html-webpack-plugin
-        ...utils.htmlPlugins(baseWebpackConfig),
+        ...multiPage.htmlPlugins(baseWebpackConfig),
         new FriendlyErrorsPlugin(),
         webpackIconfontPluginNodejs
     ],

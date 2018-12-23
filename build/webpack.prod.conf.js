@@ -1,5 +1,6 @@
 var path = require('path')
 var utils = require('./utils')
+var multiPage = require('./multi-page')
 var webpack = require('webpack')
 var config = require('../config')
 var merge = require('webpack-merge')
@@ -45,7 +46,7 @@ var webpackConfig = merge(baseWebpackConfig, {
                     }
                 })]
         ),
-        ...utils.htmlPlugins(baseWebpackConfig),
+        ...multiPage.htmlPlugins(baseWebpackConfig),
         // copy custom static assets
         new CopyWebpackPlugin([
             {

@@ -1,5 +1,6 @@
 var path = require('path')
 var utils = require('./utils')
+var multiPage = require('./multi-page')
 var config = require('../config')
 const {VueLoaderPlugin} = require('vue-loader');
 var appConfig = require('../config/app-config')
@@ -10,7 +11,7 @@ function resolve(dir) {
 }
 
 module.exports = {
-    entry: utils.getEntryPages(),
+    entry: multiPage.getEntryPages(),
     output: {
         path: config.build.assetsRoot,
         filename: '[name].js',

@@ -1,9 +1,7 @@
 var path = require('path')
-var fs = require('fs');
 var config = require('../config')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var appConfig = require('../config/app-config')
+
 
 exports.assetsPath = function (_path) {
     var assetsSubDirectory = config.isBuild
@@ -64,47 +62,4 @@ function getPostCssLoader(sourceMap) {
             ]
         }
     }
-}
-
-//遍历pages文件夹生成入口
-const pagesPath = './src/pages';
-exports.getEntryPages = function () {
-    var r = {};
-    var entrieFiles = fs.readdirSync(pagesPath).filter(f => f.match(/\.js$/))
-    entrieFiles.forEach(jsf => {
-        var baseName = jsf.slice(0, jsf.lastIndexOf('.'));
-        r[baseName] = pagesPath + '/' + jsf
-    })
-    return r;
-}
-
-exports.htmlPlugins = function (webackConfig) {
-    var exChunks = config.isBuild ? ['manifest', 'vendor'] : [];
-    var list = Object.keys(webackConfig.entry).map(baseName => {
-        return htmlPlugin({
-            filename: baseName + '.html',
-            chunks: [...exChunks, baseName],
-            title: baseName
-        })
-    })
-    return list
-}
-
-function htmlPlugin(exConfig) {
-    // see https://github.com/ampedandwired/html-webpack-plugin
-
-    return new HtmlWebpackPlugin(Object.assign({
-        template: 'html.tpl.html',
-        inject: true,
-        // minify: {
-        //     removeComments: true,
-        //     collapseWhitespace: true,
-        //     removeAttributeQuotes: false
-        //     // more options:
-        //     // https://github.com/kangax/html-minifier#options-quick-reference
-        // },
-        title: '企业信息服务平台',
-        // chunksSortMode: 'dependency',
-        appConfig: appConfig
-    }, exConfig))
 }
