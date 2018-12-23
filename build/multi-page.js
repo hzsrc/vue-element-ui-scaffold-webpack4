@@ -9,7 +9,7 @@ var pageList = null;
 
 function readPages() {
     if (!pageList) {
-        const pagesPath = path.resolve('./src/pages');
+        const pagesPath = './src/pages';
         pageList = []
         fs.readdirSync(pagesPath).forEach(pageFile => {
             var fullPath = pagesPath + '/' + pageFile
@@ -25,15 +25,18 @@ function readPages() {
                 }
             }
             else { //文件夹
-                try {
-                    pageList.push({
-                        entry: fullPath + '/entry.js',
-                        chunkName: path.basename(pageFile),
-                        template: fullPath + '/template.html',
-                    })
+                var files = fs.readdirSync(fullPath)
+                var entry = files.find(file => file.slice(0, 5) === 'entry'); // entry.*
+                if (!entry) {
+                    console.error(fullPath + '/entry.* not found.')
                 }
-                catch (e) {
-                    console.error(fullPath + '/index.js not found.\n', e)
+                else {
+                    var template = files.find(file => file.slice(0, 8) === 'template') // template.*
+                    pageList.push({
+                        entry: fullPath + '/' + entry,
+                        chunkName: path.basename(pageFile),
+                        template: template ? path.join(fullPath, template) : 'html.tpl.html',
+                    })
                 }
             }
         })
