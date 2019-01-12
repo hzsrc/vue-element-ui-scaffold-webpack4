@@ -3,10 +3,6 @@ var merge = require('webpack-merge')
 var devEnv = require('./dev.env')
 
 module.exports = merge(devEnv, {
-    NODE_ENV: '"testing"',
-
-    API_SERVER: '"//aaa-service.test.xxx.com"',
-    API_NODE_SERVER: '"//bbb-node-service.test.xxx.com"',
-
+    NODE_ENV: '"production"',
     NeedSrcMap: true, //需要源码映射
 })

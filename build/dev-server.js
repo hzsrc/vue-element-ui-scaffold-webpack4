@@ -4,20 +4,13 @@ require('./make-element-theme.js')();
 require('./check-versions')()
 
 var config = require('../config')
-config.dev.env.API_SERVER = config.dev.env.API_SERVER_DEV; //使用本地开发用的服务地址
-config.dev.env.API_NODE_SERVER = config.dev.env.API_NODE_SERVER_DEV; //使用本地开发用的服务地址
-
-if (!process.env.NODE_ENV) {
-    process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
-}
 
 var opn = require('opn')
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
-var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = process.env.NODE_ENV === 'testing'
-    ? require('./webpack.prod.conf')
+    ? require('./webpack.build.conf')
     : require('./webpack.dev.conf')
 
 // default port where dev server listens for incoming traffic
@@ -26,7 +19,8 @@ var port = process.env.PORT || config.dev.port
 var autoOpenBrowser = !!config.dev.autoOpenBrowser
 // Define HTTP proxies to your custom API backend
 // https://github.com/chimurai/http-proxy-middleware
-var proxyTable = config.dev.proxyTable
+// var proxyMiddleware = require('http-proxy-middleware')
+// var proxyTable = config.dev.proxyTable
 
 var app = express()
 var compiler = webpack(webpackConfig);

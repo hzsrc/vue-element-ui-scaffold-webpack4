@@ -1,12 +1,12 @@
 import { Loading } from 'element-ui';
 
 //const MASK_DELAY = 5000;
+const DefaultMaskOptions = {customClass: 'global-mask', target: 'html > body'}
 
 var loading = {
     show(options) {
         if (!this.unique) {
-            var opt = Object.assign({customClass: 'global-mask', target: '.app-body > div'}, options);
-            this.unique = Loading.service(opt);
+            this.unique = Loading.service(options);
         }
     },
     showMask() {
@@ -30,6 +30,7 @@ export default {
     count: 0,
     show(options) {
         if (options !== false) {
+            options = Object.assign({}, DefaultMaskOptions, options)
             try {
                 this.count++;
                 loading.show(options);

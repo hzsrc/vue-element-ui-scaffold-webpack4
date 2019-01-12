@@ -1,9 +1,17 @@
 <template>
     <div class="pd-10 main-page">
         <h3><i class="primay-color my-icon-success"></i> Home Page</h3>
+
+        <div style="padding: 20px 0;">
+            <el-button @click="callMockApi" size="small" type="primary">call mocked api</el-button>
+            <el-button :loading="loading" @click="callLoading" size="small">call base api</el-button>
+            <el-button @click="callUnmockedApi" size="small">call base api(not mocked)</el-button>
+            <el-button @click="callNodeApi" size="small">call multiple api servers</el-button>
+        </div>
+
         <header>Ajax Result: {{data}}</header>
         <hr>
-        <button @click="getAndGo" class="mask-target">stage1</button>
+        <button @click="getAndGo">stage1</button>
         <button @click="getAndGo2">stage2</button>
         <button @click="getAndGo3">stage3</button>
 
@@ -18,28 +26,48 @@
 
 <script>
     export default {
-        created() {
-            var pars = {a: 1, b: 2}
-            this.$x.post('/api/test_api', pars)
-                .then(res => {
-                    this.data = res.data;
-                })
-        },
         data() {
             return {
-                data: null
+                data: null,
+                loading: false,
             }
         },
         methods: {
+            callMockApi() {
+                var pars = {id: +new Date(), a: 1, b: 2}
+                this.$x.post('/api/test_api', pars)
+                    .then(res => {
+                        this.data = res.data;
+                    })
+            },
+            callLoading() {
+                this.loading = true
+                this.$x.post('/api/test_promise', null, {maskOptions: false})
+                    .then(res => {
+                        this.data = res.data;
+                    })
+                    .finally(t => {
+                        this.loading = false
+                    })
+            },
+            callUnmockedApi() {
+                this.$x.post('/api/get_data', {}, {showError: false, maskOptions: {target: '.main-page'}})
+                    .then(res => {
+                    })
+                    .catch(e => {
+                        this.$x.toast.error('接口 http://aaa.bbb.com/api/get_data 访问失败，且未设置mock数据')
+                    })
+            },
+            callNodeApi() {
+                this.$x.post('{node_api}/api/get_xxx', {}, {showError: 'alert'})
+                    .then(res => {
+                    })
+            },
             getAndGo() {
                 this.$router.push('/stage1')
             },
             getAndGo2() {
-                this.$x.post('/api/test_delay')
-                    .then(res => {
-                        this.data = res.data;
-                        this.$router.push('/stage2')
-                    })
+                this.$router.push('/stage2')
             },
             getAndGo3() {
                 this.$router.push('/stage2/stage3')

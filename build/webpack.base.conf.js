@@ -2,6 +2,7 @@ var path = require('path')
 var utils = require('./utils')
 var multiPage = require('./multi-page')
 var config = require('../config')
+var webpack = require('webpack')
 const {VueLoaderPlugin} = require('vue-loader');
 var appConfig = require('../config/app-config')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
@@ -76,6 +77,12 @@ module.exports = {
     },
     plugins: [
         new VueLoaderPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+                ENV_CONFIG: JSON.stringify(process.env.ENV_CONFIG),
+            }
+        }),
         //生成仅包含颜色的替换样式（主题色等）
         new ThemeColorReplacer({
             fileName: appConfig.themeFile,

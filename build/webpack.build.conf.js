@@ -17,23 +17,26 @@ var webpackConfig = merge(baseWebpackConfig, {
             extract: true
         })
     },
-    devtool: config.build.productionSourceMap ? '#eval-source-map' : false,
+    devtool: false, // config.build.productionSourceMap ? '#source-map' : false,
     output: {
         path: config.build.assetsRoot,
-        filename: utils.assetsPath('js/[name].[chunkhash].js'),
-        chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+        filename: utils.assetsPath('js/[name].[hash:8].js'),
+        chunkFilename: utils.assetsPath('js/[name].[hash:8].js')
     },
     plugins: [
-        // http://vuejs.github.io/vue-loader/en/workflow/production.html
-        new webpack.DefinePlugin({
-            'process.env': config.build.env
+        // https://webpack.js.org/plugins/source-map-dev-tool-plugin/
+        new webpack.SourceMapDevToolPlugin({
+            filename: '../src_maps/[name].map',
+            module: true,
+            // append: false,
         }),
+
         // extract css into its own file
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: 'css/[name].css',
-            chunkFilename: 'css/[id].css'
+            filename: 'css/[name].[hash:8].css',
+            //chunkFilename: 'css/[id].css'
         }),
         // Compress extracted CSS. We are using this plugin so that possible
         // duplicated CSS from different components can be deduped.

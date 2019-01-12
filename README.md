@@ -39,7 +39,7 @@ npm install
 2、单独运行：npm run mock
 
 配置文件：  
-1、config/prod.env.js中的接口服务地址为：API_SERVER_DEV: '"//localhost:8085"'  
+1、config/_serverMap.js中的接口服务地址为：base: '"//localhost:8085"'
 2、mock/mock-config.js文件配置mock各种参数。
 
 ## element-ui按需加载，主题色全局切换

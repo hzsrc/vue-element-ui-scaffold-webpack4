@@ -13,7 +13,9 @@ import appConfig from '../../config/app-config'
 import CONST from './CONST'
 import tokenUtil from './utils/tokenUtil'
 import msgDlg from './utils/msgDialog'
-import loading from './loading'
+import loading from './utils/loading'
+
+var serverMap = require('../../config/_serverMap.js')
 
 //for el-upload
 axios.getYxtHeaders = function () {
@@ -24,7 +26,7 @@ axios.getYxtHeaders = function () {
 
 // 超时时间
 // axios.defaults.timeout = 8000
-axios.defaults.baseURL = appConfig.API_SERVER
+axios.defaults.baseURL = serverMap.base
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 axios.defaults.withCredentials = true
 axios.defaults.timeout = 20000 //20秒，超时报错
@@ -33,16 +35,15 @@ axios.defaults.transformRequest = function (request) {
     return JSON.stringify(request)
 }
 
-const isDev = process.env.NODE_ENV === 'development';
 const CoveredErrMsg = '服务器开小差啦，请稍后重试！'
 // http请求拦截器
 axios.interceptors.request.use(function (config) {
     if (!config.noToken) {
         config.headers[CONST.TOKEN_HEADER] = tokenUtil.token
     }
-    // if (config.isToNode) {
-    //     config.headers[CONST.CHANNEL_HEADER] = tokenUtil.channel
-    // }
+    //将 {node_api}/xxx/yyy 的url替换为对应服务的前缀
+    config.url = config.url.replace(/^\{(\w+)\}/, (m, $1) => serverMap[$1] || '');
+
     //遮罩层
     loading.show(config.maskOptions)
 
@@ -58,12 +59,12 @@ axios.interceptors.response.use(function (res) {
         return doLogin()
     }
     else if (retCode != 0) { //错误
-        //100以下是系统错误，10000以上是其他中心系统错误。其他的是业务错误
-        if ((!isDev && (retCode <= 100 || retCode >= 10000)) || !data.msg) {
-            console.error(data)
+        //100以下是系统错误，10000以上是其他中心系统错误（不能显示给用户）。其他的是业务错误（需提示用户）
+        if ((retCode <= 100 || retCode >= 10000) || !data.msg) {
             data.msg = CoveredErrMsg
         }
         showErr(res.config, data.msg);
+        console.error(data)
         return Promise.reject(data)
     }
     return data
@@ -94,16 +95,15 @@ function fail(error) {
     if (error.config) loading.close(error.config.maskOptions);
     if (!error.errmsg) error.errmsg = CoveredErrMsg;
     showErr(error.config, CoveredErrMsg);
+    console.error(error)
     return Promise.reject(error)
 }
 
 function showErr(config, errmsg) {
-    if (config && config.showError === undefined)
-        msgDlg.toast.error(errmsg);
-    else if (config && config.showError === 'alert')
+    if (config && config.showError === 'alert')
         msgDlg.alert(errmsg, {type: 'error'});
-    else if (isDev)
-        msgDlg.toast.error(errmsg + ' [debug only]')
+    else if (config && config.showError !== false)
+        msgDlg.toast.error(errmsg);
 }
 
 export default axios
