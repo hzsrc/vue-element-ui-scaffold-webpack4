@@ -23,7 +23,7 @@ npm install
 
 
 ## 自动用svg生成字体图标，支持iconfont热更新
-开发时在src/iconfont/svgs目录下，修改或添加、删除svg文件，可自动生成字体图标（支持ttf,woff2,woff,eot,svg）及配套从css样式、html预览；同时热更新立即可以看到效果。    
+开发时在src/iconfont/svgs目录下，修改或添加、删除svg文件，可自动生成字体图标（支持ttf,woff2,woff,eot,svg）及配套的css样式、html预览；同时热更新立即可以看到效果。    
 也可npm run build-font手动生成。
 基于[webpack-iconfont-plugin-nodejs](https://github.com/hzsrc/webpack-iconfont-plugin-nodejs)实现。
 
@@ -40,11 +40,11 @@ npm install
 1、config/prod.env.js中的接口服务地址为：API_SERVER_DEV: '"//localhost:8085"'  
 2、mock/mock-config.js文件配置mock各种参数。
 
-## element-ui主题自动按需加载编译
+## element-ui按需加载，主题色全局切换
 css按需加载的来源直接指向element-ui的scss文件，而不是预编译的css文件。通过build/make-element-theme.js在编译时将src/assets/css/element-theme/theme-changed.scss文件 附加到element-ui主题变量文件element-theme-chalk/src/common/var.scss之前，实现了在修改scss变量后即可立马查看效果，无需预先编译element-ui的scss文件为css文件。同时可以在项目任意地方引用element-ui的scss变量。
 
-## 动态调整主题色
-利用[webpack-theme-color-replacer](https://github.com/hzsrc/webpack-theme-color-replacer)插件，在webpack构建时提取css中含有主题色的样式规则，生成一个css/theme-colors.css文件。然后在网页运行时，下载这个css文件，动态替换其中的颜色为自定义主题色。由于只提取了颜色相关的css，故速度比下载element-ui整个css要快很多。而且不仅仅是element-ui的样式，项目中的样式主题色也可以一并替换掉。
+## 运行时动态调整主题色（含自写的主题样式）
+利用[webpack-theme-color-replacer](https://github.com/hzsrc/webpack-theme-color-replacer)插件，在webpack构建时提取css中含有主题色的样式规则，生成一个css/theme-colors.css文件。然后在网页运行时，下载这个css文件，动态替换其中的颜色为自定义主题色。由于只提取了颜色相关的css，故速度比下载element-ui整个css要快很多。而且不仅仅是element-ui的样式，项目中的自写样式的主题色也可以一并替换掉。
 
 ## 响应式布局
 框架采用vw+rem方案，几行css实现响应式布局，简洁而高效。无需@media媒体查询，无需js动态调整样式。    
