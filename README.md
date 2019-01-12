@@ -23,9 +23,10 @@ npm install
 * 在src/pages目录下添加任意js文件。js文件作为webpack入口；html页面模板是html.tpl.html，页面的文件名为js的文件名。
 * 在src/pages目录下建立任意文件夹，包含entry.js、template.html两个文件。entry.js作为webpack入口；html页面模板是template.html，页面的文件名为建立的文件夹名。
 
-## 自动用svg生成字体图标，支持iconfont热更新
-开发时在src/iconfont/svgs目录下，修改或添加、删除svg文件，可自动生成字体图标（支持ttf,woff2,woff,eot,svg）及配套的css样式、html预览；同时热更新立即可以看到效果。    
-也可npm run build-font手动生成。
+## 自动用svg生成iconfont字体图标，支持webpack热重载
+开发时在src/iconfont/svgs目录下，修改或添加、删除svg文件，可自动生成字体图标（支持ttf,woff2,woff,eot,svg）及配套的css样式、html预览；同时热重载立即可以看到效果。     
+也可npm run build-font手动生成这些文件。      
+无需再手动去icomoon.io或iconfont.cn生成和修改字体图标、css、图标预览了。
 基于[webpack-iconfont-plugin-nodejs](https://github.com/hzsrc/webpack-iconfont-plugin-nodejs)实现。
 
 
