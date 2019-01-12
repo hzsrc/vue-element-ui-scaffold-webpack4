@@ -19,9 +19,10 @@ module.exports = merge(baseWebpackConfig, {
     module: {
         rules: utils.styleLoaders({sourceMap: config.dev.cssSourceMap, extract: false})
     },
-    // cheap-module-eval-source-map is faster for development
-    devtool: '#eval-source-map',
+    devtool: false, // see SourceMapDevToolPlugin
     plugins: [
+        // https://webpack.js.org/plugins/source-map-dev-tool-plugin/
+        new webpack.SourceMapDevToolPlugin(),
         // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
         new webpack.HotModuleReplacementPlugin(),
         // https://github.com/ampedandwired/html-webpack-plugin

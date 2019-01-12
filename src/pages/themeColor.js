@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import $x from '../js/$x'
 import themeColor from '../modules/themeColor/themeColor.vue'
-import changeThemeColor from '../js/changeThemeColor'
+import { initThemeColor } from '../js/changeThemeColor'
 
 require('../css/index.scss');
 
@@ -16,9 +16,3 @@ new Vue({
     render: h => h(themeColor),
 });
 
-function initThemeColor() {
-    var lastThemeColor = localStorage.getItem('theme_color')
-    if (lastThemeColor) {
-        changeThemeColor(lastThemeColor)
-    }
-}

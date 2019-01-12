@@ -6,7 +6,7 @@ new Vue({
     '    <div>\n' +
     '        <h6>Multipage sample</h6>\n' +
     '        <h3>This is pageB here</h3>\n' +
-    '        <a href="/">Back</a>\n' +
+    '        <a href="./">Back</a>\n' +
     '    </div>',
     components: {}
 })

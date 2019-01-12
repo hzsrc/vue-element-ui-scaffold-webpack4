@@ -2,7 +2,6 @@
 //如果不是以dist做服务目录，无需此过程
 
 var rm = require('rimraf')
-var path = require('path')
 var fs = require('fs');
 
 module.exports = function changeDirBuild(webpackConfig, doWebpack) {

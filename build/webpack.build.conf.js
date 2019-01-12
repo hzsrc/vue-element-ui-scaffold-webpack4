@@ -6,8 +6,16 @@ var config = require('../config')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
-var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+var OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+var isProd = /prod|demo/.test(process.env.ENV_CONFIG)
+
+function getSourceMapPath() {
+    // 根据安全级别，改成只有开发者知道的文件夹名或动态加密算法生成。
+    // 这样既可在需要时进行手动添加源码映射方便调试，又可避免了源码泄露。
+    return '_map'
+}
 
 var webpackConfig = merge(baseWebpackConfig, {
     mode: 'production',
@@ -17,38 +25,31 @@ var webpackConfig = merge(baseWebpackConfig, {
             extract: true
         })
     },
-    devtool: false, // config.build.productionSourceMap ? '#source-map' : false,
+    devtool: false, // see SourceMapDevToolPlugin,
     output: {
         path: config.build.assetsRoot,
-        filename: utils.assetsPath('js/[name].[hash:8].js'),
-        chunkFilename: utils.assetsPath('js/[name].[hash:8].js')
+        filename: utils.assetsPath('js/[name].[contenthash:8].js'),
+        chunkFilename: utils.assetsPath('js/[name].[contenthash:8].js')
     },
     plugins: [
-        // https://webpack.js.org/plugins/source-map-dev-tool-plugin/
-        new webpack.SourceMapDevToolPlugin({
-            filename: '../src_maps/[name].map',
-            module: true,
-            // append: false,
-        }),
-
         // extract css into its own file
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: 'css/[name].[hash:8].css',
+            filename: 'css/[name].[contenthash:8].css',
             //chunkFilename: 'css/[id].css'
         }),
         // Compress extracted CSS. We are using this plugin so that possible
         // duplicated CSS from different components can be deduped.
-        ...(config.build.productionSourceMap
-                ? []
-                : [new OptimizeCSSPlugin({
-                    cssProcessorOptions: {
-                        //safe: true,
-                        map: false,
-                    }
-                })]
-        ),
+        new OptimizeCssPlugin({
+            cssProcessorOptions: {
+                append: !isProd,
+                map: config.build.productionSourceMap,
+                getFileName(assetInfo) {
+                    return `${getSourceMapPath()}/${path.basename(assetInfo.path)}.map${assetInfo.query}`
+                }
+            }
+        }),
         ...multiPage.htmlPlugins(baseWebpackConfig),
         // copy custom static assets
         new CopyWebpackPlugin([
@@ -94,6 +95,28 @@ var webpackConfig = merge(baseWebpackConfig, {
         }
     },
 })
+
+if (config.build.productionSourceMap) {
+    // https://webpack.js.org/plugins/source-map-dev-tool-plugin/
+    /*filename can like these(in webpack/lib/TemplatedPathPlugin.js):
+        /\[hash(?::(\d+))?\]/gi,
+        /\[chunkhash(?::(\d+))?\]/gi,
+        /\[modulehash(?::(\d+))?\]/gi,
+        /\[contenthash(?::(\d+))?\]/gi,
+        /\[name\]/gi,               =main
+        /\[id\]/gi,
+        /\[moduleid\]/gi,
+        /\[file\]/gi,
+        /\[query\]/gi,              =js/main.59856ea7.js
+        /\[filebase\]/gi;           =main.59856ea7.js
+    */
+    webpackConfig.plugins.push(
+        new webpack.SourceMapDevToolPlugin({
+            filename: `${getSourceMapPath()}/[filebase].map`,
+            append: isProd ? false : undefined, // undefined会自动加载源码映射，生产环境慎用。false时不会
+        })
+    )
+}
 
 if (config.build.productionGzip) {
     var CompressionWebpackPlugin = require('compression-webpack-plugin')

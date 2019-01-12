@@ -3,6 +3,7 @@
         <div>
             <span class="v-top" style="line-height: 30px">Change theme color to: </span>
             <change-color></change-color>
+            <el-button @click="reset" size="small" style="float: right;">Reset</el-button>
         </div>
         <hr/>
         <h2>element-ui css:</h2>
@@ -47,7 +48,12 @@
         data() {
             return {};
         },
-        methods: {},
+        methods: {
+            reset() {
+                localStorage.removeItem('theme_color')
+                location.reload()
+            }
+        },
         computed: {},
         components: {changeColor, footCode}
     }

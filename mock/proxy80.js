@@ -3,7 +3,7 @@
 const config = {
   mockEnabled: false,
   proxyTarget: function(urlPart) {
-    return 'http://localhost:9998'
+    return 'http://localhost:8092'
   },
   isHttps: false, // 是否https
   port: 80 // 端口

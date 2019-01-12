@@ -15,7 +15,7 @@
         <button @click="getAndGo2">stage2</button>
         <button @click="getAndGo3">stage3</button>
 
-        <a href="/" class="right">
+        <a href="./" class="right">
             <button>Logout</button>
         </a>
 
@@ -33,7 +33,7 @@
             }
         },
         methods: {
-            callMockApi() {
+            callMockApi() {debugger
                 var pars = {id: +new Date(), a: 1, b: 2}
                 this.$x.post('/api/test_api', pars)
                     .then(res => {
