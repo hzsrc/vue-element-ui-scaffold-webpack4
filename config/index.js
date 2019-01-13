@@ -1,14 +1,8 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
 
-// function getBuildEnv() {
-// //     var configFile = process.env.ENV_CONFIG + '.env.js';
-// //     return require(path.resolve(__dirname, configFile));
-// // }
-
 var ret = {
     build: {
-        // env: getBuildEnv(),
         assetsRoot: path.resolve(__dirname, '../dist'),
         assetsSubDirectory: '',
         assetsPublicPath: '',
@@ -28,7 +22,6 @@ var ret = {
         distIsForServer: false,
     },
     dev: {
-        // env: require('./dev.env'),
         port: 8092,
         autoOpenBrowser: true,
         assetsSubDirectory: '',

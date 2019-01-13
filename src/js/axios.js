@@ -15,7 +15,7 @@ import tokenUtil from './utils/tokenUtil'
 import msgDlg from './utils/msgDialog'
 import loading from './utils/loading'
 
-var serverMap = require('../../config/_serverMap.js')
+var serverMap = require('../../config/serverMap.js')
 
 //for el-upload
 axios.getYxtHeaders = function () {

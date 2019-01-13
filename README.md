@@ -39,7 +39,7 @@ npm install
 2、单独运行：npm run mock
 
 配置文件：  
-1、config/_serverMap.js中的接口服务地址为：base: '"//localhost:8085"'
+1、config/serverMap.js中的接口服务地址为：base: '"//localhost:8085"'
 2、mock/mock-config.js文件配置mock各种参数。
 
 ## element-ui按需加载，主题色全局切换
@@ -63,21 +63,21 @@ css按需加载的来源直接指向element-ui的scss文件，而不是预编译
 ```
 npm run dev
 ```
-本地开发调试。使用config/_serverMap.js中的dev配置的后端接口服务地址。
+本地开发调试。使用config/serverMap.js中的dev配置的后端接口服务地址。
 
 
 ## 发布测试环境
 ```
 npm run build-test
 ```
-用于测试环境部署。js带源码映射，css无源码映射。使用config/_serverMap.js中的test配置的接口服务地址。
+用于测试环境部署。js带源码映射，css无源码映射。使用config/serverMap.js中的test配置的接口服务地址。
 
 
 ## 发布生产环境
 ```
 npm run build
 ```
-用于生产环境部署。使用config/_serverMap.js中的prod配置的接口服务地址。
+用于生产环境部署。使用config/serverMap.js中的prod配置的接口服务地址。
 
 
 
@@ -85,14 +85,14 @@ npm run build
 ```
 npm run build-demo
 ```
-配置同生产环境，仅接口服务地址不同，使用config/_serverMap.js中的demo配置的接口服务地址。
+配置同生产环境，仅接口服务地址不同，使用config/serverMap.js中的demo配置的接口服务地址。
 
 
 ## 发布开发环境
 ```
 npm run build-dev
 ```
-用于发布部署到开发环境服务器，适用于需要发布到服务器才能调试的情形。使用config/_serverMap.js中的dev配置的接口服务地址。
+用于发布部署到开发环境服务器，适用于需要发布到服务器才能调试的情形。使用config/serverMap.js中的dev配置的接口服务地址。
 
 
 ## 启动mock服务
