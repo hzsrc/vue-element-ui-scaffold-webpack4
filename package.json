@@ -7,7 +7,7 @@
     "scripts": {
         "dev": "cross-env NODE_ENV=development ENV_CONFIG=dev node build/dev-server.js --mock",
         "start": "npm run dev",
-        "build-dev": "cross-env NODE_ENV=production ENV_CONFIG=dev_build node build/build.js",
+        "build-dev": "cross-env NODE_ENV=development ENV_CONFIG=dev_build node build/build.js",
         "build-test": "cross-env NODE_ENV=production ENV_CONFIG=test node build/build.js",
         "build-demo": "cross-env NODE_ENV=production ENV_CONFIG=demo node build/build.js",
         "build": "cross-env NODE_ENV=production ENV_CONFIG=prod node build/build.js",
