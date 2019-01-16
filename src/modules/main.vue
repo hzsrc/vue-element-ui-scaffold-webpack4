@@ -33,7 +33,7 @@
             }
         },
         methods: {
-            callMockApi() {debugger
+            callMockApi() {
                 var pars = {id: +new Date(), a: 1, b: 2}
                 this.$x.post('/api/test_api', pars)
                     .then(res => {

@@ -5,7 +5,6 @@ import tokenUtil from './utils/tokenUtil.js'
 import domUtil from './utils/domUtil.js'
 import msgDialog from './utils/msgDialog.js'
 import httpUtil from './utils/httpUtil.js'
-import platform from './utils/platform';
 import frequence from './utils/frequence';
 
 const util = {
@@ -27,7 +26,6 @@ var mixed = {
     storageUtil,
     CONST,
     tokenUtil,
-    ...domUtil,
 }
 
 var $x = domUtil
