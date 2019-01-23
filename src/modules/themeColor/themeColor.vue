@@ -55,7 +55,7 @@
             }
         },
         computed: {},
-        components: {changeColor, footCode}
+        components: { changeColor, footCode }
     }
 </script>
 

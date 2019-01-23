@@ -7,10 +7,12 @@ function QueryEls(selector, context) {
     else if (typeof selector === 'string') //选择器
         this.els = (context || document).querySelectorAll(selector);
     else if (selector.addEventListener)
-        this.els = [selector];  //单个dom元素
+        this.els = [selector]; //单个dom元素
     else
-        this.els = selector;    //dom元素集合
-    callEach(this.els, (el, i) => this[i] = el); //支持this[index]取dom节点
+        this.els = selector; //dom元素集合
+    callEach(this.els, (el, i) => {
+        this[i] = el
+    }); //支持this[index]取dom节点
 }
 
 QueryEls.prototype = {

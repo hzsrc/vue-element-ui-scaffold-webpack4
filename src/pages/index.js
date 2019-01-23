@@ -7,5 +7,5 @@ require('../css/index.scss');
 new Vue({
     el: '#app',
     template: '<login></login>',
-    components: {login}
+    components: { login }
 })

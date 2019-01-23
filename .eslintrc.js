@@ -50,6 +50,7 @@ module.exports = {
         // allow async-await
         'generator-star-spacing': 0,
         // allow debugger during development
-        'no-debugger': 2
+        'no-debugger': 2,
+        'no-eval': 0,
     }
 }

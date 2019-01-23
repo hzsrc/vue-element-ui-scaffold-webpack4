@@ -1,7 +1,7 @@
 import { Loading } from 'element-ui';
 
 //const MASK_DELAY = 5000;
-const DefaultMaskOptions = {customClass: 'global-mask', target: 'html > body'}
+const DefaultMaskOptions = { customClass: 'global-mask', target: 'html > body' }
 
 var loading = {
     show(options) {

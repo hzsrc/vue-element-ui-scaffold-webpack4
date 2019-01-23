@@ -7,5 +7,5 @@ require('../../css/utils.scss');
 new Vue({
     el: '#app',
     template: '<rest></rest>',
-    components: {rest}
+    components: { rest }
 })

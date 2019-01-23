@@ -30,7 +30,7 @@
                 </div>
             )
         },
-        components: {footCode}
+        components: { footCode }
     }
 </script>
 <style scoped lang="scss">

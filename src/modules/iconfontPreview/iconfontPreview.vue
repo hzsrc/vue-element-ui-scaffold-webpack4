@@ -67,6 +67,6 @@
                 fontList
             }
         },
-        components: {footCode}
+        components: { footCode }
     }
 </script>

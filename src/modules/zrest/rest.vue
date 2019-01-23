@@ -110,8 +110,8 @@
             return {
                 config: {
                     server: '//eis-service.dev61.ums86.com',
-                    apiList: [{url: '/home/login/us_pd', text: 'login', data: {}},
-                        {url: '/home/login/sp_bound', text: 'bound', data: {}}]
+                    apiList: [{ url: '/home/login/us_pd', text: 'login', data: {} },
+                        { url: '/home/login/sp_bound', text: 'bound', data: {} }]
                 },
                 showConfig: false,
 
@@ -184,7 +184,7 @@
                     var method = this.request.method.toLowerCase()
                     if (!this.request.data) this.request.data = '{}';
                     var data = parseJSON(this.request.data)
-                    httpUtil[method](this.request.url, data, {maskOptions: false})
+                    httpUtil[method](this.request.url, data, { maskOptions: false })
                 }
                 catch (e) {
                     this.response.status = String(e)
@@ -209,7 +209,7 @@
                 var apis = this.config.apiList
                 var index = apis.findIndex(api => api.url == url)
                 if (index == -1) {
-                    apis.push({url, data: JSON.parse(data)})
+                    apis.push({ url, data: JSON.parse(data) })
                 }
                 else {
                     apis[index].data = JSON.parse(data)
@@ -219,7 +219,7 @@
                 storageUtil.setObj('zrest_apis', apis);
             },
             exportConfig() {
-                var r = {request: this.request, config: this.config}
+                var r = { request: this.request, config: this.config }
                 var json = JSON.stringify(r, null, 4)
                 r = JSON.parse(json)
                 //r.request.headers = undefined
@@ -260,7 +260,7 @@
 
                                 function parseToData(list) {
                                     var r = {}
-                                    var types = {string: '', number: 0, object: {}}
+                                    var types = { string: '', number: 0, object: {} }
                                     list.forEach(p => {
                                         if (p.dataType == 'object')
                                             r[p.identifier] = parseToData(p.parameterList)

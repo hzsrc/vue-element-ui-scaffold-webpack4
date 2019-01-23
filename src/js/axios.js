@@ -101,7 +101,7 @@ function fail(error) {
 
 function showErr(config, errmsg) {
     if (config && config.showError === 'alert')
-        msgDlg.alert(errmsg, {type: 'error'});
+        msgDlg.alert(errmsg, { type: 'error' });
     else if (config && config.showError !== false)
         msgDlg.toast.error(errmsg);
 }

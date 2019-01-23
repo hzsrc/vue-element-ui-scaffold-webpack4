@@ -46,16 +46,28 @@ export default {
         var upper = pwd.match(/[A-Z]/g)
         var number = pwd.match(/\d/g)
         var symbol = pwd.match(/[!-/:-@\[-`{-~]/g); //英文符号
-        if (lower) { strength += 1, matchLen += lower.length; }
-        if (upper) { strength += 1, matchLen += upper.length; }
-        if (number) { strength += 1, matchLen += number.length; }
-        if (symbol) { strength += 1, matchLen += symbol.length; }
+        if (lower) {
+            strength += 1;
+            matchLen += lower.length;
+        }
+        if (upper) {
+            strength += 1;
+            matchLen += upper.length;
+        }
+        if (number) {
+            strength += 1;
+            matchLen += number.length;
+        }
+        if (symbol) {
+            strength += 1;
+            matchLen += symbol.length;
+        }
 
         return {
-            lengthOk: this.checkLen(pwd, 6, 16),    // '密码需要为6 ~ 16位';
-            charsOk: pwd && pwd.length === matchLen,         //'只能包含大写字母、小写字母、数字或标点符号（除空格）'
+            lengthOk: this.checkLen(pwd, 6, 16), // '密码需要为6 ~ 16位';
+            charsOk: pwd && pwd.length === matchLen, //'只能包含大写字母、小写字母、数字或标点符号（除空格）'
             matchOk: strength >= 2,
-            matchCount: strength,                    //'大写字母、小写字母、数字或标点符号至少包含2种';
+            matchCount: strength, //'大写字母、小写字母、数字或标点符号至少包含2种';
             empty: !pwd,
             isOk() {
                 return this.lengthOk && this.charsOk && this.matchOk

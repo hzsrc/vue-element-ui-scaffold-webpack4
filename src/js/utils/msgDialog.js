@@ -12,10 +12,12 @@ function toastCtor(key, options) {
 }
 
 const toast = Object.assign(toastCtor.bind(null, null), Message);
-['success', 'warning', 'info', 'error'].forEach(key => toast[key] = toastCtor.bind(null, key))
+['success', 'warning', 'info', 'error'].forEach(key => {
+    toast[key] = toastCtor.bind(null, key)
+})
 
 //为element-ui的MessageBox添加默认参数
-MessageBox.setDefaults({closeOnClickModal: false, closeOnPressEscape: true});
+MessageBox.setDefaults({ closeOnClickModal: false, closeOnPressEscape: true });
 
 export default {
     msgBox: MessageBox,

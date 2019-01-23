@@ -107,6 +107,6 @@ module.exports = {
     }
 }
 
-if (process.argv.indexOf('--mock') > -1)
+if (process.argv.indexOf('--mock') > -1) // --mock
     require('dynamic-mocker').checkStart('./mock/mock-config.js')
 
