@@ -11,7 +11,7 @@ var httpUtil = {
         return axios.get(url, config)
     },
 };
-['post,put,delete'].map(method => {
+['post', 'put', 'delete'].map(method => {
     httpUtil[method] = (url, pars, config) => {
         return axios[method](url, pars, config)
     }

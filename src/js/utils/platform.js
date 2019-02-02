@@ -23,6 +23,8 @@ if (![].findIndex) {
 
 export default {
     getPlat() {
-        return {}
+        return {
+            // 安卓、ios、userAgent等
+        }
     }
 };

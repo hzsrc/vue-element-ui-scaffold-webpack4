@@ -1,6 +1,6 @@
 import CONST from './CONST.js'
 import storageUtil from './utils/storageUtil.js'
-import platInfo from './utils/platform.js'
+import platform from './utils/platform.js'
 import tokenUtil from './utils/tokenUtil.js'
 import domUtil from './utils/domUtil.js'
 import msgDialog from './utils/msgDialog.js'
