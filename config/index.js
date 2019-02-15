@@ -22,7 +22,7 @@ var ret = {
         distIsForServer: false,
     },
     dev: {
-        port: 8092,
+        port: 8090,
         autoOpenBrowser: true,
         assetsSubDirectory: '',
         assetsPublicPath: '/',

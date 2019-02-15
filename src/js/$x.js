@@ -17,9 +17,8 @@ const util = {
 }
 
 var mixed = {
-    plat: platInfo.getPlat(),
+    plat: platform.getPlat(),
     ...util,
-    ...platform,
     ...frequence,
     ...msgDialog,
     ...httpUtil,
