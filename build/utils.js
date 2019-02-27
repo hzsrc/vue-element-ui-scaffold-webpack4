@@ -29,7 +29,12 @@ exports.styleLoaders = function (options) {
             })
         }
         if (options.extract) {
-            use.splice(1, 0, MiniCssExtractPlugin.loader)
+            use.splice(1, 0, {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                    publicPath: '../', // dist/css 相对于 dist 根目录
+                }
+            })
         }
         return {
             test: new RegExp('\\.' + extension + '$'),
