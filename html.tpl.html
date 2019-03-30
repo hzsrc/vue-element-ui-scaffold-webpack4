@@ -27,11 +27,31 @@
             }
         })()
     </script>
+    <style>
+        .ld-rt {
+            animation: ld-rt-kf 3s linear infinite;
+        }
+
+        @keyframes ld-rt-kf {
+            0% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 </head>
 
 <body>
 <div id="app">
-    <div style="margin-top: 200px;text-align: center">Loading...</div>
+    <div style="position:absolute;top:50%;left:50%;transform: translate(-50% -50%); text-align: center; font-size:13px">
+        <svg class="ld-rt" width="20" height="20" viewBox="0,0,32,32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 2h2v8h-2v-8zM15 22h2v8h-2v-8zM30 15v2h-8v-2h8zM10 15v2h-8v-2h8zM5.406 6.813l1.406-1.406 5.656 5.656-1.406 1.406zM19.531 20.938l1.406-1.406 5.656 5.656-1.406 1.406zM25.188 5.406l1.406 1.406-5.656 5.656-1.406-1.406zM11.063 19.531l1.406 1.406-5.656 5.656-1.406-1.406z"
+                  stroke-width="1.5"/>
+        </svg>
+        <div>Loading...</div>
+    </div>
 </div>
 </body>
 </html>

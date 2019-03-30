@@ -7,10 +7,27 @@
         </div>
         <hr/>
         <h2>element-ui css:</h2>
-        <el-button type="primary">Color of element-ui css</el-button>
+        <el-button>default</el-button>
+        <el-button type="primary">primary</el-button>
+        <!--<el-button type="success">success</el-button>-->
+        <!--<el-button type="info">info</el-button>-->
+        <!--<el-button type="warning">warning</el-button>-->
+        <!--<el-button type="danger">danger</el-button>-->
+        <el-button type="text">text</el-button>
+        <p/>
+        <el-button plain>default</el-button>
+        <el-button plain type="primary">primary</el-button>
+        <!--<el-button plain type="success">success</el-button>-->
+        <!--<el-button plain type="info">info</el-button>-->
+        <!--<el-button plain type="warning">warning</el-button>-->
+        <!--<el-button plain type="danger">danger</el-button>-->
+        <p/>
         <el-tag closable>Color of element-ui css</el-tag>
         <el-input style="width:200px">Color of element-ui css</el-input>
-
+        <el-switch
+                :value="true"
+                active-text="switch">
+        </el-switch>
 
         <h2>self css:</h2>
         <div>
@@ -36,12 +53,12 @@
 </template>
 
 <script>
-    import { Button, Tag, Input } from 'element-ui';
+    import { Button, Tag, Input, Switch } from 'element-ui';
     import Vue from 'vue'
     import changeColor from './changeColor.vue'
     import footCode from '../../component/footCode'
 
-    Vue.use(Button).use(Tag).use(Input)
+    Vue.use(Button).use(Tag).use(Input).use(Switch)
 
     export default {
         props: {},
@@ -55,7 +72,7 @@
             }
         },
         computed: {},
-        components: { changeColor, footCode }
+        components: {changeColor, footCode}
     }
 </script>
 
