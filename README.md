@@ -1,7 +1,6 @@
 # vue-element-ui-scaffold-webpack4
-本项目为vue下使用了element-ui并基于webpack4.5构建的多页面、多环境方案脚手架项目。  
-master未使用vuex，如需vuex请看这个分支：[with_vuex](https://github.com/hzsrc/vue-element-ui-scaffold-webpack4/tree/with_vuex)  
-  
+本项目为vue下使用了element-ui并基于webpack4构建的多页面、多环境方案脚手架项目。  
+
 [项目效果预览](http://test.hz300.com/webpack4/)  
 
 # 1. 安装
