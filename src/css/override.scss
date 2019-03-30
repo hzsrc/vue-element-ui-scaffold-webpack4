@@ -2,17 +2,5 @@
 //在这里写覆盖饿了么的全局样式
 
 .primay-color {
-  color: $--color-primary;
-}
-
-// 因懒加载模块的css在主题色样式theme-colors.css之后加载，会覆盖theme-colors.css的样式，导致主题色替换失败。为了避免这情况，theme-colors.css添加了body前缀提升优先级。但提升优先级同时也覆盖了小部分原有css，需覆盖样式
-body {
-  .el-button.el-button--primary:hover, .el-button.el-button--primary:focus,
-  button.el-button.is-plain:hover, button.el-button.is-plain:focus {
-    color: #fff;
-  }
-  .el-button.el-button--text:hover, .el-button.el-button--text:focus {
-    border-color: transparent;
-    background-color: transparent;
-  }
+    color: $--color-primary;
 }

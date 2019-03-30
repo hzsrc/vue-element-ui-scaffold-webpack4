@@ -91,7 +91,18 @@ module.exports = {
                 '#0cdd3a',  //自定义颜色
                 '#c655dd',
             ],
-            cssPrefix: true,
+            // 因懒加载模块的css在主题色样式theme-colors.css之后加载，会覆盖theme-colors.css的样式，导致主题色替换失败。为了避免这情况，需要添加前缀提升优先级。
+            cssPrefix(name) {
+                // element-ui这几个样式太宽泛，需减小范围
+                if (name === '.el-button:active' || name === '.el-button:focus,.el-button:hover') {
+                    return '.el-button--default:not(.is-plain)'
+                }
+                if (name === '.el-button.is-plain:active' || name === '.el-button.is-plain:focus,.el-button.is-plain:hover') {
+                    return '.el-button--default'
+                } else {
+                    return 'body '
+                }
+            },
             // resolveCss(resultCss) { // optional. Resolve result css code as you wish.
             //     return resultCss + youCssCode
             // }
