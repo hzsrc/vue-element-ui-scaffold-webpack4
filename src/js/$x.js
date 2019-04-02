@@ -1,5 +1,5 @@
 import CONST from './CONST.js'
-import storageUtil from './utils/storageUtil.js'
+import StorageUtil from './utils/storageUtil.js'
 import platform from './utils/platform.js'
 import tokenUtil from './utils/tokenUtil.js'
 import domUtil from './utils/domUtil.js'
@@ -13,7 +13,8 @@ const util = {
         if (deep) return JSON.parse(JSON.stringify(obj));
         return Array.isArray(obj) ? obj.slice(0) : Object.assign({}, obj)
     },
-    noop() {}
+    noop() {
+    }
 }
 
 var mixed = {
@@ -22,13 +23,11 @@ var mixed = {
     ...frequence,
     ...msgDialog,
     ...httpUtil,
-    storageUtil,
+    storageUtil: new StorageUtil(),
     CONST,
     tokenUtil,
 }
 
-var $x = domUtil
+Object.assign(domUtil, mixed)
 
-Object.assign($x, mixed)
-
-export default $x
+export default domUtil
