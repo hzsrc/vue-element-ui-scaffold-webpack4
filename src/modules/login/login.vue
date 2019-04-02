@@ -1,5 +1,6 @@
 <script>
     import footCode from '../../component/footCode'
+
     export default {
         data() {
             return {
@@ -39,7 +40,7 @@
     .bg {
         background: $--color-primary-light-6;
 
-        h3{
+        h3 {
             font-size: 20px
         }
     }
