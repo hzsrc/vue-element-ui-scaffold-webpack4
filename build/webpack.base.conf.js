@@ -95,7 +95,7 @@ module.exports = {
             cssPrefix(name) {
                 // element-ui这几个样式太宽泛，需减小范围
                 if (name === '.el-button:active' || name === '.el-button:focus,.el-button:hover') {
-                    return '.el-button--default:not(.is-plain)'
+                    return '.el-button--default:not(.is-plain):not(.el-button--primary)'
                 }
                 if (name === '.el-button.is-plain:active' || name === '.el-button.is-plain:focus,.el-button.is-plain:hover') {
                     return '.el-button--default'
