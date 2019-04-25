@@ -99,9 +99,10 @@ module.exports = {
                 }
                 if (name === '.el-button.is-plain:active' || name === '.el-button.is-plain:focus,.el-button.is-plain:hover') {
                     return '.el-button--default'
-                } else {
-                    return 'body '
                 }
+				
+                // 提升优先级，避免被懒加载的样式覆盖
+                return 'body '
             },
             // resolveCss(resultCss) { // optional. Resolve result css code as you wish.
             //     return resultCss + youCssCode
