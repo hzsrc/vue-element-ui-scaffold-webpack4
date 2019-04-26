@@ -46,10 +46,6 @@ module.exports = {
             {
                 test: /\.js$/,
                 include: [resolve('src'), resolve('test')],
-                exclude: file => (
-                    /node_modules/.test(file) &&
-                    !/\.vue\.js/.test(file)
-                ),
                 use: [
                     //step-2
                     'babel-loader?cacheDirectory',
@@ -100,7 +96,7 @@ module.exports = {
                 if (name === '.el-button.is-plain:active' || name === '.el-button.is-plain:focus,.el-button.is-plain:hover') {
                     return '.el-button--default'
                 }
-				
+
                 // 提升优先级，避免被懒加载的样式覆盖
                 return 'body '
             },
