@@ -7,17 +7,12 @@
     <meta name="description" content="<%= htmlWebpackPlugin.options.appConfig.description %>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
-    <link rel="shortcut icon" href="img/favorites.png">
-    <!--<link rel="icon" sizes="any" mask href="img/favorites.png">-->
     <script>
         (function () {
             var ieInf = navigator.userAgent.match(/msie\s*(\d+)/i);
             if (!ieInf) ieInf = navigator.userAgent.match(/Trident.+rv:(\d+)/i);
             if (ieInf) {
-                if (parseInt(ieInf[1]) >= 10) {
-                    document.write('<script src="js/es6-promise.auto.min.js"></sc' + 'ript>')
-                }
-                else {
+                if (parseInt(ieInf[1]) < 10) {
                     document.write(
                         '<div style="background:#FFFCCF;text-align: center;line-height: 30px">'
                         + '您的浏览器版本太低，功能无法使用。请升级到IE10以上，或使用Chrome、Firefox等现代浏览器~'

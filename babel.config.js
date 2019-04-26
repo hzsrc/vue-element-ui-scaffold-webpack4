@@ -3,6 +3,7 @@ module.exports = {
         [
             '@babel/preset-env',
             {
+                useBuiltIns: 'usage',
                 modules: false,
                 targets: {
                     browsers: require('./package.json').browserslist
@@ -24,15 +25,4 @@ module.exports = {
         ]
     ],
     comments: false,
-    env: {
-        test: {
-            presets: [
-                'env',
-                // 'stage-2'
-            ],
-            plugins: [
-                'istanbul'
-            ]
-        }
-    }
 }
