@@ -88,21 +88,21 @@ module.exports = {
                 '#c655dd',
             ],
             // 因懒加载模块的css在主题色样式theme-colors.css之后加载，会覆盖theme-colors.css的样式，导致主题色替换失败。为了避免这情况，需要添加前缀提升优先级。
-            cssPrefix(name) {
+            changeSelector(name) {
                 // element-ui这几个样式太宽泛，需减小范围
-                if (name === '.el-button:active' || name === '.el-button:focus,.el-button:hover') {
-                    return '.el-button--default:not(.is-plain):not(.el-button--primary)'
+                switch (name) {
+                    case '.el-button:active':
+                    case '.el-button:focus,.el-button:hover':
+                        return name + '.el-button--default:not(.is-plain):not(.el-button--primary)'
+                    case '.el-button.is-plain:active' :
+                    case '.el-button.is-plain:focus,.el-button.is-plain:hover':
+                        return name + '.el-button--default'
+                    case '.el-pagination button:hover':
+                        return name + ':not(:disabled)'
+                    default:
+                        return 'body ' + name
                 }
-                if (name === '.el-button.is-plain:active' || name === '.el-button.is-plain:focus,.el-button.is-plain:hover') {
-                    return '.el-button--default'
-                }
-
-                // 提升优先级，避免被懒加载的样式覆盖
-                return 'body '
             },
-            // resolveCss(resultCss) { // optional. Resolve result css code as you wish.
-            //     return resultCss + youCssCode
-            // }
         })
     ],
 
