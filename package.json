@@ -100,7 +100,7 @@
         "webpack-hot-middleware": "^2.24.3",
         "webpack-iconfont-plugin-nodejs": "^1.0.13",
         "webpack-merge": "^4.2.1",
-        "webpack-theme-color-replacer": "^1.1.0"
+        "webpack-theme-color-replacer": "^1.1.5"
     },
     "engines": {
         "node": ">= 4.0.0",

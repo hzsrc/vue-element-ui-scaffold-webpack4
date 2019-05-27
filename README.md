@@ -1,7 +1,7 @@
 # vue-element-ui-scaffold-webpack4
 本项目为vue下使用了element-ui并基于webpack4构建的多页面、多环境方案脚手架项目。  
 
-[项目效果预览](http://test.hz300.com/webpack4/)  
+[项目效果预览](https://hzsrc-vue-webpack4-elementui.netlify.com/)  
 
 # 1. 安装
 ```
