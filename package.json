@@ -21,7 +21,7 @@
         "build-font": "node -e \"require('./build/svg2font.js').build()\""
     },
     "dependencies": {
-        "axios": "^0.18.0",
+        "axios": "^0.19.0",
         "echarts": "^4.1.0",
         "element-theme-chalk": "^2.4.11",
         "element-ui": "^2.4.11",
@@ -94,13 +94,13 @@
         "vue-style-loader": "^4.1.2",
         "vue-template-compiler": "^2.5.18",
         "webpack": "^4.27.1",
-        "webpack-bundle-analyzer": "^3.0.3",
+        "webpack-bundle-analyzer": "^3.3.2",
         "webpack-dev-middleware": "^3.4.0",
         "webpack-dev-server": "^3.1.14",
         "webpack-hot-middleware": "^2.24.3",
         "webpack-iconfont-plugin-nodejs": "^1.0.13",
         "webpack-merge": "^4.1.4",
-        "webpack-theme-color-replacer": "^1.0.21"
+        "webpack-theme-color-replacer": "^1.2.1"
     },
     "engines": {
         "node": ">= 4.0.0",

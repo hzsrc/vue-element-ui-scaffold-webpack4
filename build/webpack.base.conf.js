@@ -6,6 +6,7 @@ var webpack = require('webpack')
 const {VueLoaderPlugin} = require('vue-loader');
 var appConfig = require('../config/app-config')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
+const forElementUI = require('webpack-theme-color-replacer/forElementUI')
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -85,24 +86,13 @@ module.exports = {
         }),
         //生成仅包含颜色的替换样式（主题色等）
         new ThemeColorReplacer({
-            fileName: appConfig.themeFile,
+            fileName: 'css/theme-colors.[contenthash:8].css',
             matchColors: [
-                ...ThemeColorReplacer.getElementUISeries(appConfig.themeColor),  //element-ui主色系列
+                ...forElementUI.getElementUISeries(appConfig.themeColor),  //element-ui主色系列
                 '#0cdd3a',  //自定义颜色
                 '#c655dd',
             ],
-            // 因懒加载模块的css在主题色样式theme-colors.css之后加载，会覆盖theme-colors.css的样式，导致主题色替换失败。为了避免这情况，需要添加前缀提升优先级。
-            cssPrefix(name) {
-                // element-ui这几个样式太宽泛，需减小范围
-                if (name === '.el-button:active' || name === '.el-button:focus,.el-button:hover') {
-                    return '.el-button--default:not(.is-plain)'
-                }
-                if (name === '.el-button.is-plain:active' || name === '.el-button.is-plain:focus,.el-button.is-plain:hover') {
-                    return '.el-button--default'
-                } else {
-                    return 'body '
-                }
-            },
+            changeSelector: forElementUI.changeSelector,
             // resolveCss(resultCss) { // optional. Resolve result css code as you wish.
             //     return resultCss + youCssCode
             // }

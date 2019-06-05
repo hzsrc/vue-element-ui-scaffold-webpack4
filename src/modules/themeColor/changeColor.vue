@@ -5,25 +5,21 @@
 <script>
     import Vue from 'vue';
     import { ColorPicker } from 'element-ui';
-    import appConfig from '../../../config/app-config.js'
-    import changeThemeColor from '../../../src/js/changeThemeColor'
+    import { changeThemeColor, curColor } from '../../js/themeColorClient'
 
     Vue.use(ColorPicker)
 
     export default {
         data() {
             return {
-                mainColor: appConfig.themeColor,
-                oldColor: appConfig.themeColor
+                mainColor: curColor,
             };
         },
         methods: {
             changeColor(newColor) {
-                changeThemeColor(newColor, this.oldColor)
-                this.oldColor = newColor
-                localStorage.setItem('theme_color', newColor)
+                changeThemeColor(newColor)
+                    .then(t => this.$x.toast.success('主题色切换成功~'))
             }
-
         },
     }
 </script>

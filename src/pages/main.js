@@ -3,7 +3,7 @@ import $x from '../js/$x'
 import router from '../router/routerMain.js'
 import main from '../modules/main.vue'
 import { Button } from 'element-ui'
-import { initThemeColor } from '../js/changeThemeColor'
+import { initThemeColor } from '../js/themeColorClient'
 
 require('../css/index.scss');
 
