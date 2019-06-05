@@ -47,10 +47,6 @@ module.exports = {
             {
                 test: /\.js$/,
                 include: [resolve('src'), resolve('test')],
-                exclude: file => (
-                    /node_modules/.test(file) &&
-                    !/\.vue\.js/.test(file)
-                ),
                 use: [
                     //step-2
                     'babel-loader?cacheDirectory',
