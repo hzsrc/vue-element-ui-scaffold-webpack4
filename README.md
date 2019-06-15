@@ -56,6 +56,8 @@ css按需加载的来源直接指向element-ui的scss文件，而不是预编译
 采用vw+rem的简洁方案实现响应式布局。    
 使用postcss-pxtorem插件自动将css中的单位由px转化为rem，开发时仍使用px做为css长度单位。1rem = 100px，调试时换算方便。pc和移动端通用（移动端最好将element-ui换为其他UI框架）。   
 
+## 浏览器兼容性
+兼容IE10及以上、Chrome、Firefox、Safari、QQ、360、2345等浏览器。
 
 # 3. 命令说明
 ## 本地开发
