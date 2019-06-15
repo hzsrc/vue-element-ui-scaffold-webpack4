@@ -18,5 +18,8 @@ export function changeThemeColor(newColor) {
 
 export function initThemeColor() {
     let savedColor = localStorage.getItem('theme_color')
-    if (savedColor) changeThemeColor(savedColor)
+    if (savedColor) {
+        curColor = savedColor
+        changeThemeColor(savedColor)
+    }
 }

@@ -45,7 +45,7 @@
         </div>
 
         <br/>
-        <a href="./"><< Back</a>
+        <a href="./" class="primay-color"><< Back</a>
 
         <foot-code></foot-code>
 
