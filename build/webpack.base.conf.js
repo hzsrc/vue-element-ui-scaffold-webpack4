@@ -89,6 +89,7 @@ module.exports = {
                 '#c655dd',
             ],
             changeSelector: forElementUI.changeSelector,
+            isJsUgly: config.isBuild,
             // resolveCss(resultCss) { // optional. Resolve result css code as you wish.
             //     return resultCss + youCssCode
             // }
