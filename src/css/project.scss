@@ -1,29 +1,28 @@
 // 项目的公告样式
 
 .global-mask {
-    background: transparent;
+	background: transparent;
 }
-
 
 /*滚动条样式*/
 ::-webkit-scrollbar {
-    border-radius: 8px;
-    width: 6px;
-    height: 6px;
+	border-radius: 8px;
+	width: 8px;
+	height: 8px;
 }
 
-::-webkit-scrollbar-track {
-    border-radius: 8px;
-    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(90deg, #efefef 0%, #fff 78%, #efefef 100%);
-}
+//::-webkit-scrollbar-track {
+//	border-radius: 8px;
+//	-webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+//	background: linear-gradient(90deg, #efefef 0%, #fff 78%, #efefef 100%);
+//}
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, .3);
-    background: linear-gradient(0deg, rgb(227, 182, 143) 0%, rgb(255, 227, 166) 48%, rgb(227, 182, 143) 100%);
+	border-radius: 8px;
+	-webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, .3);
+	background: linear-gradient(90deg, #efefef 0%, #fff 78%, #efefef 100%);
 }
 
 ::-webkit-scrollbar-thumb:vertical {
-    background: linear-gradient(90deg, rgb(227, 182, 143) 0%, rgb(255, 227, 166) 48%, rgb(227, 182, 143) 100%);
+	background: linear-gradient(0deg, #efefef 0%, #fff 78%, #efefef 100%);
 }
