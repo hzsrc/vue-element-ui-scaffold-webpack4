@@ -55,10 +55,10 @@ axios.interceptors.response.use(function (res) {
     loading.close(res.config.maskOptions)
     var data = res.data || {};
     var retCode = Number(data.returnCode);
-    if (retCode == 110 || retCode == 111) { // token失败
+    if (retCode === 110 || retCode === 111) { // token失败
         return doLogin()
     }
-    else if (retCode != 0) { //错误
+    else if (retCode !== 0) { //错误
         //100以下是系统错误，10000以上是其他中心系统错误（不能显示给用户）。其他的是业务错误（需提示用户）
         if ((retCode <= 100 || retCode >= 10000) || !data.msg) {
             data.msg = CoveredErrMsg
