@@ -21,6 +21,11 @@
         "build-font": "node -e \"require('./build/svg2font.js').build()\"",
         "show-map": "node -e \"console.log(require('./config').build.sourceMapPath)\""
     },
+    "husky": {
+        "hooks": {
+            "pre-push": "npm run fixlint"
+        }
+    },
     "dependencies": {
         "axios": "^0.18.0",
         "echarts": "^4.2.1",
@@ -68,6 +73,7 @@
         "file-loader": "^3.0.1",
         "friendly-errors-webpack-plugin": "^1.7.0",
         "html-webpack-plugin": "^3.2.0",
+        "husky": "^2.4.1",
         "js-conditional-compile-loader": "^1.0.9",
         "karma": "^4.0.1",
         "karma-coverage": "^1.1.2",
