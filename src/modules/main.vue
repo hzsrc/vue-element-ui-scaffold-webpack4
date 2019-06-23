@@ -34,7 +34,7 @@
         },
         methods: {
             callMockApi() {
-                var pars = {id: +new Date(), a: 1, b: 2}
+                var pars = { id: +new Date(), a: 1, b: 2 }
                 this.$x.post('/api/test_api', pars)
                     .then(res => {
                         this.data = res.data;
@@ -42,7 +42,7 @@
             },
             callLoading() {
                 this.loading = true
-                this.$x.post('/api/test_promise', null, {maskOptions: false})
+                this.$x.post('/api/test_promise', null, { maskOptions: false })
                     .then(res => {
                         this.data = res.data;
                     })
@@ -51,7 +51,7 @@
                     })
             },
             callUnmockedApi() {
-                this.$x.post('/api/get_data', {}, {showError: false, maskOptions: {target: '.main-page'}})
+                this.$x.post('/api/get_data', {}, { showError: false, maskOptions: { target: '.main-page' } })
                     .then(res => {
                     })
                     .catch(e => {
@@ -59,7 +59,7 @@
                     })
             },
             callOtherApi() {
-                this.$x.post('{node_api}/api/get_xxx', {}, {showError: 'alert'})
+                this.$x.post('{node_api}/api/get_xxx', {}, { showError: 'alert' })
                     .then(res => {
                     })
             },
