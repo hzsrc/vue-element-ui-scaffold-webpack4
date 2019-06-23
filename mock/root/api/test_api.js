@@ -3,7 +3,7 @@ module.exports = {
     delay: 1000,
     body: function (query, post) {
         return {
-            'data': {a: 11, b: 22, id: post.id + 1},
+            'data': { a: 11, b: 22, id: post.id + 1 },
             'msg': '',
             'returnCode': '0'
         }

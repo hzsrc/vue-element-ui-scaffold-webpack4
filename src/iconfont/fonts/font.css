@@ -9,7 +9,7 @@
 }
 
 [class^="my-icon"], [class*=" my-icon"] {
-    font-family: 'vant-icon', 'my-app-icon', 'icoflaginfo' !important;
+    font-family: 'my-app-icon';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-style: normal;
