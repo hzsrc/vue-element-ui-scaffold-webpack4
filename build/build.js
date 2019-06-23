@@ -25,7 +25,7 @@ else {
 }
 
 function doWebpack(onEnd) {
-    webpack(webpackConfig, function (err, stats) {
+    webpack(webpackConfig, (err, stats) => {
         spinner.stop()
         if (onEnd) onEnd(err);
 
