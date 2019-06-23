@@ -6,16 +6,10 @@ var config = require('../config')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
-var OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin')
+var OptimizeCssPlugin = require('optimize-css-map-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 var isProd = /prod|demo/.test(process.env.ENV_CONFIG)
-
-function getSourceMapPath() {
-    // 根据安全级别，改成只有开发者知道的文件夹名或动态加密算法生成。
-    // 这样既可在需要时进行手动添加源码映射方便调试，又可避免了源码泄露。
-    return '_map'
-}
 
 var webpackConfig = merge(baseWebpackConfig, {
     mode: 'production',
@@ -46,7 +40,7 @@ var webpackConfig = merge(baseWebpackConfig, {
                 append: !isProd,
                 map: config.build.productionSourceMap,
                 getFileName(assetInfo) {
-                    return `${getSourceMapPath()}/${path.basename(assetInfo.path)}.map${assetInfo.query}`
+                    return `${config.build.productionSourcePath}/${path.basename(assetInfo.path)}.map${assetInfo.query}`
                 }
             }
         }),
@@ -112,7 +106,7 @@ if (config.build.productionSourceMap) {
     */
     webpackConfig.plugins.push(
         new webpack.SourceMapDevToolPlugin({
-            filename: `${getSourceMapPath()}/[filebase].map`,
+            filename: `${config.build.productionSourcePath}/[filebase].map`,
             append: isProd ? false : undefined, // undefined会自动加载源码映射，生产环境慎用。false时不会
         })
     )
