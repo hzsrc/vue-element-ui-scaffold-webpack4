@@ -99,9 +99,9 @@
         "webpack-dev-middleware": "^3.6.1",
         "webpack-dev-server": "^3.2.1",
         "webpack-hot-middleware": "^2.24.3",
-        "webpack-iconfont-plugin-nodejs": "^1.0.13",
+        "webpack-iconfont-plugin-nodejs": "^1.0.15",
         "webpack-merge": "^4.2.1",
-        "webpack-theme-color-replacer": "^1.2.13"
+        "webpack-theme-color-replacer": "^1.2.15"
     },
     "engines": {
         "node": ">= 4.0.0",
