@@ -40,7 +40,7 @@ var webpackConfig = merge(baseWebpackConfig, {
                 append: !isProd,
                 map: config.build.productionSourceMap,
                 getFileName(assetInfo) {
-                    return `${config.build.productionSourcePath}/${path.basename(assetInfo.path)}.map${assetInfo.query}`
+                    return `${config.build.sourceMapPath}/${path.basename(assetInfo.path)}.map${assetInfo.query}`
                 }
             }
         }),
@@ -106,7 +106,7 @@ if (config.build.productionSourceMap) {
     */
     webpackConfig.plugins.push(
         new webpack.SourceMapDevToolPlugin({
-            filename: `${config.build.productionSourcePath}/[filebase].map`,
+            filename: `${config.build.sourceMapPath}/[filebase].map`,
             append: isProd ? false : undefined, // undefined会自动加载源码映射，生产环境慎用。false时不会
         })
     )
