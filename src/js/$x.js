@@ -5,7 +5,6 @@ import tokenUtil from './utils/tokenUtil.js'
 import domUtil from './utils/domUtil.js'
 import msgDialog from './utils/msgDialog.js'
 import httpUtil from './utils/httpUtil.js'
-import frequence from './utils/frequence';
 
 const util = {
     clone(obj, deep) {
@@ -20,7 +19,6 @@ const util = {
 var mixed = {
     plat: platform.getPlat(),
     ...util,
-    ...frequence,
     ...msgDialog,
     ...httpUtil,
     storageUtil: new StorageUtil(),

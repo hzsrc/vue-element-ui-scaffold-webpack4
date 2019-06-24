@@ -41,7 +41,7 @@ module.exports = {
         'padded-blocks': 0,
         'no-duplicate-imports': 0,
         'operator-linebreak': 0,
-        'no-undef': 0,
+        'no-undef': 2,
         'no-extend-native': 0,
         'no-sequences': 0,
 
