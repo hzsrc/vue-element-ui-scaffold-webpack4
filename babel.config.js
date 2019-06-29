@@ -3,10 +3,9 @@ module.exports = {
         [
             '@babel/preset-env',
             {
-                corejs: '2',
+                corejs: '3',
                 useBuiltIns: 'usage',
-                modules: false,
-                targets: require('./package.json').browserslist
+                modules: false
             }
         ]
     ],
