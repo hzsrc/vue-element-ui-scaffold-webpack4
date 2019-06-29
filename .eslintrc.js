@@ -2,18 +2,23 @@
 
 module.exports = {
     root: true,
-    parser: 'babel-eslint',
     parserOptions: {
+        parser: 'babel-eslint',
         sourceType: 'module'
     },
     env: {
         browser: true,
     },
-    // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-    extends: 'standard',
+    extends: [
+        // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
+        // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
+        'plugin:vue/essential',
+        // https://github.com/standard/standard/blob/master/docs/RULES-en.md
+        'standard'
+    ],
     // required to lint *.vue files
     plugins: [
-        'html'
+        'vue'
     ],
     // add your custom rules here
     'rules': {
@@ -22,6 +27,7 @@ module.exports = {
         //"error"或2 - 开启规则, 使用错误 程序退出
 
         'indent': ['error', 4],
+        'vue/script-indent': ['error', 4, { 'baseIndent': 1 }],
         //分号
         'semi': 'off',
         'spaced-comment': 'off',
@@ -52,5 +58,13 @@ module.exports = {
         // allow debugger during development
         'no-debugger': 2,
         'no-eval': 0,
-    }
+    },
+    'overrides': [
+        {
+            'files': ['*.vue'],
+            'rules': {
+                'indent': 'off'
+            }
+        }
+    ]
 }
