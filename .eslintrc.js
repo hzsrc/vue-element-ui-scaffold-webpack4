@@ -31,7 +31,7 @@ module.exports = {
         //分号
         'semi': 'off',
         'spaced-comment': 'off',
-        'eqeqeq': 'off',
+        'eqeqeq': 1,
         'no-useless-escape': 'off',
         'brace-style': 0,//大括号风格
         'curly': 'off', //[2, "all"],//必须使用 if(){} 中的{}

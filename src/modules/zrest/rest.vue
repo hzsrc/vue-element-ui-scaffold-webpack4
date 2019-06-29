@@ -111,7 +111,7 @@
                 config: {
                     server: '//eis-service.dev61.ums86.com',
                     apiList: [{ url: '/home/login/us_pd', text: 'login', data: {} },
-                        { url: '/home/login/sp_bound', text: 'bound', data: {} }]
+                              { url: '/home/login/sp_bound', text: 'bound', data: {} }]
                 },
                 showConfig: false,
 
@@ -194,7 +194,7 @@
                 // httpUtil.http.defaults.withCredentials = false
                 // httpUtil.http.defaults.timeout = 180000
                 var url = prompt('输入RAP导出地址：（替换projectId为对应的RAP项目id）\n然后复制弹出窗口的文本到“加载配置”中加载'
-                    , 'http://10.0.0.170:9191/api/queryRAPModel.do?projectId=110')
+                                 , 'http://10.0.0.170:9191/api/queryRAPModel.do?projectId=110')
                 var reg = url.match(/(.+)api\/.+projectId=(\d+)/) || {}
                 this.rapBase = `${reg[1]}workspace/myWorkspace.do?projectId=${reg[2]}`
                 if (url) {
@@ -203,7 +203,7 @@
             },
             saveToLocal(url, data) {
                 url = url.replace(this.config.server, '')
-                if (typeof data != 'string') {
+                if (typeof data !== 'string') {
                     data = JSON.stringify(data)
                 }
                 var apis = this.config.apiList

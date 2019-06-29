@@ -47,7 +47,7 @@
         </div>
         <hr/>
         <div class="flex-tb">
-            <section v-for="font in fontList">
+            <section v-for="font in fontList" :key="font.name">
                 <header contenteditable>my-icon-{{font.name}}</header>
                 <div><i :class="'my-icon-'+font.name"></i></div>
             </section>
