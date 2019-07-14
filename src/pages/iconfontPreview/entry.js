@@ -1,4 +1,4 @@
-import iconfontPreview from '../../modules/iconfontPreview/iconfontPreview';
+import iconfontPreview from '../../views/iconfontPreview/iconfontPreview';
 import Vue from 'vue';
 require('../../css/index.scss');
 

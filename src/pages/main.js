@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import $x from '../js/$x'
 import router from '../router/routerMain.js'
-import main from '../modules/main.vue'
+import main from '../views/main.vue'
 import { Button } from 'element-ui'
 import { initThemeColor } from '../js/themeColorClient'
 

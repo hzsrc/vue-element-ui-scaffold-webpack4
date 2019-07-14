@@ -1,7 +1,7 @@
 //Login page
 
 import Vue from 'vue';
-import login from '../modules/login/login.vue'
+import login from '../views/login/login.vue'
 require('../css/index.scss');
 
 new Vue({

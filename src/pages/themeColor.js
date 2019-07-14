@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import $x from '../js/$x'
-import themeColor from '../modules/themeColor/themeColor.vue'
+import themeColor from '../views/themeColor/themeColor.vue'
 import { initThemeColor } from '../js/themeColorClient'
 
 require('../css/index.scss');
