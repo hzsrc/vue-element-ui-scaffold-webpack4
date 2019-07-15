@@ -72,7 +72,7 @@
         "friendly-errors-webpack-plugin": "^1.7.0",
         "html-webpack-plugin": "^3.2.0",
         "husky": "^2.7.0",
-        "js-conditional-compile-loader": "^1.0.9",
+        "js-conditional-compile-loader": "^1.0.11",
         "mini-css-extract-plugin": "^0.7.0",
         "opn": "^6.0.0",
         "optimize-css-map-webpack-plugin": "^5.0.2",
@@ -93,9 +93,9 @@
         "webpack-dev-middleware": "^3.7.0",
         "webpack-dev-server": "^3.7.2",
         "webpack-hot-middleware": "^2.25.0",
-        "webpack-iconfont-plugin-nodejs": "^1.0.15",
+        "webpack-iconfont-plugin-nodejs": "^1.0.16",
         "webpack-merge": "^4.2.1",
-        "webpack-theme-color-replacer": "^1.2.15"
+        "webpack-theme-color-replacer": "^1.2.16"
     },
     "engines": {
         "node": ">= 4.0.0",

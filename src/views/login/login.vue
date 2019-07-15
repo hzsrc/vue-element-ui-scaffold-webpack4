@@ -23,7 +23,9 @@
                     <div><a href="iconfontPreview.html">iconfont</a></div>
                     {
                         /*IFDEBUG
-                            <div><hr/>This message is only shown while process.env.NODE_ENV == 'development'. {this.devMsg}</div>
+                        <div>
+                            <hr/>
+                            This message is only shown while process.env.NODE_ENV === 'development'. {this.devMsg}</div>
                         FIDEBUG*/
                     }
 

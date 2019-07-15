@@ -51,7 +51,13 @@ module.exports = {
                     //step-2
                     'babel-loader?cacheDirectory',
                     //step-1
-                    'js-conditional-compile-loader',
+                    {
+                        loader: 'js-conditional-compile-loader',
+                        options: {
+                            isDebug: process.env.NODE_ENV === 'development', // optional, this expression is default
+                            envTest: process.env.ENV_CONFIG === 'test',  // any name you want, used for /* IFTRUE_evnTest ...js code... FITRUE_evnTest */
+                        }
+                    },
                 ],
             },
             {
