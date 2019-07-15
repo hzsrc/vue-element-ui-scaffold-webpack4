@@ -4,6 +4,10 @@ import router from '../router/routerMain.js'
 import main from '../views/main.vue'
 import { Button } from 'element-ui'
 import { initThemeColor } from '../js/themeColorClient'
+import mockClient from 'dynamic-mocker/lib/client'
+import mockConfig from '../../mock/mock-config'
+
+mockClient.setUp(mockConfig, pathname => import('../../mock/root' + pathname + '.js'))
 
 require('../css/index.scss');
 
