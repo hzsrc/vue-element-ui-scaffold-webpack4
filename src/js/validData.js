@@ -81,7 +81,7 @@ export default {
         if (!isImg && opts.allowGif) {
             isImg = /\.gif$/i.test(file.name)
         }
-        let sizeM = opts.sizeM || 2;
+        const sizeM = opts.sizeM || 2;
         const isLt2M = file.size / 1024 / 1024 < sizeM;
 
         if (!isImg) {
