@@ -58,6 +58,7 @@ module.exports = {
         // allow debugger during development
         'no-debugger': 2,
         'no-eval': 0,
+        'standard/no-callback-literal': 1,
     },
     'overrides': [
         {

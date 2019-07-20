@@ -2,8 +2,6 @@
 var rm = require('rimraf')
 require('./make-element-theme.js')(null, true);
 
-require('./check-versions')()
-
 process.env.NODE_ENV = 'production'
 
 var config = require('../config')
