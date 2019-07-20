@@ -86,10 +86,30 @@ npm run build-dev
 ```
 用于发布部署到开发环境服务器，适用于需要发布到服务器才能调试的情形。使用config/serverMap.js中的dev配置的接口服务地址。
 
+### 启用mock数据发布
+```
+npm run build-preview
+```
+会启用静态mock数据，无需后端服务，使用mock数据来模拟ajax调用（前提是对应的api接口写了mock数据）。
+等同于npm run build --preview。
+
+### 查看dist目录运行结果
+```
+npm run play-dist
+```
+以dist目录为根目录，启动一个静态http服务，用于查看发布后dist目录的运行结果。
+
 ### 启动mock服务
 ```
 npm run mock
 ```
 当后端接口服务尚未完成时，可用于模拟后端接口数据调试前端功能。
+
+
+### 代理到80端口或443端口
+```
+npm run proxy80
+```
+通过代理到80端口或443端口，可实现https访问，也可实现访问时隐藏端口。结合系统hosts配置，可用于模拟使用域名访问本地开发环境（例如调试微信）。
 
 

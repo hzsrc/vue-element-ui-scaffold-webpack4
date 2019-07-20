@@ -1,6 +1,6 @@
 const config = {
     mockEnabled: true,
-    mockPath: ['mock/root', 'mock/root-old'], //模拟文件根目录
+    mockPath: ['root', 'root-old'], //模拟文件根目录
     proxyTarget: 'http://aaa.bbb.com', //后台接口服务地址（代理目标），为空表示不代理
     isHttps: false, //是否https
     port: 8087, //端口
@@ -11,7 +11,7 @@ const config = {
         respData.headers['Access-Control-Allow-Origin'] = req.headers['origin'] || req.headers['Origin'];
         respData.headers['Access-Control-Allow-Credentials'] = 'true';
         respData.headers['Access-Control-Max-Age'] = '600';
-        respData.headers['Access-Control-Allow-Headers'] = 'Content-Type,Content-Length,Authorization,Access,X-Requested-With,token';
+        respData.headers['Access-Control-Allow-Headers'] = 'content-type,content-length,authorization,access,x-requested-with,token';
         //respData.headers["Access-Control-Allow-Methods"] = "PUT,POST,GET,DELETE,PATCH,OPTIONS";
 
         respData.headers['P3P'] = 'CP="CAO PSA OUR"';
@@ -19,6 +19,7 @@ const config = {
     },
     mapFile(pathname, req) {
         return pathname
-    }
+    },
+    genClientJs: '../src/js/mockClient.js',
 }
 module.exports = config;

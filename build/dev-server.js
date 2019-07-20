@@ -9,9 +9,7 @@ var opn = require('opn')
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
-var webpackConfig = process.env.NODE_ENV === 'testing'
-    ? require('./webpack.build.conf')
-    : require('./webpack.dev.conf')
+var webpackConfig = require('./webpack.dev.conf')
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
@@ -97,4 +95,4 @@ module.exports = {
 }
 
 if (process.argv.indexOf('--mock') > -1) // --mock
-    require('dynamic-mocker').checkStart('./mock/mock-config.js')
+   require('dynamic-mocker').start('./mock/mock-config.js')

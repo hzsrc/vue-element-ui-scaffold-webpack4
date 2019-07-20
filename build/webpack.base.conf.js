@@ -56,6 +56,7 @@ module.exports = {
                         options: {
                             isDebug: process.env.NODE_ENV === 'development', // optional, this expression is default
                             envTest: process.env.ENV_CONFIG === 'test',  // any name you want, used for /* IFTRUE_evnTest ...js code... FITRUE_evnTest */
+                            isPreview: process.env.npm_config_preview, // npm run build-demo --preview, for mock client data
                         }
                     },
                 ],
