@@ -59,7 +59,7 @@
         "cross-env": "^5.2.0",
         "cross-spawn": "^6.0.5",
         "css-loader": "^3.1.0",
-        "dynamic-mocker": "^1.2.8",
+        "dynamic-mocker": "^1.2.9",
         "eslint": "^6.0.1",
         "eslint-config-standard": "^13.0.1",
         "eslint-friendly-formatter": "4.0.1",

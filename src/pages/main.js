@@ -9,7 +9,7 @@ require('../css/index.scss');
 
 // 仅对 npm run build-preview 时，使用客户端mock数据（拦截XMLHttpRequest）
 /* IFTRUE_isPreview */
-require('../js/mockClient')
+require('../../mock/mockClient')
 /* FITRUE_isPreview */
 
 // 通用组件，便于处理
