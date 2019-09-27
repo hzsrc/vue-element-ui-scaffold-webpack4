@@ -10,7 +10,7 @@
 
 <script>
     export default {
-        dat() {
+        data() {
             return {
                 testMsg: ''
             }

@@ -97,6 +97,7 @@ module.exports = {
             ],
             changeSelector: forElementUI.changeSelector,
             isJsUgly: config.isBuild,
+            injectCss: true,
             // resolveCss(resultCss) { // optional. Resolve result css code as you wish.
             //     return resultCss + youCssCode
             // }
