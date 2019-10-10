@@ -1,6 +1,3 @@
-//生成主题颜色变量，供生成过程中使用
-require('./make-element-theme.js')();
-
 var config = require('../config')
 
 var opn = require('opn')

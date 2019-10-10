@@ -70,6 +70,7 @@
         "friendly-errors-webpack-plugin": "^1.7.0",
         "html-webpack-plugin": "^3.2.0",
         "js-conditional-compile-loader": "^1.0.12",
+        "join-file-content-plugin": "1.0.1",
         "mini-css-extract-plugin": "^0.8.0",
         "opn": "^6.0.0",
         "optimize-css-map-webpack-plugin": "^5.0.2",
