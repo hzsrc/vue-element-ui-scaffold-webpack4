@@ -1,19 +1,8 @@
 module.exports = {
     presets: [
-        [
-            '@babel/preset-env',
-            {
-                corejs: '3',
-                useBuiltIns: 'usage',
-                modules: false
-            }
-        ]
+        '@vue/app'
     ],
     plugins: [
-        '@babel/plugin-syntax-dynamic-import',
-        '@babel/plugin-transform-runtime',
-        '@babel/plugin-proposal-class-properties',
-        '@vue/babel-plugin-transform-vue-jsx',
         [
             'babel-plugin-component',
             {
@@ -23,5 +12,4 @@ module.exports = {
             }
         ]
     ],
-    comments: false,
 }

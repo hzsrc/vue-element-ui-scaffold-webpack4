@@ -1,27 +1,21 @@
-// http://eslint.org/docs/user-guide/configuring
-
 module.exports = {
     root: true,
+    env: {
+        node: true,
+        browser: true,
+    },
     parserOptions: {
         parser: 'babel-eslint',
         sourceType: 'module'
     },
-    env: {
-        browser: true,
-    },
-    extends: [
-        // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-        // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
+    'extends': [
         'plugin:vue/essential',
-        // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-        'standard'
+        'eslint:recommended'
     ],
-    // required to lint *.vue files
-    plugins: [
-        'vue'
-    ],
-    // add your custom rules here
-    'rules': {
+    rules: {
+        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+
         //"off"或0 -关闭规则
         //"warn" 或1 - 开启规则, 使用警告 程序不会退出
         //"error"或2 - 开启规则, 使用错误 程序退出
@@ -32,6 +26,8 @@ module.exports = {
         'semi': 'off',
         'spaced-comment': 'off',
         'eqeqeq': 1,
+        'no-unused-vars': 1,
+        'no-empty': 1,
         'no-useless-escape': 'off',
         'brace-style': 0,//大括号风格
         'curly': 'off', //[2, "all"],//必须使用 if(){} 中的{}
@@ -55,10 +51,8 @@ module.exports = {
         'arrow-parens': 0,
         // allow async-await
         'generator-star-spacing': 0,
-        // allow debugger during development
-        'no-debugger': 2,
         'no-eval': 0,
-        'standard/no-callback-literal': 1,
+        'no-extra-semi': 0,
     },
     'overrides': [
         {
