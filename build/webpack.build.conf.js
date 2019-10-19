@@ -9,7 +9,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 var OptimizeCssPlugin = require('optimize-css-map-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-var isProd = /prod|demo/.test(process.env.ENV_CONFIG)
+var isProd = 'prod' === process.env.ENV_CONFIG
 
 var webpackConfig = merge(baseWebpackConfig, {
     mode: 'production',
