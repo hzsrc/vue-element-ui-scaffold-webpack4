@@ -5,7 +5,7 @@ var appConfig = require('../config/app-config')
 var config = require('../config/index')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
 const forElementUI = require('webpack-theme-color-replacer/forElementUI')
-var isProd = /prod|demo/.test(process.env.ENV_CONFIG)
+var isProd = process.env.ENV_CONFIG === 'prod'
 
 module.exports = function (isBuild) {
     var plugins = [
@@ -30,7 +30,7 @@ module.exports = function (isBuild) {
             ],
             changeSelector: forElementUI.changeSelector,
             isJsUgly: isBuild,
-            injectCss: true,
+            // injectCss: false,
             // resolveCss(resultCss) { // optional. Resolve result css code as you wish.
             //     return resultCss + youCssCode
             // }

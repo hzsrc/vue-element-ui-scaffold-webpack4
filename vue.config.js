@@ -1,5 +1,5 @@
 const multiPage = require('./build/multi-page')
-const isBuild = process.argv0.indexOf('vue-cli-service build') > -1
+const isBuild = !!process.argv.join(' ').match(/vue\-cli\-service(.js)? build/)
 const getPlugins = require('./build/getPlugins.js')
 const config = require('./config/index')
 
@@ -9,7 +9,7 @@ module.exports = {
     assetsDir: config.assetsDir,
     productionSourceMap: config.productionSourceMap,
     pages: multiPage.getEntryPages(isBuild),
-    lintOnSave: true,
+    lintOnSave: false,
     runtimeCompiler: true, //设置为 true 后你就可以在 Vue 组件中使用 template 选项了. 增加 10kb 左右
     transpileDependencies: [], // Babel 显式转译
     css: {

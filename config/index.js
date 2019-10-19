@@ -2,7 +2,7 @@ module.exports = {
     publicPath: '',
     outputDir: 'dist',
     assetsDir: '',
-    productionSourceMap: true,
+    productionSourceMap: process.env.ENV_CONFIG !== 'prod',
     sourceMapPath: getSourceMapPath(),
 }
 
