@@ -16,7 +16,7 @@ npm install
 
 ### 多页面实现
 两种方式，自动输出html页面文件（html-webpack-plugin实现）：   
-*  在src/pages目录下添加任意js文件。js文件作为webpack入口；html页面模板是html.tpl.html，页面的文件名为js的文件名。
+*  在src/pages目录下添加任意js文件。js文件作为webpack入口；html页面模板是public/index.html，页面的文件名为js的文件名。
 *  在src/pages目录下建立任意文件夹，包含entry.js、template.html两个文件。entry.js作为webpack入口；html页面模板是template.html，页面的文件名为建立的文件夹名。
 
 ### 自动用svg生成iconfont字体图标，支持webpack热重载
