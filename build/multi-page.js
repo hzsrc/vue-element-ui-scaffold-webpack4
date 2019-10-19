@@ -20,7 +20,7 @@ function readPages() {
                     pageList.push({
                         entry: fullPath,
                         chunkName: baseName,
-                        template: 'html.tpl.html',
+                        template: 'public/index.html',
                     })
                 }
             }
@@ -58,6 +58,7 @@ exports.htmlPlugins = function (webackConfig) {
             title: appConfig.title,
             chunks: [...exChunks, page.chunkName],
             inject: true,
+            favicon: 'public/favicon.ico',
             // minify: {
             //     removeComments: true,
             //     collapseWhitespace: true,
