@@ -21,6 +21,7 @@
                     <div><a href="pageB.html">pageB</a></div>
                     <div><a href="themeColor.html">theme colors</a></div>
                     <div><a href="iconfontPreview.html">iconfont</a></div>
+                    <div><a href="main.html#/zrest">rest api tool</a></div>
                     {
                         /*IFDEBUG
                         <div>

@@ -41,7 +41,7 @@
 </template>
 
 <script>
-    import formatData from '../js/formatData'
+    import formatData from '../../js/formatData'
 
     export default {
         data() {
@@ -94,7 +94,7 @@
                 this.$router.push('/stage2')
             },
             getAndGo3() {
-                this.$router.push('/stage2/stage3')
+                this.$router.push('/stage3')
             },
             formatDate: formatData.formatDate,
             // loadExternalRoutes() {

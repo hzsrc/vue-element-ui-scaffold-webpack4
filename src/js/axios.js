@@ -35,7 +35,7 @@ axios.defaults.transformRequest = function (request) {
     return JSON.stringify(request)
 }
 
-const CoveredErrMsg = '服务器开小差啦，请稍后重试！'
+const CoveredErrMsg = '系统开小差了，请稍后重试～'
 // http请求拦截器
 axios.interceptors.request.use(function (config) {
     if (!config.noToken) {
