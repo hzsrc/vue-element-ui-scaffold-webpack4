@@ -109,9 +109,9 @@
         data() {
             return {
                 config: {
-                    server: '//eis-service.dev61.ums86.com',
-                    apiList: [{ url: '/home/login/us_pd', text: 'login', data: {} },
-                              { url: '/home/login/sp_bound', text: 'bound', data: {} }]
+                    server: 'http://your-server.com',
+                    apiList: [{ url: '/home/login/login', text: 'login', data: {} },
+                              { url: '/home/login/bound', text: 'bound', data: {} }]
                 },
                 showConfig: false,
 
