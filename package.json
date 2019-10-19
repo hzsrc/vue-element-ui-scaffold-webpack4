@@ -8,7 +8,7 @@
         "dev": "cross-env NODE_ENV=development ENV_CONFIG=dev vue-cli-service serve --mock",
         "start": "npm run dev",
         "serve": "npm run dev",
-        "build-dev": "cross-env NODE_ENV=development ENV_CONFIG=dev_build vue-cli-service build",
+        "build-dev": "cross-env NODE_ENV=production ENV_CONFIG=dev_build vue-cli-service build",
         "build-test": "cross-env NODE_ENV=production ENV_CONFIG=test vue-cli-service build",
         "build-demo": "cross-env NODE_ENV=production ENV_CONFIG=demo vue-cli-service build",
         "build": "cross-env NODE_ENV=production ENV_CONFIG=prod vue-cli-service build",
