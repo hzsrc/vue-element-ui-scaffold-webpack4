@@ -98,14 +98,6 @@
         "node": ">= 4.0.0",
         "npm": ">= 3.0.0"
     },
-    "browserslist": [
-        "Chrome >= 49",
-        "Firefox >= 63",
-        "Safari >= 12",
-        "Edge >= 17",
-        "iOS >= 8",
-        "IE >= 10"
-    ],
     "directories": {
         "test": "test"
     },
