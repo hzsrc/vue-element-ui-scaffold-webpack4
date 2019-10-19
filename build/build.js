@@ -1,6 +1,4 @@
-//生成主题颜色变量，供生成过程中使用
 var rm = require('rimraf')
-require('./make-element-theme.js')(null, true);
 
 process.env.NODE_ENV = 'production'
 
