@@ -143,8 +143,8 @@
 
             var resp = (res) => {
                 var data = res.data || {};
-                var retCode = Number(data.returnCode);
-                if (retCode == 110 || retCode == 111) { // token失败
+                var retCode = Number(data.status);
+                if (retCode == 2) { // token失败
                     msgDlg.confirm('您需要重新登陆', '提示')
                         .then(this.goLogin)
                         .catch(r => {})
