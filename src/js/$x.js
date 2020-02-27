@@ -1,4 +1,3 @@
-import CONST from './CONST.js'
 import StorageUtil from './utils/storageUtil.js'
 import platform from './utils/platform.js'
 import tokenUtil from './utils/tokenUtil.js'
@@ -22,7 +21,6 @@ var mixed = {
     ...msgDialog,
     ...httpUtil,
     storageUtil: new StorageUtil(),
-    CONST,
     tokenUtil,
 }
 

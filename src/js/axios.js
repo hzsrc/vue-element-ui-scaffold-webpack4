@@ -10,19 +10,11 @@ maskOptions:  表示请求时显示遮罩层的选项。默认{body: true}
 
 import axios from 'axios'
 import appConfig from '../../config/app-config'
-import CONST from './CONST'
 import tokenUtil from './utils/tokenUtil'
 import msgDlg from './utils/msgDialog'
 import loading from './utils/loading'
 
 var serverMap = require('../../config/serverMap.js')
-
-//for el-upload
-axios.getYxtHeaders = function () {
-    var r = {}
-    r[CONST.TOKEN_HEADER] = tokenUtil.token
-    return r
-}
 
 // 超时时间
 // axios.defaults.timeout = 8000
@@ -39,7 +31,7 @@ const CoveredErrMsg = '系统开小差了，请稍后重试～'
 // http请求拦截器
 axios.interceptors.request.use(function (config) {
     if (!config.noToken) {
-        config.headers[CONST.TOKEN_HEADER] = tokenUtil.token
+        config.headers['token'] = tokenUtil.token
     }
     //将 {node_api}/xxx/yyy 的url替换为对应服务的前缀
     config.url = config.url.replace(/^\{(\w+)\}/, (m, $1) => serverMap[$1] || '');
@@ -102,7 +94,7 @@ function fail(error) {
 function showErr(config, errmsg) {
     if (config && config.showError === 'alert')
         msgDlg.alert(errmsg, { type: 'error' });
-    else if (config && config.showError !== false)
+    else
         msgDlg.toast.error(errmsg);
 }
 
