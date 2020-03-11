@@ -8,7 +8,7 @@ module.exports = {
                 { 'id': 3, 'title': 'Charli XCX - Sucker CD', 'price': 19.99, 'inventory': 5 }
             ],
             'msg': '',
-            'returnCode': '0'
+            status: 0
         }
     }
 }

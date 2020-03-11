@@ -28,6 +28,4 @@ class StorageUtil {
     }
 }
 
-export default new StorageUtil()
-export { StorageUtil }
-
+export default StorageUtil
