@@ -14,7 +14,6 @@ import msgDlg from './utils/msgDialog'
 import loading from './utils/loading'
 
 const serverMap = require('../../config/serverMap.js')
-
 // 超时时间
 // axios.defaults.timeout = 8000
 axios.defaults.baseURL = serverMap.base
@@ -92,12 +91,11 @@ function fail(error) {
     return Promise.reject(error)
 }
 
-function showErr(config, msg) {
-    const cfg = config && config.showError
-    if (cfg === 'alert')
-        msgDlg.alert(msg, { type: 'error' });
-    else if (cfg !== false)
-        msgDlg.toast.error(msg);
+function showErr(config, errmsg) {
+    if (config && config.showError === 'alert')
+        msgDlg.alert(errmsg, { type: 'error' });
+    else
+        msgDlg.toast.error(errmsg);
 }
 
 export default axios

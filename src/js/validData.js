@@ -2,14 +2,6 @@
 输入数据校验组件
 */
 export default {
-    //检测长度是否在min和max之间（包含min、max）
-    checkLen(str, min, max) {
-        var len = (str || '').length;
-        var ret;
-        if (parseInt(min) > 0) ret = len >= min;
-        if (ret && parseInt(max) > 0) ret = len <= max;
-        return ret;
-    },
     checkMobile(rule, value, callback) {
         if (!value) {
             return callback(new Error('请输入手机号码'));
@@ -29,7 +21,10 @@ export default {
             return callback();
         }
     },
-    isValidEmail(value) {
+    checkValiCode(str) {
+        return this.checkLen(str, $x.CONST.SMS_VALI_CODE_LENGTH, $x.CONST.SMS_VALI_CODE_LENGTH)
+    },
+    checkEmail(value) {
         return /^[\w\.\-]*\w@[\w\.\-]+\.[\w\.\-]+$/.test(value)
     }
 }
