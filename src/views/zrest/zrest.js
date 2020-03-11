@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import rest from './rest.vue';
+import zrest from './zrest.vue';
 
 require('../../css/utils.scss');
 
 
 new Vue({
     el: '#app',
-    template: '<rest></rest>',
-    components: { rest }
+    template: '<zrest></zrest>',
+    components: { zrest }
 })
