@@ -1,7 +1,7 @@
 {
-    "name": "hz300-plat",
-    "version": "1.0.0",
-    "description": "hz300-plat",
+    "name": "vue-element-ui-scaffold-webpack4",
+    "version": "1.0.9",
+    "description": "vue-element-ui-scaffold-webpack4",
     "author": "huangzheng",
     "private": true,
     "scripts": {
