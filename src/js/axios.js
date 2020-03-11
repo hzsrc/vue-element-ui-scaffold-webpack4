@@ -67,7 +67,7 @@ function doLogin() {
         msgDlg.alert('尚未登录或登录超时，请重新登录', '提示', {
             callback: action => {
                 if (action === 'cancel')
-                    reject()
+                    reject(new Error())
                 else {
                     let url = appConfig.LOGIN_PATH
                     const path = location.href.match(/https?:\/\/[^\/]+(\/.+)/i)[1]

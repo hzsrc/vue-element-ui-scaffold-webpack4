@@ -21,9 +21,6 @@ export default {
             return callback();
         }
     },
-    checkValiCode(str) {
-        return this.checkLen(str, $x.CONST.SMS_VALI_CODE_LENGTH, $x.CONST.SMS_VALI_CODE_LENGTH)
-    },
     checkEmail(value) {
         return /^[\w\.\-]*\w@[\w\.\-]+\.[\w\.\-]+$/.test(value)
     }

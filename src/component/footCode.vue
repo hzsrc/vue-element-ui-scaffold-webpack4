@@ -17,7 +17,7 @@
         },
         /* IFTRUE_envTest */
         created() {
-            this.testMsg = `This message is only shown while process.env.ENV_CONFIG === 'test'. (by js-conditional-compile-loader)`
+            this.testMsg = 'This message is only shown while process.env.ENV_CONFIG === \'test\'. (by js-conditional-compile-loader)'
         }
         /* FITRUE_envTest */
     }
