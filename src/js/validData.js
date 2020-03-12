@@ -1,5 +1,3 @@
-import $x from './$x.js';
-
 /*
 输入数据校验组件
 */
@@ -22,9 +20,6 @@ export default {
         } else {
             return callback();
         }
-    },
-    checkValiCode(str) {
-        return this.checkLen(str, $x.CONST.SMS_VALI_CODE_LENGTH, $x.CONST.SMS_VALI_CODE_LENGTH)
     },
     checkEmail(value) {
         return /^[\w\.\-]*\w@[\w\.\-]+\.[\w\.\-]+$/.test(value)

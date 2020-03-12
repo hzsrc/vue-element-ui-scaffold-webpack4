@@ -3,7 +3,7 @@ module.exports = {
         [
             '@babel/preset-env',
             {
-                corejs: '3',
+                corejs: 3,
                 useBuiltIns: 'usage',
                 modules: false
             }
@@ -11,8 +11,8 @@ module.exports = {
     ],
     plugins: [
         '@babel/plugin-syntax-dynamic-import',
-        '@babel/plugin-transform-runtime',
-        '@babel/plugin-proposal-class-properties',
+        //'@babel/plugin-transform-runtime', //用了useBuiltIns不需要它
+        ['@babel/plugin-proposal-class-properties', { loose: true }],
         '@vue/babel-plugin-transform-vue-jsx',
         [
             'babel-plugin-component',

@@ -5,6 +5,6 @@ module.exports = {
         delayed: '1 seconds',
         'data': { a: 11, b: 22, id: 1 },
         'msg': '',
-        'returnCode': '0'
+        'status': 0
     }
 }

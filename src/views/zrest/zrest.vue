@@ -99,9 +99,10 @@
     import httpUtil from '../../js/utils/httpUtil';
     import Vue from 'vue'
     import { Row, Col, Input, Button, Form, FormItem, Select, Option } from 'element-ui'
-    import storageUtil from '../../js/utils/storageUtil';
+    import StorageUtil from '../../js/utils/storageUtil';
     import msgDlg from '../../js/utils/msgDialog'
 
+    const storageUtil = new StorageUtil()
     Vue.use(Row).use(Col).use(Input).use(Button).use(Form).use(FormItem).use(Select).use(Option)
 
     export default {
@@ -110,8 +111,10 @@
             return {
                 config: {
                     server: 'http://your-server.com',
-                    apiList: [{ url: '/home/login/login', text: 'login', data: {} },
-                              { url: '/home/login/bound', text: 'bound', data: {} }]
+                    apiList: [
+                        { url: '/home/login/login', text: 'login', data: {} },
+                        { url: '/home/login/bound', text: 'bound', data: {} }
+                    ]
                 },
                 showConfig: false,
 
@@ -136,18 +139,19 @@
             this.setApiData();
             this.changeServer();
 
-            httpUtil.http.interceptors.request.use(config => {
+            httpUtil.axios.interceptors.request.use(config => {
                 this.axiosCfg = config
                 return config
             })
 
             var resp = (res) => {
                 var data = res.data || {};
-                var retCode = Number(data.returnCode);
-                if (retCode == 110 || retCode == 111) { // token失败
+                var retCode = Number(data.status);
+                if (retCode == 2) { // token失败
                     msgDlg.confirm('您需要重新登陆', '提示')
                         .then(this.goLogin)
-                        .catch(r => {})
+                        .catch(r => {
+                        })
                 }
 
                 var config = this.axiosCfg
@@ -160,15 +164,15 @@
                 this.saveToLocal(config.url, config.data)
 
                 this.response.result = this.request.method + ' ' + res.request.responseURL;
-                this.response.status = res.status || (res.response.status + ' ' + res.message);
+                this.response.status = res.status || ((res.response && res.response.status) + ' ' + res.message);
                 this.response.json = JSON.stringify(res.data, null, 4)
             }
-            httpUtil.http.interceptors.response.handlers.splice(0)
-            httpUtil.http.interceptors.response.use(resp, resp)
+            httpUtil.axios.interceptors.response.handlers.splice(0)
+            httpUtil.axios.interceptors.response.use(resp, resp)
         },
         methods: {
             changeServer() {
-                httpUtil.http.defaults.baseURL = this.config.server
+                httpUtil.axios.defaults.baseURL = this.config.server
             },
             changeImport(val) {
                 this.configJSON = val
@@ -185,16 +189,16 @@
                     if (!this.request.data) this.request.data = '{}';
                     var data = parseJSON(this.request.data)
                     httpUtil[method](this.request.url, data, { maskOptions: false })
-                }
-                catch (e) {
+                } catch (e) {
                     this.response.status = String(e)
                 }
             },
             loadRAP() {
-                // httpUtil.http.defaults.withCredentials = false
-                // httpUtil.http.defaults.timeout = 180000
-                var url = prompt('输入RAP导出地址：（替换projectId为对应的RAP项目id）\n然后复制弹出窗口的文本到“加载配置”中加载'
-                                 , 'http://10.0.0.170:9191/api/queryRAPModel.do?projectId=110')
+                // httpUtil.axios.defaults.withCredentials = false
+                // httpUtil.axios.defaults.timeout = 180000
+                var url = prompt(
+                    '输入RAP导出地址：（替换projectId为对应的RAP项目id）\n然后复制弹出窗口的文本到“加载配置”中加载'
+                    , 'http://10.0.0.170:9191/api/queryRAPModel.do?projectId=110')
                 var reg = url.match(/(.+)api\/.+projectId=(\d+)/) || {}
                 this.rapBase = `${reg[1]}workspace/myWorkspace.do?projectId=${reg[2]}`
                 if (url) {
@@ -210,8 +214,7 @@
                 var index = apis.findIndex(api => api.url == url)
                 if (index == -1) {
                     apis.push({ url, data: JSON.parse(data) })
-                }
-                else {
+                } else {
                     apis[index].data = JSON.parse(data)
                 }
 
@@ -234,8 +237,7 @@
                 if (index > -1) {
                     var url = this.config.apiList[index].rapUrl;
                     window.open(url)
-                }
-                else {
+                } else {
                     alert('没找到这个接口的RAP')
                 }
             },
@@ -274,8 +276,7 @@
                     })
                     storageUtil.setObj('zrest_apis', list)
                     this.config.apiList = this.apiAll = list
-                }
-                else {
+                } else {
                     Object.assign(this.request, data.request)
                     Object.assign(this.config, data.config)
                 }

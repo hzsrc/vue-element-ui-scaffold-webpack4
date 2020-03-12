@@ -4,7 +4,7 @@ module.exports = {
         return {
             'data': '',
             'msg': '',
-            'returnCode': '0'
+            'status': 0
         }
     }
 }

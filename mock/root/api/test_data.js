@@ -11,7 +11,7 @@ module.exports = {
         var pageIndex = post.pageIndex
         var pageSize = post.pageSize
         return {
-            returnCode: 0,
+            status: 0,
             data: new Array(pageSize).fill().map((n, i) => {
                 var id = pageIndex * pageSize + i
                 return {
