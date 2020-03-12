@@ -30,14 +30,6 @@ const formatData = {
     padLeftZero(str) {
         return ('00' + str).substr(str.length);
     },
-    // 小数点
-    fixNumber(v) {
-        return Number(v).toFixed(3);
-    },
-    //将手机号中间变成****
-    mdnHidden(mdn) {
-        return mdn.replace(/(\d{3})\d{4}(\d+)/, '$1****$2')
-    }
 };
 
 export default formatData;
