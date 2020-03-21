@@ -8,6 +8,7 @@ var appConfig = require('../config/app-config')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
 const forElementUI = require('webpack-theme-color-replacer/forElementUI')
 const JoinFileContentPlugin = require('join-file-content-plugin')
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -43,7 +44,6 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
-                options: {}
             },
             {
                 test: /\.js$/,
@@ -81,6 +81,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new HardSourceWebpackPlugin(),
         new VueLoaderPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
