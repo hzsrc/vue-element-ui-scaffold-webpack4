@@ -18,7 +18,8 @@
         "lint": "eslint --ext .js,.vue src",
         "fixlint": "eslint --fix --ext .js,.vue src",
         "build-font": "node -e \"require('./build/svg2font.js').build()\"",
-        "show-map": "node -e \"console.log(require('./config').build.sourceMapPath)\""
+        "show-map": "node -e \"console.log(require('./config').build.sourceMapPath)\"",
+        "rmcache": "node -e \"require('rimraf')('./node_modules/.cache', console.log)\""
     },
     "dependencies": {
         "axios": "^0.19.0",
