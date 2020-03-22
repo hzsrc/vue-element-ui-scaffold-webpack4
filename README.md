@@ -55,7 +55,7 @@ css按需加载的来源直接指向element-ui的scss文件，而不是预编译
 使用postcss-pxtorem插件自动将css中的单位由px转化为rem，开发时仍使用px做为css长度单位。1rem = 100px，调试时换算方便。pc和移动端通用（移动端最好将element-ui换为其他UI框架）。   
 
 ### 浏览器兼容性
-兼容IE10及以上、Chrome、Firefox、Safari、QQ、360、2345等浏览器。如果需要改为移动端，请修改package.json中的browserslist选项为移动端版本。
+兼容IE10及以上、Chrome、Firefox、Safari、QQ、360、2345等浏览器。如果需要改为移动端，请修改.browsersrc为移动端版本。
 
 ## 3. 命令说明
 ### 本地开发
@@ -112,6 +112,6 @@ npm run mock
 ```
 npm run proxy80
 ```
-通过代理到80端口或443端口，可实现https访问，也可实现访问时隐藏端口。结合系统hosts配置，可用于模拟使用域名访问本地开发环境（例如调试微信）。
+通过将现有端口（80xx端口）代理到80端口或443端口，可实现访问时隐藏端口，也可实现https访问。结合系统hosts配置127.0.0.1为指定的域名，可直接用域名访问本地调试页面，用于调试一些必须使用域名访问的场景（例如调试微信，详见：https://www.cnblogs.com/hz-blog/p/wechat-local-debug-domain.html）。
 
 
