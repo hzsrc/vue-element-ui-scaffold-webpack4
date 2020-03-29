@@ -10,5 +10,6 @@ module.exports = new WebpackIconfontPluginNodejs({
     // htmlOutput: path.join(dir, 'fonts/_font-preview.html'),
     jsOutput: path.join(dir, 'fonts/fonts.js'),
     formats: ['ttf', 'woff2', 'woff', 'svg'],
-    cssPrefix: 'my-icon'
+    cssPrefix: 'my-icon',
+    startUnicode: 300,
 })
