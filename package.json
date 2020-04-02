@@ -16,7 +16,7 @@
         "mock": "node -e \"require('dynamic-mocker').start('./mock/mock-config.js')\" ",
         "proxy80": "node -e \"require('dynamic-mocker').start('./mock/mock-proxy80.js')\" ",
         "lint": "eslint --ext .js,.vue src",
-        "fixlint": "eslint --fix --ext .js,.vue src",
+        "fixlint": "eslint --fix --ext .js,.vue src mock",
         "build-font": "node -e \"require('./build/svg2font.js').build()\"",
         "show-map": "node -e \"console.log(require('./config').build.sourceMapPath)\"",
         "rmcache": "node -e \"require('rimraf')('./node_modules/.cache', console.log)\""
