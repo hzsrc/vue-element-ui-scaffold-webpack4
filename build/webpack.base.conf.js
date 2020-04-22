@@ -90,7 +90,7 @@ module.exports = {
         // 将theme-changed.scss应用到element-ui，供babel-plugin-component按需加载
         new JoinFileContentPlugin({
             file: 'node_modules/element-theme-chalk/src/common/var.scss',
-            prependFile: 'src/css/element-theme/theme-changed.scss'
+            prependFile: 'src/css/element-var-changed.scss'
         }),
         //生成仅包含颜色的替换样式（主题色等）
         new ThemeColorReplacer({
