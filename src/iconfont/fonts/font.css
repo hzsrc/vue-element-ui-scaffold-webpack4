@@ -1,9 +1,9 @@
 @font-face {
     font-family: my-app-icon;
-    src: url("my-app-icon.woff2?57488b65") format("woff2"),
-             url("my-app-icon.woff?57488b65") format("woff"),
-             url("my-app-icon.ttf?57488b65") format("truetype"),
-             url("my-app-icon.svg?57488b65#my-app-icon") format("svg");
+    src: url("my-app-icon.woff2?891ddab4") format("woff2"),
+             url("my-app-icon.woff?891ddab4") format("woff"),
+             url("my-app-icon.ttf?891ddab4") format("truetype"),
+             url("my-app-icon.svg?891ddab4#my-app-icon") format("svg");
     font-weight: normal;
     font-style: normal;
 }
@@ -17,22 +17,22 @@
 
 
 .my-icon-bookmark::before {
-    content: "\ea01";
+    content: "\12c";
 }
 
 .my-icon-calendar::before {
-    content: "\ea02";
+    content: "\12d";
 }
 
 .my-icon-state-beinvited::before {
-    content: "\ea03";
+    content: "\12e";
 }
 
 .my-icon-success::before {
-    content: "\ea04";
+    content: "\12f";
 }
 
 .my-icon-warning::before {
-    content: "\ea05";
+    content: "\130";
 }
 

@@ -10,18 +10,10 @@
             <el-form-item label="服务器地址2">
                 <el-input size="small" v-model="config.server" @change="changeServer"></el-input>
             </el-form-item>
-            <el-form-item label="接口选择">
+            <el-form-item label="">
                 <table class="w100">
                     <tr>
-                        <td>
-                            <el-select size="small" v-model="request.url" @change="setApiData" class="w100" filterable
-                                       placeholder="输入搜索">
-                                <el-option v-for="(item,index) in config.apiList" :key="index"
-                                           :label="item.text" :value="item.url">
-                                </el-option>
-                            </el-select>
-                        </td>
-                        <td style="width:12%" class="t-right">
+                        <td colspan="2">
                             <el-button size="small" @click="loadRAP" class="right">加载RAP接口列表</el-button>
                         </td>
                     </tr>
@@ -49,7 +41,14 @@
 
 
         <el-form labelWidth="120px">
-
+            <el-form-item label="接口选择">
+                <el-select size="small" v-model="request.url" @change="setApiData" class="w100" filterable
+                           placeholder="输入搜索">
+                    <el-option v-for="(item,index) in config.apiList" :key="index"
+                               :label="item.text" :value="item.url">
+                    </el-option>
+                </el-select>
+            </el-form-item>
             <el-form-item label="接口地址">
                 <table class="w100">
                     <tr>
@@ -110,15 +109,15 @@
         data() {
             return {
                 config: {
-                    server: 'http://your-server.com',
+                    server: 'http://localhost:8087',
                     apiList: [
-                        { url: '/home/login/login', text: 'login', data: {} },
-                        { url: '/home/login/bound', text: 'bound', data: {} }
+                        { url: '/api/test_data', text: 'test_data', data: {} },
+                        { url: '/getProducts', text: 'getProducts', data: {} }
                     ]
                 },
                 showConfig: false,
 
-                httpMethods: ['POST', 'GET'],
+                httpMethods: ['POST', 'GET', 'PUT', 'DELETE'],
                 request: {
                     method: 'POST',
                     url: '',
@@ -134,7 +133,9 @@
             };
         },
         created() {
-            this.config.apiList = this.apiAll = storageUtil.getObj('zrest_apis') || []
+            var saved = storageUtil.getObj('zrest_apis')
+            if (saved) this.config.apiList = saved
+            this.apiAll = this.config.apiList
             this.request.url = storageUtil.getObj('zrest_lastUrl')
             this.setApiData();
             this.changeServer();
