@@ -14,7 +14,7 @@ const util = {
     }
 }
 
-var mixed = {
+const mixed = {
     ...util,
     ...msgDialog,
     ...httpUtil,

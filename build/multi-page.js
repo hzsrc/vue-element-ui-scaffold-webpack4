@@ -2,21 +2,21 @@
 const path = require('path')
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-var config = require('../config')
+const config = require('../config')
 const appConfig = require('../config/app-config')
 
-var pageList = null;
+let pageList = null;
 
 function readPages() {
     if (!pageList) {
         const pagesPath = path.resolve('./src/pages');
         pageList = []
         fs.readdirSync(pagesPath).forEach(pageFile => {
-            var fullPath = pagesPath + '/' + pageFile
-            var isDir = fs.statSync(fullPath).isDirectory()
+            const fullPath = pagesPath + '/' + pageFile
+            const isDir = fs.statSync(fullPath).isDirectory()
             if (!isDir) {
                 if (pageFile.slice(-3) == '.js') {
-                    var baseName = pageFile.slice(0, pageFile.lastIndexOf('.'));
+                    const baseName = pageFile.slice(0, pageFile.lastIndexOf('.'));
                     pageList.push({
                         entry: fullPath,
                         chunkName: baseName,
@@ -49,10 +49,10 @@ exports.getEntryPages = function () {
 }
 
 exports.htmlPlugins = function (webackConfig) {
-    var exChunks = config.isBuild ? ['manifest', 'vendor'] : [];
-    var list = readPages().map(page => {
+    const exChunks = config.isBuild ? ['manifest', 'vendor'] : [];
+    const list = readPages().map(page => {
         // see https://github.com/ampedandwired/html-webpack-plugin
-        var options = {
+        const options = {
             filename: page.chunkName + '.html',
             template: page.template,
             title: appConfig.title,

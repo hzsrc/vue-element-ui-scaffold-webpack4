@@ -4,15 +4,15 @@ export function loadScripts(urls, callback) {
         if (callback) callback()
         return
     }
-    var loaded = 0
-    var loadedIndex = {}
+    let loaded = 0
+    const loadedIndex = {}
     urls.map((url, index) => {
         if (document.querySelector('script[src="' + url + '"]')) {
             onScriptLoad(index)
         } else {
-            var script = document.createElement('script')
+            const script = document.createElement('script')
             script.setAttribute('src', url)
-            var cb = onScriptLoad.bind(script, index)
+            const cb = onScriptLoad.bind(script, index)
             script.onload = cb
             script.onerror = cb
             document.querySelector('head').appendChild(script)

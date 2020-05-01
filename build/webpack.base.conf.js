@@ -1,10 +1,10 @@
-var path = require('path')
-var utils = require('./utils')
-var multiPage = require('./multi-page')
-var config = require('../config')
-var webpack = require('webpack')
-const {VueLoaderPlugin} = require('vue-loader');
-var appConfig = require('../config/app-config')
+const path = require('path')
+const utils = require('./utils')
+const multiPage = require('./multi-page')
+const config = require('../config')
+const webpack = require('webpack')
+const { VueLoaderPlugin } = require('vue-loader');
+const appConfig = require('../config/app-config')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
 const forElementUI = require('webpack-theme-color-replacer/forElementUI')
 const JoinFileContentPlugin = require('join-file-content-plugin')
@@ -25,7 +25,7 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
-            'vue$': 'vue/dist/vue.esm.js',
+            vue$: 'vue/dist/vue.esm.js',
             '@': resolve('src')
         }
     },
@@ -55,7 +55,7 @@ module.exports = {
                         loader: 'js-conditional-compile-loader',
                         options: {
                             isDebug: process.env.NODE_ENV === 'development', // optional, this expression is default
-                            envTest: process.env.ENV_CONFIG === 'test',  // any name you want, used for /* IFTRUE_evnTest ...js code... FITRUE_evnTest */
+                            envTest: process.env.ENV_CONFIG === 'test', // any name you want, used for /* IFTRUE_evnTest ...js code... FITRUE_evnTest */
                             isPreview: process.env.npm_config_preview, // npm run build-demo --preview, for mock client data
                         }
                     },
@@ -96,8 +96,8 @@ module.exports = {
         new ThemeColorReplacer({
             fileName: 'css/theme-colors.[contenthash:8].css',
             matchColors: [
-                ...forElementUI.getElementUISeries(appConfig.themeColor),  //element-ui主色系列
-                '#0cdd3a',  //自定义颜色
+                ...forElementUI.getElementUISeries(appConfig.themeColor), //element-ui主色系列
+                '#0cdd3a', //自定义颜色
                 '#c655dd',
             ],
             changeSelector: forElementUI.changeSelector,

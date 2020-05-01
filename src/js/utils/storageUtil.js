@@ -8,10 +8,10 @@ class StorageUtil {
     }
 
     getObj(name) {
-        var r = this.caches[name]
+        const r = this.caches[name]
         if (r !== undefined) return r
         try {
-            var str = this.storage.getItem(name);
+            const str = this.storage.getItem(name);
             return str && JSON.parse(str);
         } catch (e) {
             console.warn(e)

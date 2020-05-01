@@ -15,8 +15,9 @@
             return (
                 <div class="pd-10 bg">
                     <h3><i className="my-icon-warning"></i>
-                        Hi {this.name}, Login goes here
+                        Hi {this.name}, here is the entry
                     </h3>
+                    <hr/>
                     <div><a href="main.html">main</a></div>
                     <div><a href="pageB.html">pageB</a></div>
                     <div><a href="themeColor.html">theme colors</a></div>
@@ -46,5 +47,9 @@
         h3 {
             font-size: 20px
         }
+    }
+
+    .lg-form {
+        width: 200px;
     }
 </style>

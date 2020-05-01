@@ -1,6 +1,6 @@
 const WebpackIconfontPluginNodejs = require('webpack-iconfont-plugin-nodejs');
 const path = require('path');
-var dir = 'src/iconfont'
+const dir = 'src/iconfont'
 module.exports = new WebpackIconfontPluginNodejs({
     fontName: 'my-app-icon',
     svgs: path.join(dir, 'svgs/*.svg'),

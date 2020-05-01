@@ -26,7 +26,7 @@ QueryEls.prototype = {
     },
     //从第一个子节点查找
     find(selector) {
-        var el = this.els[0]; //注意，只取第一个
+        const el = this.els[0]; //注意，只取第一个
         return el ? new QueryEls(selector, el) : new QueryEls();
     },
     //遍历, fn(el, index)
@@ -35,13 +35,13 @@ QueryEls.prototype = {
         return this;
     },
     elDo(doByEl, index = 0) { //针对第一个元素进行操作，或者返回值
-        var e = this.els[index];
+        const e = this.els[index];
         return e && doByEl(e);
     }
 }
 
 function callEach(arr, fn) {
-    for (var i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
         try {
             fn(arr[i], i);
         }
@@ -50,7 +50,7 @@ function callEach(arr, fn) {
     }
 }
 
-var $x = function (selector, context) {
+const $x = function (selector, context) {
     return new QueryEls(selector, context)
 };
 

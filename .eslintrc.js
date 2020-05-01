@@ -48,6 +48,7 @@ module.exports = {
         'no-duplicate-imports': 0,
         'operator-linebreak': 0,
         'no-undef': 2,
+        'no-var': 1, //是否可使用var
         'no-extend-native': 0,
         'no-sequences': 0,
 

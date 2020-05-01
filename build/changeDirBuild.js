@@ -1,20 +1,21 @@
 //当dist作为服务目录时，避免出现build期间网站不能访问。
 //如果不是以dist做服务目录，无需此过程
 
-var rm = require('rimraf')
-var fs = require('fs');
+const rm = require('rimraf')
+const fs = require('fs');
+const chalk = require('chalk');
 
 module.exports = function changeDirBuild(webpackConfig, doWebpack) {
-    var distDir = webpackConfig.output.path;
-    var ingDir = distDir + '-ing';
-    var delDir = distDir + '-del';
+    const distDir = webpackConfig.output.path;
+    const ingDir = distDir + '-ing';
+    const delDir = distDir + '-del';
     webpackConfig.output.path = ingDir;
 
     doWebpack(renameDir);
 
     function renameDir(err) {
         if (err) throw err;
-        var tryCount = 0;
+        let tryCount = 0;
         try {
             if (fs.existsSync(delDir)) rm(delDir, step1);
             else step1()

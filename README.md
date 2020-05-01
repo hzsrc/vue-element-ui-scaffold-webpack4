@@ -93,13 +93,13 @@ npm run build-dev
 npm run build-preview
 ```
 会启用静态mock数据，无需后端服务，使用mock数据来模拟ajax调用（前提是对应的api接口写了mock数据）。
-等同于npm run build --preview。
+等同于`npm run build --preview && npm run play-dist`。
 
 ### 查看dist目录运行结果
 ```
 npm run play-dist
 ```
-以dist目录为根目录，启动一个静态http服务，用于查看发布后dist目录的运行结果。
+以dist目录为根目录，启动一个本地静态http服务，用于查看发布后dist目录的运行结果。
 
 ### 启动mock服务
 ```

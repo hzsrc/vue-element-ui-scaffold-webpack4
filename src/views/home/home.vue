@@ -66,7 +66,7 @@
                     })
             },
             callLoading() {
-                var pars = { pageSize: this.pageSize, pageIndex: this.pageIndex }
+                const pars = { pageSize: this.pageSize, pageIndex: this.pageIndex }
                 this.$x.post('/api/test_data', pars)
                     .then(res => {
                         this.dataList = res.data;

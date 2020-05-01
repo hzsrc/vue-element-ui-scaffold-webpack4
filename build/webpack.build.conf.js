@@ -1,17 +1,17 @@
-var path = require('path')
-var utils = require('./utils')
-var multiPage = require('./multi-page')
-var webpack = require('webpack')
-var config = require('../config')
-var merge = require('webpack-merge')
-var baseWebpackConfig = require('./webpack.base.conf')
-var CopyWebpackPlugin = require('copy-webpack-plugin')
-var OptimizeCssPlugin = require('optimize-css-map-webpack-plugin')
+const path = require('path')
+const utils = require('./utils')
+const multiPage = require('./multi-page')
+const webpack = require('webpack')
+const config = require('../config')
+const merge = require('webpack-merge')
+const baseWebpackConfig = require('./webpack.base.conf')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const OptimizeCssPlugin = require('optimize-css-map-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-var isProd = 'prod' === process.env.ENV_CONFIG
+const isProd = process.env.ENV_CONFIG === 'prod'
 
-var webpackConfig = merge(baseWebpackConfig, {
+const webpackConfig = merge(baseWebpackConfig, {
     mode: 'production',
     module: {
         rules: utils.styleLoaders({
@@ -107,26 +107,10 @@ if (config.build.productionSourceMap) {
     )
 }
 
-if (config.build.productionGzip) {
-    var CompressionWebpackPlugin = require('compression-webpack-plugin')
 
-    webpackConfig.plugins.push(
-        new CompressionWebpackPlugin({
-            asset: '[path].gz[query]',
-            algorithm: 'gzip',
-            test: new RegExp(
-                '\\.(' +
-                config.build.productionGzipExtensions.join('|') +
-                ')$'
-            ),
-            threshold: 10240,
-            minRatio: 0.8
-        })
-    )
-}
-
-if (config.build.bundleAnalyzerReport) {
-    var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+// `npm run build --report`
+if (process.env.npm_config_report) {
+    const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
     webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
 

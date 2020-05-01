@@ -6,7 +6,7 @@ export let curColor = appConfig.themeColor
 
 // 动态切换主题色
 export function changeThemeColor(newColor) {
-    var options = {
+    const options = {
         newColors: [...forElementUI.getElementUISeries(newColor), '#ff0000', '#ffff00'],
     }
     return client.changer.changeColor(options, Promise)

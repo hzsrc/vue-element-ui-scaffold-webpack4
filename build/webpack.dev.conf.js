@@ -1,10 +1,10 @@
-var utils = require('./utils')
-var multiPage = require('./multi-page')
-var webpack = require('webpack')
-var config = require('../config')
-var merge = require('webpack-merge')
-var baseWebpackConfig = require('./webpack.base.conf')
-var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const utils = require('./utils')
+const multiPage = require('./multi-page')
+const webpack = require('webpack')
+const config = require('../config')
+const merge = require('webpack-merge')
+const baseWebpackConfig = require('./webpack.base.conf')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const webpackIconfontPluginNodejs = require('./svg2font.js')
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 
@@ -18,7 +18,7 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 module.exports = merge(baseWebpackConfig, {
     mode: 'development',
     module: {
-        rules: utils.styleLoaders({sourceMap: config.dev.cssSourceMap, extract: false})
+        rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, extract: false })
     },
     devtool: false, // see SourceMapDevToolPlugin
     plugins: [

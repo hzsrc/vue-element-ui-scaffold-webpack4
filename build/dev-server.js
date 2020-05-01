@@ -1,13 +1,13 @@
-var config = require('../config')
+const config = require('../config')
 
-var opn = require('opn')
-var path = require('path')
-var express = require('express')
-var webpack = require('webpack')
-var webpackConfig = require('./webpack.dev.conf')
+const opn = require('opn')
+const path = require('path')
+const express = require('express')
+const webpack = require('webpack')
+const webpackConfig = require('./webpack.dev.conf')
 
 // default port where dev server listens for incoming traffic
-var port = process.env.PORT || config.dev.port
+const port = process.env.PORT || config.dev.port
 
 // Define HTTP proxies to your custom API backend
 // https://github.com/chimurai/http-proxy-middleware
@@ -15,7 +15,7 @@ var port = process.env.PORT || config.dev.port
 // var proxyTable = config.dev.proxyTable
 
 //进度
-var readline = require('readline');
+const readline = require('readline');
 webpackConfig.plugins.push(new webpack.ProgressPlugin((percentage, msg) => {
     //移动光标
     readline.clearLine(process.stdout);
@@ -23,10 +23,10 @@ webpackConfig.plugins.push(new webpack.ProgressPlugin((percentage, msg) => {
     readline.moveCursor(process.stdout, 0, -1);
 }));
 
-var app = express()
-var compiler = webpack(webpackConfig);
+const app = express()
+const compiler = webpack(webpackConfig);
 
-var devMiddleware = require('webpack-dev-middleware')(compiler, {
+const devMiddleware = require('webpack-dev-middleware')(compiler, {
     publicPath: webpackConfig.output.publicPath,
     serverSideRender: false,
     watchOptions: {
@@ -39,19 +39,7 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
     stats: 'minimal'
 })
 
-var hotMiddleware = require('webpack-hot-middleware')(compiler, {
-    log: () => {
-    }
-})
-
-// proxy api requests
-// Object.keys(proxyTable).forEach(function (context) {
-//     var options = proxyTable[context]
-//     if (typeof options === 'string') {
-//         options = {target: options}
-//     }
-//     app.use(proxyMiddleware(options.filter || context, options))
-// })
+const hotMiddleware = require('webpack-hot-middleware')(compiler)
 
 // handle fallback for HTML5 history API
 app.use(require('connect-history-api-fallback')())
@@ -60,13 +48,13 @@ app.use(devMiddleware)
 app.use(hotMiddleware)
 
 // serve pure static assets
-var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
+const staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
-var uri = 'http://localhost:' + port
+const uri = 'http://localhost:' + port
 
-var _resolve
-var readyPromise = new Promise(resolve => {
+let _resolve
+const readyPromise = new Promise(resolve => {
     _resolve = resolve
 })
 
@@ -80,7 +68,7 @@ devMiddleware.waitUntilValid(() => {
     _resolve()
 })
 
-var server = app.listen(port)
+const server = app.listen(port)
 
 module.exports = {
     ready: readyPromise,
@@ -89,5 +77,6 @@ module.exports = {
     }
 }
 
+// 启用mock
 if (process.argv.indexOf('--mock') > -1) // --mock
-   require('dynamic-mocker').start('./mock/mock-config.js')
+    require('dynamic-mocker').start('./mock/mock-config.js')

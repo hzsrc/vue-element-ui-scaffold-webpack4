@@ -8,12 +8,12 @@ module.exports = {
         'cache-control': 'no-cache'
     },
     body: function (query, post) {
-        var pageIndex = post.pageIndex
-        var pageSize = post.pageSize
+        const pageIndex = post.pageIndex
+        const pageSize = post.pageSize
         return {
             status: 0,
             data: new Array(pageSize).fill().map((n, i) => {
-                var id = pageIndex * pageSize + i
+                const id = pageIndex * pageSize + i
                 return {
                     id: id,
                     name: '张三' + id,

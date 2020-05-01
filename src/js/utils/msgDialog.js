@@ -2,12 +2,12 @@
 import { Loading, Message, MessageBox } from 'element-ui'
 
 function toastCtor(key, options) {
-    var defaultOptions = {
+    const defaultOptions = {
         showClose: true,
         duration: 4000,
         message: options,
     }
-    var fn = key ? Message[key] : Message;
+    const fn = key ? Message[key] : Message;
     return fn(Object.assign(defaultOptions, options))
 }
 

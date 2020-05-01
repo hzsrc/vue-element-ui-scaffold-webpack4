@@ -1,10 +1,10 @@
-var path = require('path')
-var config = require('../config')
+const path = require('path')
+const config = require('../config')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 exports.assetsPath = function (_path) {
-    var assetsSubDirectory = config.isBuild
+    const assetsSubDirectory = config.isBuild
         ? config.build.assetsSubDirectory
         : config.dev.assetsSubDirectory
     return path.posix.join(assetsSubDirectory, _path)
@@ -12,7 +12,7 @@ exports.assetsPath = function (_path) {
 
 exports.styleLoaders = function (options) {
     options = options || {}
-    var cssLoader = {
+    const cssLoader = {
         loader: 'css-loader',
         options: {
             sourceMap: options.sourceMap
@@ -20,7 +20,7 @@ exports.styleLoaders = function (options) {
     }
 
     function getCssRule(extension, loader, loaderOptions) {
-        var use = ['vue-style-loader', cssLoader]
+        const use = ['vue-style-loader', cssLoader]
         use.push(getPostCssLoader(options.sourceMap));
         if (loader) {
             use.push({
@@ -32,7 +32,7 @@ exports.styleLoaders = function (options) {
             use.splice(1, 0, {
                 loader: MiniCssExtractPlugin.loader,
                 options: {
-                    publicPath: '../', // dist/css 相对于 dist 根目录
+                    publicPath: '../', // dist 相对于 dist/css 目录
                 }
             })
         }
@@ -42,7 +42,7 @@ exports.styleLoaders = function (options) {
         }
     }
 
-    var result = [
+    const result = [
         getCssRule('css', false),
         getCssRule('postcss', false),
         getCssRule('less', 'less'),

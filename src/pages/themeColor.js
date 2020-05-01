@@ -7,6 +7,8 @@ require('../css/index.scss');
 
 // window.Vue = Vue
 
+Vue.prototype.$ELEMENT = { size: 'small' }
+
 // 通用组件，便于处理
 Vue.prototype.$x = Vue.$x = $x;
 

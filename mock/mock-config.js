@@ -8,13 +8,13 @@ const config = {
         return true
     },
     beforeResponse: function (respData, req) { //数据返回前的回调钩子，respData包含status、headers、body属性
-        respData.headers['access-control-allow-origin'] = req.headers['origin'] || req.headers['Origin'] || '';
+        respData.headers['access-control-allow-origin'] = req.headers.origin || req.headers.Origin || '';
         respData.headers['access-control-allow-credentials'] = 'true';
         respData.headers['access-control-allow-headers'] = req.headers['access-control-request-headers'] || req.headers['Access-Control-Request-Headers'] || '';
         respData.headers['access-control-max-age'] = '6000';
         respData.headers['access-control-allow-methods'] = 'PUT,POST,GET,DELETE,PATCH,OPTIONS';
 
-        respData.headers['P3P'] = 'CP="CAO PSA OUR"';
+        respData.headers.P3P = 'CP="CAO PSA OUR"';
     },
     mapFile(pathname, req) {
         return pathname

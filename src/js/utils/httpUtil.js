@@ -1,6 +1,6 @@
 import axios from '../axios';
 
-var httpUtil = {
+const httpUtil = {
     axios,
     get(url, pars, config) {
         return axios.get(toQueryUrl(url, pars), config)

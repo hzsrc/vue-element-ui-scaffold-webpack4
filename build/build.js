@@ -1,16 +1,16 @@
-var rm = require('rimraf')
+const rm = require('rimraf')
 
 process.env.NODE_ENV = 'production'
 
-var config = require('../config')
+const config = require('../config')
 config.isBuild = true; //需要生成（dist）目标文件。需放在require('webpack')之前
 
-var ora = require('ora')
-var chalk = require('chalk')
-var webpack = require('webpack')
-var webpackConfig = require('./webpack.build.conf')
-var changeDirBuild = require('./changeDirBuild.js')
-var spinner = ora('building for ' + process.env.NODE_ENV + '...')
+const ora = require('ora')
+const chalk = require('chalk')
+const webpack = require('webpack')
+const webpackConfig = require('./webpack.build.conf')
+const changeDirBuild = require('./changeDirBuild.js')
+const spinner = ora('building for ' + process.env.NODE_ENV + '...')
 spinner.start()
 
 if (config.distIsForServer) {

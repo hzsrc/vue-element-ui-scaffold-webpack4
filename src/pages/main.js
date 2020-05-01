@@ -12,6 +12,8 @@ require('../css/index.scss');
 require('../../mock/mockClient')
 /* FITRUE_isPreview */
 
+Vue.prototype.$ELEMENT = { size: 'small' }
+
 // 通用组件，便于处理
 Vue.prototype.$x = Vue.$x = $x;
 
