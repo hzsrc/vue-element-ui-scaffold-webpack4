@@ -16,7 +16,7 @@
         position: fixed;
         z-index: 99999;
         top: 0;
-        color: #ff0000aa;
+        color: #00c600;
         right: 0;
         pointer-events: none
     }

@@ -13,9 +13,10 @@
         /*IFDEBUG
         <div class="cond-msg">
             <hr/>
-            This message is only shown while process.env.NODE_ENV === 'development'. {{devMsg}}
+            This message is only shown while process.env.NODE_ENV === 'development'.
         </div>
         <debug-info :info="someData"></debug-info>
+        <debug-info :info="devMsg" style="color:red;left:30%;"></debug-info>
         FIDEBUG*/
 
 
@@ -31,7 +32,7 @@
         data() {
             return {
                 /*IFDEBUG
-                    devMsg: '(by js-conditional-compile-loader)',
+                    devMsg: '(This is shown by js-conditional-compile-loader)',
                 FIDEBUG*/
                 name: 'dude',
                 someData: {
