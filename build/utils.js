@@ -2,7 +2,14 @@ const path = require('path')
 const config = require('../config')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-
+exports.conditionalCompiler = {
+    loader: 'js-conditional-compile-loader',
+    options: {
+        isDebug: process.env.NODE_ENV === 'development', // optional, this expression is default
+        envTest: process.env.ENV_CONFIG === 'test', // any prop name you want, used for /* IFTRUE_evnTest ...js code... FITRUE_evnTest */
+        isPreview: process.env.npm_config_preview, // npm run build-demo --preview, for mock client data
+    }
+}
 exports.assetsPath = function (_path) {
     const assetsSubDirectory = config.isBuild
         ? config.build.assetsSubDirectory
@@ -36,6 +43,7 @@ exports.styleLoaders = function (options) {
                 }
             })
         }
+        use.push(exports.conditionalCompiler)
         return {
             test: new RegExp('\\.' + extension + '$'),
             use: use

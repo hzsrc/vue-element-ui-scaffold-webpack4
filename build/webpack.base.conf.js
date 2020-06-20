@@ -13,6 +13,8 @@ function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
 
+
+
 module.exports = {
     entry: multiPage.getEntryPages(),
     output: {
@@ -31,18 +33,9 @@ module.exports = {
     },
     module: {
         rules: [
-            /*{
-              test: /\.(js|vue)$/,
-              loader: 'eslint-loader',
-              enforce: 'pre',
-              include: [resolve('src'), resolve('test')],
-              options: {
-                formatter: require('eslint-friendly-formatter')
-              }
-            },*/
             {
                 test: /\.vue$/,
-                loader: 'vue-loader',
+                use: ['vue-loader', utils.conditionalCompiler],
             },
             {
                 test: /\.js$/,
@@ -51,14 +44,7 @@ module.exports = {
                     //step-2
                     'babel-loader?cacheDirectory',
                     //step-1
-                    {
-                        loader: 'js-conditional-compile-loader',
-                        options: {
-                            isDebug: process.env.NODE_ENV === 'development', // optional, this expression is default
-                            envTest: process.env.ENV_CONFIG === 'test', // any name you want, used for /* IFTRUE_evnTest ...js code... FITRUE_evnTest */
-                            isPreview: process.env.npm_config_preview, // npm run build-demo --preview, for mock client data
-                        }
-                    },
+                    utils.conditionalCompiler,
                 ],
             },
             {
