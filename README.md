@@ -3,7 +3,7 @@
 
 [项目效果预览](https://hzsrc-vue-webpack4-elementui.netlify.com/)
 
-[master分支](https://github.com/hzsrc/vue-element-ui-scaffold-webpack4.git)基于vue-cli@2，如需@vue/cli版本，请切换到 [cli3分支](https://github.com/hzsrc/vue-element-ui-scaffold-webpack4/tree/cli3) .
+[master分支](https://github.com/hzsrc/vue-element-ui-scaffold-webpack4.git)基于vue-cli@2，如需@vue/cli版本，请切换到 [cli3分支](https://github.com/hzsrc/vue-element-ui-scaffold-webpack4/tree/cli3) .(仅供参考，待完善)
 
 ## 1. 安装
 ```
