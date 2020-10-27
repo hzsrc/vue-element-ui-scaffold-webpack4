@@ -4,6 +4,7 @@ import router from '../router/routerMain.js'
 import main from '../views/app.vue'
 import { Button, Table, TableColumn, Pagination } from 'element-ui'
 import { initThemeColor } from '../js/themeColorClient'
+import debugInfo from '../component/debugInfo.vue'
 
 require('../css/index.scss');
 
@@ -19,6 +20,9 @@ Vue.prototype.$x = Vue.$x = $x;
 
 // 常用组件在这注册。即可实现按需加载，又不必每个页面调用Vue.use。
 Vue.use(Button).use(Table).use(TableColumn).use(Pagination);
+
+//调试信息组件
+Vue.use(debugInfo)
 
 initThemeColor()
 new Vue({
