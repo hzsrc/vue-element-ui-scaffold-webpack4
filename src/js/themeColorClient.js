@@ -20,6 +20,7 @@ export function initThemeColor() {
     const savedColor = localStorage.getItem('theme_color')
     if (savedColor) {
         curColor = savedColor
-        changeThemeColor(savedColor)
+        return changeThemeColor(savedColor)
     }
+    return Promise.resolve()
 }

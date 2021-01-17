@@ -14,7 +14,7 @@ npm install
 
 ## 2. 特性
 ### 基于webpack4 + babel@7 构建
-更快的构建速度，更小的打包文件体积。
+集成各种实用插件。更快的构建速度，更小的打包文件体积；更快的开发时启动速度。
 
 ### 多页面实现
 两种方式，自动输出html页面文件（html-webpack-plugin实现）：
@@ -27,6 +27,17 @@ npm install
 无需再手动去icomoon.io或iconfont.cn生成和修改字体图标、css、图标预览了。
 基于[webpack-iconfont-plugin-nodejs](https://github.com/hzsrc/webpack-iconfont-plugin-nodejs)实现。
 
+### element-ui按需加载，主题色全局切换
+css按需加载的来源直接指向element-ui的scss文件，而不是预编译的css文件。通过join-file-content-plugin插件在编译时将src/assets/css/element-theme/theme-changed.scss文件 附加到element-ui主题变量文件element-theme-chalk/src/common/var.scss之前，实现了在修改scss变量后即可立马查看效果，无需预先编译element-ui的scss文件为css文件。同时可以在项目任意地方引用element-ui的scss变量。
+
+### 运行时高效实现动态调整主题色（含自写的主题样式）
+利用[webpack-theme-color-replacer](https://github.com/hzsrc/webpack-theme-color-replacer)插件，在webpack构建时提取css中含有主题色的样式规则，生成一个css/theme-colors.css文件。然后在网页运行时，下载这个css文件，动态替换其中的颜色为自定义主题色。由于只提取了颜色相关的css，故速度比下载element-ui整个css要快很多。而且不仅仅是element-ui的样式，项目中的自写样式的主题色也可以一并替换掉。
+
+### 条件编译
+利用[js-conditional-compile-loader](https://github.com/hzsrc/js-conditional-compile-loader)插件，实现根据条件编译不同的结果代码。
+比如开发环境与生产环境生产不同代码、不同客户生成不同的代码。开发时即时显示各种调试数据，发布后自动移除这些调试代码（非if判断，而是完全移除）。
+只需构建时带上不同的参数即可。例如：`npm run build --preview`，即为生成用于含mock接口数据用于预览的代码。
+
 ### mock数据实现
 项目可采用[dynamic-mocker](https://github.com/hzsrc/dynamic-mocker)作为后端接口的数据模拟。
 模拟数据位于mock文件夹下，采用js文件实现，易于理解且方便灵活。
@@ -38,12 +49,6 @@ npm install
 配置文件：
 1、config/serverMap.js中的接口服务地址为：base: '"//localhost:8085"'
 2、mock/mock-config.js文件配置mock各种参数。
-
-### element-ui按需加载，主题色全局切换
-css按需加载的来源直接指向element-ui的scss文件，而不是预编译的css文件。通过join-file-content-plugin插件在编译时将src/assets/css/element-theme/theme-changed.scss文件 附加到element-ui主题变量文件element-theme-chalk/src/common/var.scss之前，实现了在修改scss变量后即可立马查看效果，无需预先编译element-ui的scss文件为css文件。同时可以在项目任意地方引用element-ui的scss变量。
-
-### 运行时动态调整主题色（含自写的主题样式）
-利用[webpack-theme-color-replacer](https://github.com/hzsrc/webpack-theme-color-replacer)插件，在webpack构建时提取css中含有主题色的样式规则，生成一个css/theme-colors.css文件。然后在网页运行时，下载这个css文件，动态替换其中的颜色为自定义主题色。由于只提取了颜色相关的css，故速度比下载element-ui整个css要快很多。而且不仅仅是element-ui的样式，项目中的自写样式的主题色也可以一并替换掉。
 
 ### 源码映射
 发布代码时生成源码映射文件到统一的源码映射文件夹，并在测试环境自动映射。生产环境为了代码安全，不进行自动映射，如需调试支持chrome通过url手动映射源码。
@@ -63,6 +68,7 @@ css按需加载的来源直接指向element-ui的scss文件，而不是预编译
 npm run dev
 ```
 本地开发调试。使用config/serverMap.js中的dev配置的后端接口服务地址。
+开发模式集成`hard-source-webpack-plugin`插件，极大提高`npm run dev`的启动速度（一般5秒内，第一次除外）。
 
 ### 发布测试环境
 ```

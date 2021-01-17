@@ -42,6 +42,7 @@
 
         <p/>
         <el-tag closable>Color of element-ui css</el-tag>
+        <el-tag effect="dark">el-tag: effect=dark</el-tag>
         <el-input style="width: 200px" suffix-icon="el-icon-search" placeholder="Input ..." v-model="tx"></el-input>
         <el-switch v-model="checked" active-text="switch">
         </el-switch>
@@ -62,12 +63,13 @@
             :current-page="1"
             :page-sizes="[10,20]"
             :page-size="12"
+            background
             :total="56">
         </el-pagination>
 
         <p/>
         <hr/>
-        <h2>self css:</h2>
+        <h2>css in your project code:</h2>
         <div>
             <nav class="series-primary">primary color in self css</nav>
             <nav class="series-3">primary color series in self css</nav>
@@ -129,10 +131,12 @@
 
     .series-primary {
         background: $--color-primary;
+        color:#fff;
     }
 
     .series-3 {
         background: $--color-primary-light-3;
+        color:#fff;
     }
 
     .series-5 {

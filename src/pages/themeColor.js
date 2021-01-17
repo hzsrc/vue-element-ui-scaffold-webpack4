@@ -12,9 +12,9 @@ Vue.prototype.$ELEMENT = { size: 'small' }
 // 通用组件，便于处理
 Vue.prototype.$x = Vue.$x = $x;
 
-initThemeColor()
-new Vue({
-    el: '#app',
-    render: h => h(themeColor),
+initThemeColor().then(() => {
+    new Vue({
+        el: '#app',
+        render: h => h(themeColor),
+    });
 });
-
