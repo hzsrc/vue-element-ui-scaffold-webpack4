@@ -35,7 +35,7 @@ module.exports = merge(baseWebpackConfig, {
     optimization: {
         runtimeChunk: false,
         minimize: false,
-        noEmitOnErrors: true,
+        //noEmitOnErrors: true,
         splitChunks: false
     },
 })

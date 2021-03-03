@@ -58,7 +58,7 @@ exports.htmlPlugins = function (webackConfig) {
             title: appConfig.title,
             chunks: [...exChunks, page.chunkName],
             inject: true,
-            favicon: 'public/favicon.ico',
+            favicon: 'static/favicon.ico',
             // minify: {
             //     removeComments: true,
             //     collapseWhitespace: true,

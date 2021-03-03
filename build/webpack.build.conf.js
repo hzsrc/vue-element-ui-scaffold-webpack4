@@ -54,7 +54,7 @@ const webpackConfig = merge(baseWebpackConfig, {
             name: 'manifest'
         },
         minimize: true,
-        noEmitOnErrors: true,
+        //noEmitOnErrors: true,
         splitChunks: {
             chunks: 'async', // 必须三选一： "initial" | "all" | "async"
             minSize: 30000, // 形成一个新代码块最小的体积

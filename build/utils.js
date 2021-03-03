@@ -67,11 +67,7 @@ function getPostCssLoader(sourceMap) {
     return {
         loader: 'postcss-loader',
         options: {
-            sourceMap: sourceMap,
-            plugins: [
-                require('autoprefixer')({}),
-                require('postcss-pxtorem')({rootValue: 100, propList: ['*']})
-            ]
+            sourceMap: sourceMap
         }
     }
 }
