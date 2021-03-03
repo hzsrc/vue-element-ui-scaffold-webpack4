@@ -2,7 +2,7 @@ const utils = require('./utils')
 const multiPage = require('./multi-page')
 const webpack = require('webpack')
 const config = require('../config')
-const merge = require('webpack-merge')
+const {merge} = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const webpackIconfontPluginNodejs = require('./svg2font.js')
@@ -18,11 +18,11 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 module.exports = merge(baseWebpackConfig, {
     mode: 'development',
     module: {
-        rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, extract: false })
+        rules: utils.styleLoaders({sourceMap: config.dev.cssSourceMap, extract: false})
     },
     devtool: false, // see SourceMapDevToolPlugin
     plugins: [
-        new HardSourceWebpackPlugin(),
+        //new HardSourceWebpackPlugin(),
         // https://webpack.js.org/plugins/source-map-dev-tool-plugin/
         new webpack.SourceMapDevToolPlugin(),
         // https://github.com/glenjamin/webpack-hot-middleware#installation--usage

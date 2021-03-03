@@ -29,13 +29,13 @@ const compiler = webpack(webpackConfig);
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
     publicPath: webpackConfig.output.publicPath,
     serverSideRender: false,
-    watchOptions: {
-        //ignored: 'node_modules/**/*.js', //忽略不用监听变更的目录
-        aggregateTimeout: 300, //防止重复保存频繁重新编译,500毫秒内重复保存不打包
-    },
+    //watchOptions: {
+    //ignored: 'node_modules/**/*.js', //忽略不用监听变更的目录
+    //    aggregateTimeout: 300, //防止重复保存频繁重新编译,500毫秒内重复保存不打包
+    //},
     writeToDisk: false,
-    logLevel: 'warn',
-    logTime: true,
+    //logLevel: 'warn',
+    //logTime: true,
     stats: 'minimal'
 })
 

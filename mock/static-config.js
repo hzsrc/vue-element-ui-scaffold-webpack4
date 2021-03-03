@@ -8,6 +8,6 @@ const config = {
         path: '../dist'
     },
     isHttps: false, // 是否https
-    port: 8060 // 端口
+    port: 8061 // 端口
 }
 module.exports = config
