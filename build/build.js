@@ -9,16 +9,10 @@ const ora = require('ora')
 const chalk = require('chalk')
 const webpack = require('webpack')
 const webpackConfig = require('./webpack.build.conf')
-const changeDirBuild = require('./changeDirBuild.js')
 const spinner = ora('building for ' + process.env.NODE_ENV + '...')
 spinner.start()
 
-if (config.distIsForServer) {
-    changeDirBuild(webpackConfig, doWebpack)
-}
-else {
-    rm(webpackConfig.output.path, e => !e && doWebpack())
-}
+rm(webpackConfig.output.path, e => !e && doWebpack())
 
 function doWebpack(onEnd) {
     webpack(webpackConfig, (err, stats) => {
