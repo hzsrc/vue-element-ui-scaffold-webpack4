@@ -17,8 +17,6 @@ var ret = {
         assetsPublicPath: '', // 使用相对路径，可不受路径层次限制
         productionSourceMap: true,
         sourceMapPath: getSourceMapPath(),
-        // dist目录是否直接做为服务目录。如果是，发布过程不能中断线上服务，需要调用changeDirBuild
-        distIsForServer: false,
     },
     dev: {
         port: 8090,
