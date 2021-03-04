@@ -3,7 +3,7 @@ const utils = require('./utils')
 const multiPage = require('./multi-page')
 const config = require('../config')
 const webpack = require('webpack')
-const { VueLoaderPlugin } = require('vue-loader');
+const {VueLoaderPlugin} = require('vue-loader');
 const appConfig = require('../config/app-config')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
 const forElementUI = require('webpack-theme-color-replacer/forElementUI')
@@ -12,7 +12,6 @@ const JoinFileContentPlugin = require('join-file-content-plugin')
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
-
 
 
 module.exports = {
@@ -29,6 +28,9 @@ module.exports = {
         alias: {
             vue$: 'vue/dist/vue.esm.js',
             '@': resolve('src')
+        },
+        fallback: {
+            fs: false
         }
     },
     module: {
@@ -42,7 +44,10 @@ module.exports = {
                 include: [resolve('src'), resolve('test')],
                 use: [
                     //step-2
-                    'babel-loader?cacheDirectory',
+                    {
+                        loader: 'babel-loader',
+                        options: {cacheDirectory: true}
+                    },
                     //step-1
                     utils.conditionalCompiler,
                 ],
@@ -94,17 +99,4 @@ module.exports = {
             // }
         })
     ],
-
-    node: {
-        // prevent webpack from injecting useless setImmediate polyfill because Vue
-        // source contains it (although only uses it if it's native).
-        setImmediate: false,
-        // prevent webpack from injecting mocks to Node native modules
-        // that does not make sense for the client
-        dgram: 'empty',
-        fs: 'empty',
-        net: 'empty',
-        tls: 'empty',
-        child_process: 'empty'
-    }
 }

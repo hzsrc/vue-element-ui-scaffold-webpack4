@@ -22,7 +22,8 @@ exports.styleLoaders = function (options) {
     const cssLoader = {
         loader: 'css-loader',
         options: {
-            sourceMap: options.sourceMap
+            sourceMap: options.sourceMap,
+            esModule: false
         }
     }
 
@@ -32,7 +33,7 @@ exports.styleLoaders = function (options) {
         if (loader) {
             use.push({
                 loader: loader + '-loader',
-                options: Object.assign({}, loaderOptions, { sourceMap: options.sourceMap })
+                options: Object.assign({}, loaderOptions, {sourceMap: options.sourceMap})
             })
         }
         if (options.extract) {
@@ -54,8 +55,8 @@ exports.styleLoaders = function (options) {
         getCssRule('css', false),
         getCssRule('postcss', false),
         getCssRule('less', 'less'),
-        getCssRule('sass', 'sass', { implementation: require('sass'), indentedSyntax: true }),
-        getCssRule('scss', 'sass', { implementation: require('sass') }),
+        getCssRule('sass', 'sass', {implementation: require('sass'), indentedSyntax: true}),
+        getCssRule('scss', 'sass', {implementation: require('sass')}),
         getCssRule('stylus', 'stylus'),
         getCssRule('styl', 'stylus')
     ];
@@ -66,11 +67,7 @@ function getPostCssLoader(sourceMap) {
     return {
         loader: 'postcss-loader',
         options: {
-            sourceMap: sourceMap,
-            plugins: [
-                require('autoprefixer')({}),
-                require('postcss-pxtorem')({ rootValue: 100, propList: ['*'] })
-            ]
+            sourceMap: sourceMap
         }
     }
 }
