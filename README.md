@@ -1,5 +1,8 @@
 # vue-element-ui-scaffold-webpack4
-本项目为vue下使用了element-ui并基于webpack4构建的多页面、多环境方案脚手架项目。
+
+注：**目前已升级为webpack5**，如需要使用webpack4，可切换分支：`git checkout webpack4`。
+
+本项目为vue下使用了element-ui并基于webpack5构建的多页面、多环境方案脚手架项目。
 
 [项目效果预览](https://hzsrc-vue-webpack4-elementui.netlify.com/)
 
@@ -13,7 +16,7 @@ npm install
 ```
 
 ## 2. 特性
-### 基于webpack4 + babel@7 构建
+### 基于webpack5 + babel@7 构建
 更快的构建速度，更小的打包文件体积。
 
 ### 多页面实现
