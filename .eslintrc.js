@@ -60,6 +60,7 @@ module.exports = {
         'no-debugger': 2,
         'no-eval': 0,
         //'standard/no-callback-literal': 1,
+        'array-callback-return': 1,
     },
     overrides: [
         {
