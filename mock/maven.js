@@ -1,4 +1,4 @@
-﻿// 实现maven仓库转发
+// 实现maven仓库转发
 
 const config = {
     mockEnabled: false,
