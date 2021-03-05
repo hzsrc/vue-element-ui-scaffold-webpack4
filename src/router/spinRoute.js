@@ -1,9 +1,9 @@
 /*
 使vue-router懒加载时可以显示一个加载提示，避免网速慢时无响应
 用法:
-const index = resolve => {
+const stage3 = () => {
     spinRoute.show();
-    require(['./setting.vue'], spinRoute.resolve(resolve))
+    return import('../views/stage3/stage3.vue').then(spinRoute.resolve);
 };
 */
 
@@ -11,13 +11,11 @@ const index = resolve => {
 import loading from '../js/utils/loading';
 
 export default {
-    show() {
+    require(componentPromise) {
         loading.show();
+        return componentPromise.then(component => {
+            loading.close();
+            return component
+        })
     },
-    resolve(resolve) {
-        return function (component) {
-            loading.close()
-            resolve(component)
-        }
-    }
-}
+};

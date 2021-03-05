@@ -21,24 +21,24 @@ module.exports = {
         'vue'
     ],
     // add your custom rules here
-    'rules': {
+    rules: {
         //"off"或0 -关闭规则
         //"warn" 或1 - 开启规则, 使用警告 程序不会退出
         //"error"或2 - 开启规则, 使用错误 程序退出
 
-        'indent': ['error', 4],
-        'vue/script-indent': ['error', 4, { 'baseIndent': 1 }],
+        indent: ['error', 4],
+        'vue/script-indent': ['error', 4, { baseIndent: 1 }],
         //分号
-        'semi': 'off',
+        semi: 'off',
         'spaced-comment': 'off',
-        'eqeqeq': 1,
+        eqeqeq: 1,
         'no-useless-escape': 'off',
-        'brace-style': 0,//大括号风格
-        'curly': 'off', //[2, "all"],//必须使用 if(){} 中的{}
-        'space-before-function-paren': ['off', 'always'],//函数定义时括号前面要不要有空格
+        'brace-style': 0, //大括号风格
+        curly: 'off', //[2, "all"],//必须使用 if(){} 中的{}
+        'space-before-function-paren': ['off', 'always'], //函数定义时括号前面要不要有空格
         'no-new': 'off',
-        'comma-dangle': 'off',//对象字面量项尾不能有逗号
-        'no-return-assign': 'warn',//return 语句中不能有赋值表达式
+        'comma-dangle': 'off', //对象字面量项尾不能有逗号
+        'no-return-assign': 'warn', //return 语句中不能有赋值表达式
         'eol-last': 0,
         'no-multiple-empty-lines': 0,
         //'quotes': 'off',
@@ -59,13 +59,13 @@ module.exports = {
         // allow debugger during development
         'no-debugger': 2,
         'no-eval': 0,
-        'standard/no-callback-literal': 1,
+        //'standard/no-callback-literal': 1,
     },
-    'overrides': [
+    overrides: [
         {
-            'files': ['*.vue'],
-            'rules': {
-                'indent': 'off'
+            files: ['*.vue'],
+            rules: {
+                indent: 'off'
             }
         }
     ]
