@@ -26,7 +26,6 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
-            vue$: 'vue/dist/vue.esm.js',
             '@': resolve('src')
         },
         fallback: {
@@ -78,16 +77,16 @@ module.exports = {
                 ENV_CONFIG: JSON.stringify(process.env.ENV_CONFIG),
             }
         }),
-        // 将theme-changed.scss应用到element-ui，供babel-plugin-component按需加载
+        // 将theme-changed.scss应用到element-plus，供babel-plugin-component按需加载
         new JoinFileContentPlugin({
-            file: 'node_modules/element-theme-chalk/src/common/var.scss',
+            file: 'node_modules/element-plus/packages/theme-chalk/src/common/var.scss',
             prependFile: 'src/css/element-var-changed.scss'
         }),
         //生成仅包含颜色的替换样式（主题色等）
         new ThemeColorReplacer({
             fileName: 'css/theme-colors.[contenthash:8].css',
             matchColors: [
-                ...forElementUI.getElementUISeries(appConfig.themeColor), //element-ui主色系列
+                ...forElementUI.getElementUISeries(appConfig.themeColor), //element-plus主色系列
                 '#0cdd3a', //自定义颜色
                 '#c655dd',
             ],

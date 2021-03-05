@@ -11,14 +11,12 @@
                     <h3>This is stage1 here</h3>
                     <button onClick="$router.back()">Back</button>
                 </div>
-            )
+            );
         },
         methods: {},
         computed: {},
-        components: {}
-    }
+        components: {},
+    };
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

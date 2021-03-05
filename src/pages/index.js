@@ -1,15 +1,14 @@
 //Login page
 
-import Vue from 'vue';
-import login from '../views/login/login.vue'
+import { createApp } from 'vue';
+import login from '../views/login/login.vue';
 import debugInfo from '../component/debugInfo';
+
 require('../css/index.scss');
 
-//调试信息组件
-Vue.use(debugInfo)
+const app = createApp(login);
 
-new Vue({
-    el: '#app',
-    template: '<login></login>',
-    components: { login }
-})
+//调试信息组件
+app.use(debugInfo);
+
+app.mount('#app');

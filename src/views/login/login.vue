@@ -1,9 +1,10 @@
 <template>
     <div class="pd-10 bg">
-        <h3><i className="my-icon-warning"></i>
+        <h3>
+            <i className="my-icon-warning"></i>
             Hi {this.name}, here is the entry
         </h3>
-        <hr/>
+        <hr />
         <div><a href="main.html">main</a></div>
         <div><a href="pageB.html">pageB</a></div>
         <div><a href="themeColor.html">theme colors</a></div>
@@ -12,21 +13,21 @@
 
         /*IFDEBUG
         <div class="cond-msg">
-            <hr/>
-            This message is only shown while process.env.NODE_ENV === 'development'.
+            <hr />
+            This message is only shown while process.env.NODE_ENV ===
+            'development'.
         </div>
         <debug-info :info="someData"></debug-info>
-        <debug-info :info="devMsg" style="color:red;left:30%;"></debug-info>
+        <debug-info :info="devMsg" style="color: red; left: 30%"></debug-info>
         FIDEBUG*/
-
 
         <foot-code></foot-code>
     </div>
 </template>
 
 <script>
-    import footCode from '../../component/footCode'
-    import './login.scss'
+    import footCode from '../../component/footCode';
+    import './login.scss';
 
     export default {
         data() {
@@ -36,37 +37,38 @@
                 FIDEBUG*/
                 name: 'dude',
                 someData: {
-                    info: 'This is a debug message, only shown while process.env.NODE_ENV === \'development\'',
+                    info:
+                        "This is a debug message, only shown while process.env.NODE_ENV === 'development'",
                     testData: [
                         { id: 122, title: 'title1', url: 'abc.html' },
                         { id: 133, title: 'title2', url: '123.html' },
                         { id: 366, title: 'title33', url: 'test.html' },
-                    ]
-                }
+                    ],
+                },
             };
         },
-        components: { footCode }
-    }
+        components: { footCode },
+    };
 </script>
 <style scoped lang="scss">
-    @import "../../css/defines.scss";
+@import "../../css/defines.scss";
 
-    .bg {
-        background: $--color-primary-light-6;
+.bg {
+    background: $--color-primary-light-6;
 
-        h3 {
-            font-size: 20px
-        }
+    h3 {
+        font-size: 20px;
     }
+}
 
-    .lg-form {
-        width: 200px;
-    }
+.lg-form {
+    width: 200px;
+}
 
-    /*IFTRUE_isDebug*/
-    .cond-msg {
-        color: #c655dd;
-    }
+/*IFTRUE_isDebug*/
+.cond-msg {
+    color: #c655dd;
+}
 
-    /* FITRUE_isDebug */
+/* FITRUE_isDebug */
 </style>

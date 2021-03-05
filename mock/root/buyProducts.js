@@ -4,7 +4,7 @@ module.exports = {
         return {
             data: '',
             msg: '',
-            status: 0
-        }
-    }
-}
+            status: 0,
+        };
+    },
+};

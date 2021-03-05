@@ -1,29 +1,29 @@
-//为element-ui的Message添加默认参数
-import { Loading, Message, MessageBox } from 'element-ui'
+//为element-plus的Message添加默认参数
+import { ElLoading, ElMessage, ElMessageBox } from 'element-plus';
 
 function toastCtor(key, options) {
+    if (typeof options == 'string') options = { message: options }
     const defaultOptions = {
         showClose: true,
         duration: 4000,
-        message: options,
-    }
-    const fn = key ? Message[key] : Message;
-    return fn(Object.assign(defaultOptions, options))
+    };
+    const fn = key ? ElMessage[key] : ElMessage;
+    return fn(Object.assign(defaultOptions, options));
 }
 
-const toast = Object.assign(toastCtor.bind(null, null), Message);
-['success', 'warning', 'info', 'error'].forEach(key => {
-    toast[key] = toastCtor.bind(null, key)
-})
+const toast = Object.assign(toastCtor.bind(null, null), ElMessage);
+['success', 'warning', 'info', 'error'].forEach((key) => {
+    toast[key] = toastCtor.bind(null, key);
+});
 
-//为element-ui的MessageBox添加默认参数
-MessageBox.setDefaults({ closeOnClickModal: false, closeOnPressEscape: true });
+//为element-plus的MessageBox添加默认参数
+//ElMessageBox.setDefaults({ closeOnClickModal: false, closeOnPressEscape: true });
 
 export default {
-    msgBox: MessageBox,
-    alert: MessageBox.alert,
-    confirm: MessageBox.confirm,
-    prompt: MessageBox.prompt,
+    msgBox: ElMessageBox,
+    alert: ElMessageBox.alert,
+    confirm: ElMessageBox.confirm,
+    prompt: ElMessageBox.prompt,
     toast: toast,
-    loading: Loading.service
-}
+    loading: ElLoading.service,
+};

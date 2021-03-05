@@ -5,9 +5,9 @@ const config = {
     proxyTarget: false, // 设置proxy失效，使用static功能
     static: {
         index: 'index.html',
-        path: '../dist'
+        path: '../dist',
     },
     isHttps: false, // 是否https
-    port: 8061 // 端口
-}
-module.exports = config
+    port: 8061, // 端口
+};
+module.exports = config;

@@ -1,12 +1,15 @@
-import { Loading } from 'element-ui';
+import { ElLoading } from 'element-plus';
 
 //const MASK_DELAY = 5000;
-const DefaultMaskOptions = { customClass: 'global-mask', target: 'html > body' }
+const DefaultMaskOptions = {
+    customClass: 'global-mask',
+    target: 'html > body',
+};
 
 const loading = {
     show(options) {
         if (!this.unique) {
-            this.unique = Loading.service(options);
+            this.unique = ElLoading.service(options);
         }
     },
     showMask() {
@@ -21,24 +24,23 @@ const loading = {
                 this.unique.close();
                 this.unique = null;
             }
-        }, 100)
+        }, 100);
     },
-}
+};
 
 export default {
     //计数器，防止出现多个
     count: 0,
     show(options) {
         if (options !== false) {
-            options = Object.assign({}, DefaultMaskOptions, options)
+            options = Object.assign({}, DefaultMaskOptions, options);
             try {
                 this.count++;
                 loading.show(options);
                 //延时显示loading蒙板
                 //if (this.timer) clearTimeout(this.timer);
                 //this.timer = setTimeout(() => loading.showMask(), MASK_DELAY);
-            } catch (e) {
-            }
+            } catch (e) {}
         }
     },
     close(options) {
@@ -47,11 +49,9 @@ export default {
                 if (this.count > 0) this.count--;
                 if (this.count === 0) {
                     //if (this.timer) clearTimeout(this.timer)
-                    loading.close()
+                    loading.close();
                 }
             }
-        }
-        catch (e) {
-        }
-    }
-}
+        } catch (e) {}
+    },
+};

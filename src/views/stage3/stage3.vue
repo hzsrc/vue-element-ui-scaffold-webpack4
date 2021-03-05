@@ -7,21 +7,17 @@
 </template>
 
 <script>
-    //import  from '';
+//import  from '';
     export default {
-        created() {
-        },
+        created() {},
         props: {},
         data() {
             return {};
         },
-        methods: {
-        },
+        methods: {},
         computed: {},
-        components: {}
-    }
+        components: {},
+    };
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

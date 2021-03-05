@@ -3,9 +3,9 @@
 const config = {
     mockEnabled: false,
     proxyTarget: function (urlPart) {
-        return 'http://localhost:8090'
+        return 'http://localhost:8090';
     },
     isHttps: false, // 是否https
-    port: 80 // 端口
-}
-module.exports = config
+    port: 80, // 端口
+};
+module.exports = config;

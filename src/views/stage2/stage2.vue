@@ -15,22 +15,22 @@
         },
         methods: {},
         computed: {},
-        components: {}
-    }
+        components: {},
+    };
 </script>
 
 <style scoped lang="scss">
-    @import "../../css/defines.scss";
+@import "../../css/defines.scss";
 
-    .cart {
-        border: $--table-border;
-    }
+.cart {
+    border: $--table-border;
+}
 
-    .cart-item {
-        line-height: 30px;
-    }
+.cart-item {
+    line-height: 30px;
+}
 
-    .main-color {
-        color: $--color-primary;
-    }
+.main-color {
+    color: $--color-primary;
+}
 </style>
