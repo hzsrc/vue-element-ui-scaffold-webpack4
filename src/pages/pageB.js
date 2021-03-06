@@ -1,7 +1,6 @@
-import { createApp } from 'vue';
+import pageInit from '../js/pageInit';
 
-require('../css/index.scss');
-const main = {
+var page = {
     render(h) {
         return (
             <div>
@@ -11,6 +10,5 @@ const main = {
             </div>)
     },
     components: {},
-};
-
-createApp(main).mount('#app');
+}
+pageInit(page).mount('#app');
