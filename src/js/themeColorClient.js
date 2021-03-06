@@ -22,7 +22,10 @@ export function changeThemeColor(newColor) {
 export function initThemeColor() {
     const savedColor = localStorage.getItem('theme_color');
     if (savedColor) {
+        document.body.style.display = 'none'
         curColor = savedColor;
-        changeThemeColor(savedColor);
+        changeThemeColor(savedColor).finally(() => {
+            document.body.style.display = ''
+        });
     }
 }
