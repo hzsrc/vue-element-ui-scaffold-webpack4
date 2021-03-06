@@ -20,7 +20,7 @@ function readPages() {
                     pageList.push({
                         entry: fullPath,
                         chunkName: baseName,
-                        template: 'public/index.html',
+                        template: 'src/index.html',
                     })
                 }
             }
