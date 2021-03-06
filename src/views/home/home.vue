@@ -32,7 +32,7 @@
             <el-table-column prop="name" label="name"></el-table-column>
             <el-table-column prop="date" label="date">
                 <template v-slot="{ row }">{{
-                    formatDate(row.date)
+                    $x.formatDate(row.date)
                     }}
                 </template>
             </el-table-column>
@@ -64,14 +64,12 @@
 </template>
 
 <script>
-    import formatData from '../../js/formatData';
-
     export default {
         data() {
             return {
                 data: null,
                 dataList: [{ date: new Date() }],
-                total: 0,
+                total: 1,
                 pageIndex: 1,
                 pageSize: 6,
                 loading: false,
@@ -127,7 +125,6 @@
             getAndGo3() {
                 this.$router.push('/stage3');
             },
-            formatDate: formatData.formatDate,
             // loadExternalRoutes() {
             //     window.addExternalRoutes = function (routes) {
             //         this.$router.addRoutes(routes)

@@ -1,8 +1,10 @@
-import StorageUtil from './utils/storageUtil.js';
-import tokenUtil from './utils/tokenUtil.js';
-import domUtil from './utils/domUtil.js';
-import msgDialog from './utils/msgDialog.js';
-import httpUtil from './utils/httpUtil.js';
+import StorageUtil from './utils/storageUtil.js'
+import tokenUtil from './utils/tokenUtil.js'
+import domUtil from './utils/domUtil.js'
+import msgDialog from './utils/msgDialog.js'
+import httpUtil from './utils/httpUtil.js'
+//日期格式化
+import formatDate from 'date-any/formatDate.js'
 
 const util = {
     clone(obj, deep) {
@@ -19,6 +21,7 @@ const mixed = {
     ...httpUtil,
     storageUtil: new StorageUtil(),
     tokenUtil,
+    formatDate
 };
 
 Object.assign(domUtil, mixed);
