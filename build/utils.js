@@ -33,7 +33,7 @@ exports.styleLoaders = function (options) {
         if (loader) {
             use.push({
                 loader: loader + '-loader',
-                options: Object.assign({}, loaderOptions, {sourceMap: options.sourceMap})
+                options: Object.assign({}, loaderOptions, { sourceMap: options.sourceMap })
             })
         }
         if (options.extract) {
@@ -41,6 +41,7 @@ exports.styleLoaders = function (options) {
                 loader: MiniCssExtractPlugin.loader,
                 options: {
                     publicPath: '../', // dist 相对于 dist/css 目录
+                    esModule: false,
                 }
             })
         }
@@ -55,8 +56,8 @@ exports.styleLoaders = function (options) {
         getCssRule('css', false),
         getCssRule('postcss', false),
         getCssRule('less', 'less'),
-        getCssRule('sass', 'sass', {implementation: require('sass'), indentedSyntax: true}),
-        getCssRule('scss', 'sass', {implementation: require('sass')}),
+        getCssRule('sass', 'sass', { implementation: require('sass'), indentedSyntax: true }),
+        getCssRule('scss', 'sass', { implementation: require('sass') }),
         getCssRule('stylus', 'stylus'),
         getCssRule('styl', 'stylus')
     ];
