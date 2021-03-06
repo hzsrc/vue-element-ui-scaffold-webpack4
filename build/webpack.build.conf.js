@@ -25,6 +25,11 @@ const webpackConfig = merge(baseWebpackConfig, {
         filename: utils.assetsPath('js/[name].[contenthash:8].js'),
         chunkFilename: utils.assetsPath('js/[name].[contenthash:8].js')
     },
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.esm-browser.prod.js'
+        },
+    },
     plugins: [
         // extract css into its own file
         new MiniCssExtractPlugin({

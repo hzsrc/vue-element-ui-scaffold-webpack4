@@ -3,7 +3,7 @@ const utils = require('./utils')
 const multiPage = require('./multi-page')
 const config = require('../config')
 const webpack = require('webpack')
-const {VueLoaderPlugin} = require('vue-loader');
+const { VueLoaderPlugin } = require('vue-loader');
 const appConfig = require('../config/app-config')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
 const forElementUI = require('webpack-theme-color-replacer/forElementUI')
@@ -26,7 +26,8 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
-            '@': resolve('src')
+            '@': resolve('src'),
+            'vue$': 'vue/dist/vue.esm-browser.js'
         },
         fallback: {
             fs: false
@@ -45,7 +46,7 @@ module.exports = {
                     //step-2
                     {
                         loader: 'babel-loader',
-                        options: {cacheDirectory: true}
+                        options: { cacheDirectory: true }
                     },
                     //step-1
                     utils.conditionalCompiler,
