@@ -45,7 +45,7 @@ npm install
 2、mock/mock-config.js文件配置mock各种参数。
 
 ### element-plus按需加载，主题色全局切换
-css按需加载的来源直接指向element-plus的scss文件，而不是预编译的css文件。通过join-file-content-plugin插件在编译时将src/assets/css/element-theme/theme-changed.scss文件 附加到element-plus主题变量文件element-theme-chalk/src/common/var.scss之前，实现了在修改scss变量后即可立马查看效果，无需预先编译element-plus的scss文件为css文件。同时可以在项目任意地方引用element-plus的scss变量。
+css按需加载的来源直接指向element-plus的scss文件，而不是预编译的css文件。通过join-file-content-plugin插件在编译时将src/assets/css/element-theme/theme-changed.scss文件 附加到element-plus主题变量文件theme-chalk/src/common/var.scss之前，实现了在修改scss变量后即可立马查看效果，无需预先编译element-plus的scss文件为css文件。同时可以在项目任意地方引用element-plus的scss变量。
 
 ### 运行时动态调整主题色（含自写的主题样式）
 利用[webpack-theme-color-replacer](https://github.com/hzsrc/webpack-theme-color-replacer)插件，在webpack构建时提取css中含有主题色的样式规则，生成一个css/theme-colors.css文件。然后在网页运行时，下载这个css文件，动态替换其中的颜色为自定义主题色。由于只提取了颜色相关的css，故速度比下载element-plus整个css要快很多。而且不仅仅是element-plus的样式，项目中的自写样式的主题色也可以一并替换掉。
@@ -120,3 +120,9 @@ npm run proxy80
 通过将现有端口（80xx端口）代理到80端口或443端口，可实现访问时隐藏端口，也可实现https访问。结合系统hosts配置127.0.0.1为指定的域名，可直接用域名访问本地调试页面，用于调试一些必须使用域名访问的场景（例如调试微信，详见：https://www.cnblogs.com/hz-blog/p/wechat-local-debug-domain.html）。
 
 
+
+### 清除构建缓存
+```
+npm run rmcache
+```
+用于清除`hard-source-webpack-plugin`（大幅提升`npm run dev`构建速度的插件）产生的缓存数据，解决当修改webpack或babel配置后不生效的问题。

@@ -26,7 +26,6 @@
         "date-any": "^1.0.2",
         "echarts": "^4.6.2",
         "element-plus": "^1.0.2-beta.33",
-        "element-theme-chalk": "^2.15.1",
         "qrcode-vue": "^1.2.0",
         "vue": "^3.0.0",
         "vue-router": "^4.0.0-0",
@@ -103,5 +102,6 @@
     "repository": {
         "type": "git"
     },
-    "keywords": []
+    "keywords": [],
+    "sideEffects": false
 }

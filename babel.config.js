@@ -18,9 +18,9 @@ module.exports = {
             'import',
             {
                 libraryName: 'element-plus',
-                // styleLibraryName: '~node_modules/element-theme-chalk/src',
+                // styleLibraryName: '~node_modules/element-plus/packages/theme-chalk/src',
                 // ext: '.scss',
-                customStyleName: (name) => {
+                customStyleName(name) {
                     // 由于 customStyleName 在配置中被声明的原因，`style: true` 会被直接忽略掉，
                     // 如果你需要使用 scss 源文件，把文件结尾的扩展名从 `.css` 替换成 `.scss` 就可以了
                     name = name.replace('el-', '');
