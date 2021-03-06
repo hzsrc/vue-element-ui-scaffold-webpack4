@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "axios": "^0.21.1",
+        "date-any": "^1.0.2",
         "echarts": "^4.6.2",
         "element-theme-chalk": "^2.15.1",
         "element-ui": "^2.15.1",
