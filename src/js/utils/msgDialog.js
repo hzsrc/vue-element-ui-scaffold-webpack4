@@ -2,7 +2,7 @@
 import { ElLoading, ElMessage, ElMessageBox } from 'element-plus';
 
 function toastCtor(key, options) {
-    if (typeof options == 'string') options = { message: options }
+    if (typeof options === 'string') options = { message: options }
     const defaultOptions = {
         showClose: true,
         duration: 4000,
