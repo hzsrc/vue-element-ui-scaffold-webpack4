@@ -9,7 +9,6 @@
             <el-button @click="callOtherApi" size="small">call other api servers by {xxx} prefix</el-button>
         </div>
 
-        <header>Ajax Result: {{data}}</header>
         <hr>
         <el-table :data="dataList">
             <el-table-column prop="id" label="id"></el-table-column>
@@ -34,6 +33,7 @@
         <a href="./" class="right">
             <button>Logout</button>
         </a>
+        <debug-info :info="dataList"></debug-info>
 
         <hr>
         <router-view></router-view>
@@ -44,7 +44,6 @@
     export default {
         data() {
             return {
-                data: null,
                 dataList: [{ date: new Date() }],
                 total: 1,
                 pageIndex: 1,
@@ -57,7 +56,7 @@
                 this.loading = true
                 this.$x.post('/api/test_api', {}, { maskOptions: false })
                     .then(res => {
-                        this.data = res.data;
+                        this.dataList = [res.data];
                     })
                     .finally(t => {
                         this.loading = false
