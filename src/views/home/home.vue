@@ -15,7 +15,7 @@
             <el-table-column prop="id" label="id"></el-table-column>
             <el-table-column prop="name" label="name"></el-table-column>
             <el-table-column prop="date" label="date">
-                <template slot-scope="{row}">{{formatDate(row.date)}}</template>
+                <template slot-scope="{row}">{{$x.formatDate(row.date)}}</template>
             </el-table-column>
             <el-table-column label="operation">
                 <template>
@@ -41,14 +41,12 @@
 </template>
 
 <script>
-    import formatData from '../../js/formatData'
-
     export default {
         data() {
             return {
                 data: null,
-                dataList: [],
-                total: 0,
+                dataList: [{ date: new Date() }],
+                total: 1,
                 pageIndex: 1,
                 pageSize: 6,
                 loading: false,
@@ -96,7 +94,6 @@
             getAndGo3() {
                 this.$router.push('/stage3')
             },
-            formatDate: formatData.formatDate,
             // loadExternalRoutes() {
             //     window.addExternalRoutes = function (routes) {
             //         this.$router.addRoutes(routes)
