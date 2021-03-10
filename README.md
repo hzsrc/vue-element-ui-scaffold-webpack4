@@ -1,9 +1,9 @@
-# vue-element-plus-scaffold-webpack4
+# vue-element-ui-scaffold-webpack4
 
 # 注：
 * **目前已升级为webpack5**，如需要使用webpack4，可切换分支：`git checkout webpack4`。
 
-* **vue3 + element-plus + webpack5 版本：可切换分支：`git checkout vue3` **
+* **vue3 + element-ui + webpack5 版本：可切换分支：`git checkout vue3` **
 
 本项目为vue下使用了element-plus并基于webpack5构建的多页面、多环境方案脚手架项目。
 
@@ -13,8 +13,9 @@
 
 ## 1. 安装
 ```
-git clone https://github.com/hzsrc/vue-element-plus-scaffold-webpack4.git
-cd vue-element-plus-scaffold-webpack4
+git clone https://github.com/hzsrc/vue-element-ui-scaffold-webpack4.git
+# git checkout vue3
+cd vue-element-ui-scaffold-webpack4
 npm install
 ```
 
@@ -46,7 +47,7 @@ npm install
 2、mock/mock-config.js文件配置mock各种参数。
 
 ### element-plus按需加载，主题色全局切换
-css按需加载的来源直接指向element-plus的scss文件，而不是预编译的css文件。通过join-file-content-plugin插件在编译时将src/assets/css/element-theme/theme-changed.scss文件 附加到element-plus主题变量文件element-theme-chalk/src/common/var.scss之前，实现了在修改scss变量后即可立马查看效果，无需预先编译element-plus的scss文件为css文件。同时可以在项目任意地方引用element-plus的scss变量。
+css按需加载的来源直接指向element-plus的scss文件，而不是预编译的css文件。通过join-file-content-plugin插件在编译时将src/assets/css/element-theme/theme-changed.scss文件 附加到element-plus主题变量文件theme-chalk/src/common/var.scss之前，实现了在修改scss变量后即可立马查看效果，无需预先编译element-plus的scss文件为css文件。同时可以在项目任意地方引用element-plus的scss变量。
 
 ### 运行时动态调整主题色（含自写的主题样式）
 利用[webpack-theme-color-replacer](https://github.com/hzsrc/webpack-theme-color-replacer)插件，在webpack构建时提取css中含有主题色的样式规则，生成一个css/theme-colors.css文件。然后在网页运行时，下载这个css文件，动态替换其中的颜色为自定义主题色。由于只提取了颜色相关的css，故速度比下载element-plus整个css要快很多。而且不仅仅是element-plus的样式，项目中的自写样式的主题色也可以一并替换掉。

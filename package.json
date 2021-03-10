@@ -25,7 +25,6 @@
         "axios": "^0.21.1",
         "date-any": "^1.0.2",
         "echarts": "^4.6.2",
-        "element-theme-chalk": "^2.15.1",
         "element-ui": "^2.15.1",
         "qrcode-vue": "^1.2.0",
         "vue": "^2.6.12",

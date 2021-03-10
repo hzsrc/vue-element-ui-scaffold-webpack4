@@ -1,6 +1,6 @@
 @import "./element-var-changed.scss";
-//导入element-theme-chalk的变量名
-@import "../../node_modules/element-theme-chalk/src/common/var.scss";
+//theme-chalk的变量名
+@import "../../node_modules/element-ui/packages/theme-chalk/src/common/var.scss";
 
 //自定义颜色变量
 $my-custom-color: #0cdd3a;
