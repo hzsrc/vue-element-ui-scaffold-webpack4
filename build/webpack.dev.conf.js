@@ -4,7 +4,6 @@ const webpack = require('webpack')
 const config = require('../config')
 const {merge} = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const webpackIconfontPluginNodejs = require('./svg2font.js')
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 
@@ -29,7 +28,6 @@ module.exports = merge(baseWebpackConfig, {
         new webpack.HotModuleReplacementPlugin(),
         // https://github.com/ampedandwired/html-webpack-plugin
         ...multiPage.htmlPlugins(baseWebpackConfig),
-        new FriendlyErrorsPlugin(),
         webpackIconfontPluginNodejs
     ],
     optimization: {
