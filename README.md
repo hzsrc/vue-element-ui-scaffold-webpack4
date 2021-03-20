@@ -3,11 +3,12 @@
 # 注：
 * **目前已升级为webpack5**，如需要使用webpack4，可切换分支：`git checkout webpack4`。
 
-* **vue3 + element-plus + webpack5 版本：可切换分支：`git checkout vue3**
+* **vue3 + element-plus + webpack5 版本：可切换分支：`git checkout vue3` **
 
 本项目为vue下使用了element-plus并基于webpack5构建的多页面、多环境方案脚手架项目。
 
-[项目效果预览](https://hzsrc-vue-webpack4-elementui.netlify.com/)
+[项目效果预览1](http://test.hz300.com/webpack4/)
+[项目效果预览2](https://hzsrc-vue-webpack4-elementui.netlify.com/)
 
 
 ## 1. 安装
