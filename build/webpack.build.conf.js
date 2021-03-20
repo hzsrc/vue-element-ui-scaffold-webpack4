@@ -6,7 +6,7 @@ const config = require('../config')
 const { merge } = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
+const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isProd = process.env.ENV_CONFIG === 'prod'
@@ -115,3 +115,4 @@ if (process.env.npm_config_report) {
 }
 
 module.exports = webpackConfig
+

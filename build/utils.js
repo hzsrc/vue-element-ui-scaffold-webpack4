@@ -19,17 +19,22 @@ exports.assetsPath = function (_path) {
 
 exports.styleLoaders = function (options) {
     options = options || {}
-    const cssLoader = {
-        loader: 'css-loader',
-        options: {
-            sourceMap: options.sourceMap,
-            esModule: false
-        }
-    }
 
     function getCssRule(extension, loader, loaderOptions) {
-        const use = ['vue-style-loader', cssLoader]
-        use.push(getPostCssLoader(options.sourceMap));
+        const use = [
+            {
+                loader: 'css-loader',
+                options: {
+                    sourceMap: options.sourceMap,
+                    esModule: false
+                }
+            }, {
+                loader: 'postcss-loader',
+                options: {
+                    sourceMap: options.sourceMap
+                }
+            }
+        ];
         if (loader) {
             use.push({
                 loader: loader + '-loader',
@@ -37,13 +42,20 @@ exports.styleLoaders = function (options) {
             })
         }
         if (options.extract) {
-            use.splice(1, 0, {
+            use.splice(0, 0, {
                 loader: MiniCssExtractPlugin.loader,
                 options: {
                     publicPath: '../', // dist 相对于 dist/css 目录
                     esModule: false,
                 }
             })
+        } else {
+            use.splice(0, 0, {
+                loader: 'vue-style-loader',
+                options: {
+                    sourceMap: options.sourceMap
+                }
+            });
         }
         use.push(exports.conditionalCompiler)
         return {

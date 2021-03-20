@@ -8,7 +8,7 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const webpackIconfontPluginNodejs = require('./svg2font.js')
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 
-process.title = 'ePortal-dev-server';
+process.title = 'dev-server';
 
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {

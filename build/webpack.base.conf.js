@@ -34,10 +34,20 @@ module.exports = {
         }
     },
     module: {
+        noParse: /^(vue|vue-router|vuex|vuex-router-sync)$/,
         rules: [
             {
                 test: /\.vue$/,
-                use: ['vue-loader', utils.conditionalCompiler],
+                use: [
+                    {
+                        loader: 'vue-loader',
+                        options: {
+                            cacheDirectory: path.resolve(__dirname, '../node_modules/.cache/vue-loader'),
+                            cacheIdentifier: 'cache-loader:{version} {process.env.NODE_ENV}'
+                        }
+                    },
+                    utils.conditionalCompiler
+                ],
             },
             {
                 test: /\.js$/,
