@@ -1,7 +1,7 @@
 <template>
     <div class="pd-10 bg">
         <h3><i className="my-icon-warning"></i>
-            Hi {this.name}, here is the entry
+            Hi {{name}}, here is the entry
         </h3>
         <hr/>
         <div><a href="main.html">main</a></div>
