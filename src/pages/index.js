@@ -3,6 +3,7 @@
 import Vue from 'vue';
 import login from '../views/login/login.vue'
 import debugInfo from '../component/debugInfo';
+
 require('../css/index.scss');
 
 //调试信息组件
@@ -13,3 +14,4 @@ new Vue({
     template: '<login></login>',
     components: { login }
 })
+

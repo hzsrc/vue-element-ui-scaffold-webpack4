@@ -3,7 +3,7 @@ const utils = require('./utils')
 const multiPage = require('./multi-page')
 const config = require('../config')
 const webpack = require('webpack')
-const {VueLoaderPlugin} = require('vue-loader');
+const { VueLoaderPlugin } = require('vue-loader');
 const appConfig = require('../config/app-config')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
 const forElementUI = require('webpack-theme-color-replacer/forElementUI')
@@ -34,10 +34,20 @@ module.exports = {
         }
     },
     module: {
+        noParse: /^(vue|vue-router|vuex|vuex-router-sync)$/,
         rules: [
             {
                 test: /\.vue$/,
-                use: ['vue-loader', utils.conditionalCompiler],
+                use: [
+                    {
+                        loader: 'vue-loader',
+                        options: {
+                            cacheDirectory: path.resolve(__dirname, '../node_modules/.cache/vue-loader'),
+                            cacheIdentifier: 'cache-loader:{version} {process.env.NODE_ENV}'
+                        }
+                    },
+                    utils.conditionalCompiler
+                ],
             },
             {
                 test: /\.js$/,
@@ -46,7 +56,7 @@ module.exports = {
                     //step-2
                     {
                         loader: 'babel-loader',
-                        options: {cacheDirectory: true}
+                        options: { cacheDirectory: true }
                     },
                     //step-1
                     utils.conditionalCompiler,
