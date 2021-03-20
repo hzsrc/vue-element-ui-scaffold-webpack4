@@ -86,7 +86,8 @@ module.exports = {
             'process.env': {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
                 ENV_CONFIG: JSON.stringify(process.env.ENV_CONFIG),
-            }
+            },
+            __VUE_PROD_DEVTOOLS__: false
         }),
         // 将theme-changed.scss应用到element-plus，供babel-plugin-component按需加载
         new JoinFileContentPlugin({
