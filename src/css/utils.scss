@@ -27,7 +27,7 @@ a {
     text-decoration: none;
 }
 
-div, section, nav, p, article, header, footer {
+div, section, nav, p, article, header, footer, h1, h2, h3, h4, h5, h6 {
     box-sizing: border-box;
 }
 
@@ -35,71 +35,33 @@ body, input, select, textarea, button {
     font-family: 'Microsoft YaHei', "PingFang SC", "Hiragino Sans GB", -apple-system, Arial;
 }
 
-.full {
-    height: 100%;
-    width: 100%;
-}
 
-/* 高度自适应布局*/
+
 .full-ctn {
     position: relative;
-    height: 100%;
-    width: 100%;
-}
-
-.vfull-head {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-    /*height: 30px;*/
-}
-
-.vfull-body {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-    /*padding-top: 30px;
-    padding-bottom: 20px;*/
-}
-
-.vfull-foot {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /*height: 20px;*/
-}
-
-/*宽度自适应布局*/
-
-.hfull-left {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    z-index: 1;
-    /*width: 30px;*/
-}
-
-.hfull-body {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    /*padding-left: 30px;
-    padding-right: 20px;*/
 }
 
-.hfull-right {
+.full-ctn > * {
     position: absolute;
-    right: 0;
-    top: 0;
     height: 100%;
-    /*width: 20px;*/
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.h100 {
+    height: 100%;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.full {
+    width: 100%;
+    height: 100%;
 }
 
 .lined {
@@ -205,13 +167,6 @@ body, input, select, textarea, button {
     vertical-align: bottom;
 }
 
-.w100 {
-    width: 100%;
-}
-
-.h100 {
-    height: 100%;
-}
 
 table {
     border-collapse: collapse;
