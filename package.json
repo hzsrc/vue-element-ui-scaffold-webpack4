@@ -80,7 +80,6 @@
         "sass": "^1.32.8",
         "sass-loader": "^11.0.1",
         "shelljs": "^0.8.4",
-        "speed-measure-webpack-plugin": "^1.4.2",
         "url-loader": "^4.1.1",
         "vue-loader": "^15.9.6",
         "vue-style-loader": "^4.1.3",
