@@ -20,7 +20,7 @@ const mixed = {
     ...util,
     ...msgDialog,
     ...httpUtil,
-    storageUtil: new StorageUtil(),
+    storage: new StorageUtil(),
     tokenUtil,
     formatDate
 }

@@ -27,7 +27,7 @@ a {
     text-decoration: none;
 }
 
-div, section, nav, p {
+div, section, nav, p, article, header, footer, h1, h2, h3, h4, h5, h6, ul, li, ol {
     box-sizing: border-box;
 }
 
@@ -40,7 +40,7 @@ body, input, select, textarea, button {
     width: 100%;
 }
 
-/* 鑷�傚簲甯冨眬*/
+/* 自适应布局*/
 .full-ctn {
     position: relative;
     width: 100%;
