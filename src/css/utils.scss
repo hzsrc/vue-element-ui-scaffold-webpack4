@@ -27,14 +27,13 @@ a {
     text-decoration: none;
 }
 
-div, section, nav, p, article, header, footer, h1, h2, h3, h4, h5, h6 {
+div, section, nav, p, article, header, footer, h1, h2, h3, h4, h5, h6, ul, li, ol {
     box-sizing: border-box;
 }
 
 body, input, select, textarea, button {
     font-family: 'Microsoft YaHei', "PingFang SC", "Hiragino Sans GB", -apple-system, Arial;
 }
-
 
 
 .full-ctn {
