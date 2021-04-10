@@ -30,7 +30,7 @@
         <button @click="getAndGo2">stage2</button>
         <button @click="getAndGo3">stage3</button>
 
-        <a href="./" class="right">
+        <a href="login.html" class="right">
             <button>Logout</button>
         </a>
         <debug-info :info="dataList"></debug-info>
@@ -54,9 +54,9 @@
         methods: {
             callMockApi() {
                 this.loading = true
-                this.$x.post('/api/test_api', {}, { maskOptions: false })
+                this.$x.post('/api/test_api', {})
                     .then(res => {
-                        this.dataList = [res.data];
+                        this.dataList = [res];
                     })
                     .finally(t => {
                         this.loading = false
@@ -64,9 +64,9 @@
             },
             callLoading() {
                 const pars = { pageSize: this.pageSize, pageIndex: this.pageIndex }
-                this.$x.post('/api/test_data', pars)
+                this.$x.post('/api/test_data', pars, { maskOptions: false })
                     .then(res => {
-                        this.dataList = res.data;
+                        this.dataList = res.datas;
                         this.total = res.total
                         this.data = { total: res.total }
                     })

@@ -7,19 +7,21 @@ maskOptions:  表示请求时显示遮罩层的选项。默认{body: true}
 
 */
 
-import axios from 'axios'
+import Axios from 'axios'
 import appConfig from '../../config/app-config'
 import userInfo from './utils/userInfo'
 import msgDlg from './utils/msgDialog'
 import loading from './utils/loading'
 
 const serverMap = require('../../config/serverMap.js')
-// 超时时间
-// axios.defaults.timeout = 8000
-axios.defaults.baseURL = serverMap.base
+
+const axios = Axios.create({
+    baseURL: serverMap.base,
+    withCredentials: true,
+    timeout: 20000
+})
 axios.defaults.headers.post['Content-Type'] = 'application/json'
-axios.defaults.withCredentials = true
-axios.defaults.timeout = 20000 //20秒，超时报错
+
 
 axios.defaults.transformRequest = function (request) {
     return JSON.stringify(request)
@@ -29,7 +31,7 @@ const ShowMsg = '系统异常，请稍后重试～'
 // http请求拦截器
 axios.interceptors.request.use(function (config) {
     config.headers.token = userInfo.token
-    //将 {host}/xxx/yyy 的url替换为对应服务的前缀
+    //将 {node_api}/xxx/yyy 的url替换为对应服务的前缀
     config.url = config.url.replace(/^\{(\w+)\}/, (m, $1) => serverMap[$1] || '');
 
     //遮罩层
@@ -50,7 +52,14 @@ axios.interceptors.response.use(function (res) {
     const data = res.data || {};
     const status = Number(data.status);
     if (status === ResStatus.SessionFail) {
-        return doLogin()
+        if (axios.inLogin) return
+        axios.inLogin = 1
+        return new Promise((resolve, reject) => {
+            msgDlg.confirm('登录已过期，请重新登录').then(() => {
+                doLogin()
+                reject(data)
+            })
+        });
     } else if (status !== ResStatus.OK) { //错误
         console.error(data)
         if (status === ResStatus.SysErr || !data.msg) {
@@ -92,10 +101,12 @@ function fail(error) {
 }
 
 function showErr(config, errmsg) {
-    if (config && config.showError === 'alert')
-        msgDlg.alert(errmsg, { type: 'error' });
-    else
-        msgDlg.toast.error(errmsg);
+    if (errmsg) {
+        if (config && config.showError === 'alert')
+            msgDlg.alert(errmsg, { type: 'error' });
+        else
+            msgDlg.toast.error(errmsg);
+    }
 }
 
 export default axios

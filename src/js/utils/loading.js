@@ -50,8 +50,7 @@ export default {
                     loading.close()
                 }
             }
-        }
-        catch (e) {
+        } catch (e) {
         }
     }
 }

@@ -9,7 +9,7 @@
             return (
                 <div>
                     <h3>This is stage1 here</h3>
-                    <button onClick="$router.back()">Back</button>
+                    <button onClick={() => this.$router.back()}>Back</button>
                 </div>
             )
         },

@@ -4,16 +4,10 @@ import spinRoute from './spinRoute';
 
 //同步加载，合并打包
 import home from '../views/home/home.vue';
-import stage1 from '../views/stage1/stage1.vue';
 
 Vue.use(Router)
 
-// 组件懒加载：组件会被webpack打包多个js，当路由被访问的时候只加载相应组件js
-const stage2 = () => import('../views/stage2/stage2.vue');
-
-const zrest = () => import('../views/zrest/zrest.vue');
-
-//组件懒加载，下载js时显示spin状态
+//组件懒加载，下载也页面组件js时显示spin状态
 const stage3 = () => spinRoute.require(import('../views/stage3/stage3.vue'));
 
 const router = new Router({
@@ -23,18 +17,29 @@ const router = new Router({
             path: '/',
             component: home, //sync
             children: [
-                { path: '/stage1', component: stage1 }, //sync
+                { path: '', component: () => spinRoute.require(import('../views/home/homeInner.vue')) }, //sync
+                { path: 'theme', component: () => spinRoute.require(import('../views/themeColor/themeColor.vue')) }, //sync
+                { path: '/stage1', component: () => spinRoute.require(import('../views/stage1/stage1.vue')) }, //sync
                 {
                     path: '/stage2',
-                    component: stage2, //async
+                    component: () => spinRoute.require(import('../views/stage2/stage2.vue')),
                     children: [
-                        { path: '/stage3', component: stage3 }, //async + spin
+                        {
+                            path: '/stage3',
+                            component: stage3
+                        },
                     ]
-                }
-            ]
+                },
+                { path: '/zrest', component: () => spinRoute.require(import('../views/zrest/zrest.vue')) }, //sync
+                { path: '*', component: () => spinRoute.require(import('../views/home/404.vue')) }
+            ],
         },
-        { path: '/zrest', component: zrest }, //sync
     ],
 })
-
+/*IFDEBUG
+//禁用重复警告
+'push,replace'.split(',').map(method => router[method] = function () {
+    return Router.prototype[method].apply(this, arguments).catch(t => 0)
+})
+ FIDEBUG*/
 export default router;

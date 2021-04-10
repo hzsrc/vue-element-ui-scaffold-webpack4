@@ -6,7 +6,7 @@
         <aside v-if="userInfo" class="flex-center pd-10 right">
             <el-avatar icon="el-icon-user-solid" size="small"></el-avatar>
             <el-dropdown>
-                <span class="el-dropdown-link"
+                <span class="pointer el-dropdown-link"
                 >&nbsp;{{userInfo.name}}<i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
@@ -23,9 +23,11 @@
             <nav class="h100 pointer flex-center"
                  v-for="(menu, index) in topMenus" :index="String(index)" :key="index"
                  :class="{active: curIndex==index}" @click="clickMenu(index)">
+                <i v-if="menu.icon" class="menu.icon"></i>
                 {{menu.title}}
             </nav>
         </div>
+        <debug-info :info="topMenus"></debug-info>
     </header>
 </template>
 
@@ -49,6 +51,10 @@
             clickMenu(index) {
                 this.curIndex = index
                 this.$store.dispatch('setTopMenuIndex', index)
+                var topMenu = this.topMenus[index]
+                if (!topMenu.children || topMenu.children.length === 0) {
+                    this.$router.push(topMenu.url)
+                }
             },
             logOut() {
                 location.href = 'login.html'

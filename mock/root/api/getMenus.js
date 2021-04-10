@@ -7,45 +7,51 @@ module.exports = {
             msg: '',
             data: [
                 {
-                    title: '我的绩效(OKR)',
-                    url: '/perform',
+                    title: 'Home',
+                    url: '/',
+                    icon: 'el-icon-home'
+                },
+                {
+                    title: 'Theme',
+                    url: '/theme',
+                    icon: 'el-icon-home'
+                },
+                {
+                    title: 'Page1',
+                    url: '/page1',
                     children: [{
-                        title: '目标制定',
-                        url: '/perform/objective',
+                        title: 'stage1',
+                        url: '/stage1',
                         icon: 'el-icon-document'
                     }, {
-                        title: '进度更新',
-                        url: '/perform/process',
+                        title: 'stage2',
+                        url: '/stage2',
+                        icon: 'el-icon-s-goods'
+                    }, {
+                        title: 'stage3',
+                        url: '/stage3',
                         icon: 'el-icon-setting'
                     }, {
-                        title: '绩效评估',
-                        url: '/perform/evaluate',
+                        title: 'rest tool',
+                        url: '/zrest',
                         icon: 'el-icon-menu'
-                    }, {
-                        title: '绩效反馈',
-                        url: '/perform/feedback',
-                        icon: 'el-icon-document'
                     }]
                 },
                 {
-                    title: '绩效审批',
-                    url: '/performApp',
+                    title: 'Page2',
+                    url: '/page2',
                     children: [{
-                        title: '下属目标审批',
-                        url: '/performApp/approve',
+                        title: 'stage1',
+                        url: '/stage1',
                         icon: 'el-icon-document'
                     }, {
-                        title: '下属绩效跟进',
-                        url: '/performApp/process',
+                        title: 'stage2',
+                        url: '/stage2',
                         icon: 'el-icon-setting'
                     }, {
-                        title: '下属绩效审批',
-                        url: '/performApp/evaluate',
+                        title: 'rest tool',
+                        url: '/zrest',
                         icon: 'el-icon-menu'
-                    }, {
-                        title: '绩效结果审核',
-                        url: '/performApp/feedback',
-                        icon: 'el-icon-document'
                     }]
                 }
             ]

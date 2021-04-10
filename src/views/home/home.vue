@@ -2,9 +2,8 @@
     <div class="main-page full-ctn">
         <top-header class="banner" :top-menus="topMenus" :user-info="userInfo"></top-header>
         <div class="full-ctn body-bg">
-            <left-menu v-if="leftMenus" class="l-menu" :left-menus="leftMenus"></left-menu>
+            <left-menu v-if="leftMenus && leftMenus.length" class="l-menu" :left-menus="leftMenus"></left-menu>
             <router-view class="auto-bar">
-                <home-inner></home-inner>
             </router-view>
         </div>
     </div>
@@ -14,7 +13,6 @@
     import topHeader from '../../component/topHeader.vue'
     import leftMenu from '../../component/leftMenu.vue'
     import { mapGetters, mapState } from 'vuex'
-    import homeInner from './homeInner.vue'
 
     export default {
         data() {
@@ -26,7 +24,7 @@
             const infos = await this.$x.post('/api/getInfo')
             this.userInfo = infos
             this.$x.userInfo.setUserInfo(infos)
-            this.getMenus()
+            await this.getMenus()
         },
         methods: {
             async getMenus() {
@@ -34,7 +32,7 @@
                 this.$store.dispatch('setTopMenus', menus || []);
             }
         },
-        components: { topHeader, leftMenu, homeInner },
+        components: { topHeader, leftMenu },
         computed: {
             ...mapGetters(['leftMenus']),
             ...mapState(['topMenus'])
