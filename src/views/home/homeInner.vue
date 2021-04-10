@@ -30,9 +30,6 @@
         <button @click="getAndGo2">stage2</button>
         <button @click="getAndGo3">stage3</button>
 
-        <a href="login.html" class="right">
-            <button>Logout</button>
-        </a>
         <debug-info :info="dataList"></debug-info>
 
         <hr>
@@ -91,7 +88,7 @@
                 this.$router.push('/stage2')
             },
             getAndGo3() {
-                this.$router.push('/stage3')
+                this.$router.push('/stage2/stage3')
             },
             // loadExternalRoutes() {
             //     window.addExternalRoutes = function (routes) {
