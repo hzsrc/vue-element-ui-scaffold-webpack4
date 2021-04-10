@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import $x from '../js/$x'
 import router from '../router/routerMain.js'
+import store from '../store/index.js'
 import main from '../views/app.vue'
 import { Button, Table, TableColumn, Pagination } from 'element-ui'
 import { initThemeColor } from '../js/themeColorClient'
@@ -28,6 +29,7 @@ initThemeColor()
 new Vue({
     el: '#app',
     router,
+    store,
     render: h => h(main),
 });
 

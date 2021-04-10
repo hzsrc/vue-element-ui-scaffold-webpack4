@@ -4,7 +4,7 @@
             Hi {{name}}, here is the entry
         </h3>
         <hr/>
-        <div><a href="main.html">main</a></div>
+        <div><a href="./">main</a></div>
         <div><a href="pageB.html">pageB</a></div>
         <div><a href="themeColor.html">theme colors</a></div>
         <div><a href="iconfontPreview.html">iconfont</a></div>

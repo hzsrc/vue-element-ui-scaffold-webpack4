@@ -1,4 +1,6 @@
-import changer from 'webpack-theme-color-replacer/client/themeColorChanger'
+import client from 'webpack-theme-color-replacer/client'
+import getElementUISeries from 'webpack-theme-color-replacer/forElementUI/getElementUISeries'
+
 import appConfig from '../../config/app-config.js'
 
 export let curColor = appConfig.themeColor
@@ -8,9 +10,9 @@ export function changeThemeColor(newColor) {
     var customB = parseInt(Math.random() * 256).toString(16); // 按你需要生成颜色
     if (customB.length == 1) customB = '0' + customB
     const options = {
-        newColors: appConfig.getThemeColors(newColor, ['#88' + customB + customB, '#' + customB + '88' + customB]),
+        newColors: appConfig.getThemeColors(newColor, getElementUISeries, client.varyColor, ['#88' + customB + customB, '#' + customB + '88' + customB]),
     }
-    return changer.changeColor(options, Promise)
+    return client.changer.changeColor(options, Promise)
         .then(t => {
             curColor = newColor
             localStorage.setItem('theme_color', curColor)

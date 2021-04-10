@@ -40,7 +40,7 @@ body, input, select, textarea, button {
     width: 100%;
 }
 
-/* 自适应布局*/
+/* 鑷�傚簲甯冨眬*/
 .full-ctn {
     position: relative;
     width: 100%;
@@ -58,7 +58,7 @@ body, input, select, textarea, button {
 .lined {
     background-position: bottom;
     background-repeat: no-repeat;
-    background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" viewbox="0,0,1,1"><line y1="100%" x1="0" y2="100%" x2="9999" stroke="#ccc" fill="none"/></svg>');
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAsMCwxLDEiPjxsaW5lIHkxPSIxMDAlIiB4MT0iMCIgeTI9IjEwMCUiIHgyPSI5OTk5IiBzdHJva2U9IiNjY2MiIGZpbGw9Im5vbmUiLz48L3N2Zz4=');
     min-height: 1px;
 }
 
@@ -132,6 +132,20 @@ body, input, select, textarea, button {
     text-align: center;
 }
 
+.flex {
+    display: flex;
+}
+
+.f-middle {
+    display: flex;
+    align-items: center;
+}
+
+.f-center {
+    display: flex;
+    justify-content: center;
+}
+
 .flex-center {
     display: flex;
     align-items: center;
@@ -139,7 +153,12 @@ body, input, select, textarea, button {
 }
 
 .flex-column {
+    display: flex;
     flex-direction: column;
+}
+
+.no-shrink {
+    flex-shrink: 0;
 }
 
 .t-right {
@@ -197,6 +216,14 @@ table {
     padding: 10px;
 }
 
+.pd-20 {
+    padding: 20px;
+}
+
 .mg-10 {
     margin: 10px;
+}
+
+.white-bg {
+    background: #fff;
 }

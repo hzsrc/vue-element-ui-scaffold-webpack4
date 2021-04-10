@@ -98,8 +98,8 @@ module.exports = {
         new ThemeColorReplacer({
             fileName: 'css/theme-colors.[contenthash:8].css',
 
-            matchColors: appConfig.getThemeColors(appConfig.themeColor, ['#0cdd3a', '#c655dd']),
-
+            matchColors: appConfig.getThemeColors(appConfig.themeColor, forElementUI.getElementUISeries, ThemeColorReplacer.varyColor
+                , ['#0cdd3a', '#c655dd']),
             changeSelector: forElementUI.changeSelector,
             isJsUgly: config.isBuild,
             // injectCss: false,

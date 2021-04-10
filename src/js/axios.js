@@ -9,7 +9,7 @@ maskOptions:  表示请求时显示遮罩层的选项。默认{body: true}
 
 import axios from 'axios'
 import appConfig from '../../config/app-config'
-import tokenUtil from './utils/tokenUtil'
+import userInfo from './utils/userInfo'
 import msgDlg from './utils/msgDialog'
 import loading from './utils/loading'
 
@@ -28,7 +28,7 @@ axios.defaults.transformRequest = function (request) {
 const ShowMsg = '系统异常，请稍后重试～'
 // http请求拦截器
 axios.interceptors.request.use(function (config) {
-    config.headers.token = tokenUtil.token
+    config.headers.token = userInfo.token
     //将 {host}/xxx/yyy 的url替换为对应服务的前缀
     config.url = config.url.replace(/^\{(\w+)\}/, (m, $1) => serverMap[$1] || '');
 
@@ -59,7 +59,7 @@ axios.interceptors.response.use(function (res) {
         showErr(res.config, data.msg);
         return Promise.reject(data)
     }
-    return data
+    return data.data
 }, fail);
 
 function doLogin() {

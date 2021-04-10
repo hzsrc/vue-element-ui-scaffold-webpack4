@@ -1,5 +1,5 @@
 import StorageUtil from './utils/storageUtil.js'
-import tokenUtil from './utils/tokenUtil.js'
+import userInfo from './utils/userInfo.js'
 import domUtil from './utils/domUtil.js'
 import msgDialog from './utils/msgDialog.js'
 import httpUtil from './utils/httpUtil.js'
@@ -21,7 +21,7 @@ const mixed = {
     ...msgDialog,
     ...httpUtil,
     storage: new StorageUtil(),
-    tokenUtil,
+    userInfo,
     formatDate
 }
 
