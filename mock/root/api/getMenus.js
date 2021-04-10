@@ -14,11 +14,11 @@ module.exports = {
                 {
                     title: 'Theme',
                     url: '/theme',
-                    icon: 'el-icon-home'
+                    icon: 'el-icon-theme'
                 },
                 {
                     title: 'Page1',
-                    url: '/page1',
+                    url: '/stage1',
                     children: [{
                         title: 'stage1',
                         url: '/stage1',
@@ -29,7 +29,7 @@ module.exports = {
                         icon: 'el-icon-s-goods'
                     }, {
                         title: 'stage3',
-                        url: '/stage3',
+                        url: '/stage2/stage3',
                         icon: 'el-icon-setting'
                     }, {
                         title: 'rest tool',
@@ -41,13 +41,17 @@ module.exports = {
                     title: 'Page2',
                     url: '/page2',
                     children: [{
+                        title: 'Icons',
+                        url: '/icons',
+                        icon: 'el-icon-setting'
+                    }, {
                         title: 'stage1',
                         url: '/stage1',
                         icon: 'el-icon-document'
                     }, {
                         title: 'stage2',
                         url: '/stage2',
-                        icon: 'el-icon-setting'
+                        icon: 'el-icon-goods'
                     }, {
                         title: 'rest tool',
                         url: '/zrest',

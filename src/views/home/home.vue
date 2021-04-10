@@ -1,9 +1,9 @@
 <template>
     <div class="main-page full-ctn">
-        <top-header class="banner" :top-menus="topMenus" :user-info="userInfo"></top-header>
+        <top-header class="banner" :top-menus="topMenus" :user-info="userInfo" :curIndex="topMenuIndex"></top-header>
         <div class="full-ctn body-bg">
             <left-menu v-if="leftMenus && leftMenus.length" class="l-menu" :left-menus="leftMenus"></left-menu>
-            <router-view class="auto-bar">
+            <router-view class="auto-bar pd-20">
             </router-view>
         </div>
     </div>
@@ -29,13 +29,13 @@
         methods: {
             async getMenus() {
                 const menus = await this.$x.post('/api/getMenus')
-                this.$store.dispatch('setTopMenus', menus || []);
+                this.$store.dispatch('setTopMenus', { topMenus: menus || [], vm: this });
             }
         },
         components: { topHeader, leftMenu },
         computed: {
             ...mapGetters(['leftMenus']),
-            ...mapState(['topMenus'])
+            ...mapState(['topMenus', 'topMenuIndex'])
         }
     }
 </script>
@@ -54,6 +54,7 @@
 
     .l-menu {
         width: 150px;
+        background: #f5f6f7;
 
         + * {
             width: calc(100% - 150px);

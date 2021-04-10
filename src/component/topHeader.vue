@@ -41,15 +41,13 @@
         props: {
             topMenus: Array,
             userInfo: Object,
+            curIndex: Number
         },
         data() {
-            return {
-                curIndex: 0
-            }
+            return {}
         },
         methods: {
             clickMenu(index) {
-                this.curIndex = index
                 this.$store.dispatch('setTopMenuIndex', index)
                 var topMenu = this.topMenus[index]
                 if (!topMenu.children || topMenu.children.length === 0) {

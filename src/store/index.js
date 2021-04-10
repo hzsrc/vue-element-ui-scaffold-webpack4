@@ -1,14 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
 //import productList from './modules/productList'
 
 Vue.use(Vuex)
 
 // state
 const state = {
-    topMenus: [], //记录点击状态
-    topMenuIndex: 0, //记录页面滚动距离
+    topMenus: [],
+    topMenuIndex: 0,
 }
 
 // getters
@@ -21,12 +20,17 @@ const getters = {
 
 // actions
 const actions = {
-    setTopMenus({ commit }, topMenus) {
+    setTopMenus({ commit }, { topMenus, vm }) {
         commit('SET_TOPMENUS', topMenus)
+        var path = vm.$route.path
+        var index = topMenus.findIndex(menu => {
+            if (menu.url === path) return true
+            if (menu.children) return menu.children.find(m => m.url === path)
+        })
+        if (index > -1) commit('SET_TOPMENUINDEX', index)
     },
     setTopMenuIndex({ commit }, index) {
-        commit('SET_TOPMENUINDEX', -1); //先清空
-        setTimeout(() => commit('SET_TOPMENUINDEX', index), 0);
+        commit('SET_TOPMENUINDEX', index);
     },
 };
 

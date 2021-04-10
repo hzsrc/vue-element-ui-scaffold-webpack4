@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>This is stage2 here. Go <a href="#/stage3">stage3</a></h3>
+        <h3>This is stage2 here. Go <a href="#/stage2/stage3">stage3</a></h3>
 
         <button @click="$router.back()">Back</button>
 

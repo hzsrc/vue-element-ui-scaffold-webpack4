@@ -23,16 +23,19 @@
             }
         },
         watch: {
-            leftMenus(menus) {
-                this.curIndex = 0
-                var curIndex = menus.findIndex(menu => menu.url === this.$route.path)
-                if (curIndex > -1) {
-                    this.curIndex = curIndex
-                }
-                var curMenu = menus[curIndex] || menus[0]
-                if (curMenu) {
-                    this.goMenu(curMenu)
-                }
+            leftMenus: {
+                handler(menus) {
+                    this.curIndex = 0
+                    var curIndex = menus.findIndex(menu => menu.url === this.$route.path)
+                    if (curIndex > -1) {
+                        this.curIndex = curIndex
+                    }
+                    var curMenu = menus[curIndex] || menus[0]
+                    if (curMenu) {
+                        this.goMenu(curMenu)
+                    }
+                },
+                immediate: true
             }
         },
         methods: {

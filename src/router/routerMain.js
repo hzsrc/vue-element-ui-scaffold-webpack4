@@ -17,20 +17,24 @@ const router = new Router({
             path: '/',
             component: home, //sync
             children: [
-                { path: '', component: () => spinRoute.require(import('../views/home/homeInner.vue')) }, //sync
-                { path: 'theme', component: () => spinRoute.require(import('../views/themeColor/themeColor.vue')) }, //sync
-                { path: '/stage1', component: () => spinRoute.require(import('../views/stage1/stage1.vue')) }, //sync
+                { path: '', component: () => spinRoute.require(import('../views/home/homeInner.vue')) },
+                { path: '/theme', component: () => spinRoute.require(import('../views/themeColor/themeColor.vue')) },
+                { path: '/stage1', component: () => spinRoute.require(import('../views/stage1/stage1.vue')) },
                 {
                     path: '/stage2',
                     component: () => spinRoute.require(import('../views/stage2/stage2.vue')),
                     children: [
                         {
-                            path: '/stage3',
+                            path: '/stage2/stage3',
                             component: stage3
                         },
                     ]
                 },
-                { path: '/zrest', component: () => spinRoute.require(import('../views/zrest/zrest.vue')) }, //sync
+                {
+                    path: '/icons',
+                    component: () => spinRoute.require(import('../views/iconfontPreview/iconfontPreview.vue'))
+                },
+                { path: '/zrest', component: () => spinRoute.require(import('../views/zrest/zrest.vue')) },
                 { path: '*', component: () => spinRoute.require(import('../views/home/404.vue')) }
             ],
         },
