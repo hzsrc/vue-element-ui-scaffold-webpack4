@@ -95,12 +95,20 @@
 </template>
 
 <script>
-    import httpUtil from '../../js/utils/httpUtil';
     import Vue from 'vue'
     import { Row, Col, Input, Button, Form, FormItem, Select, Option } from 'element-ui'
     import StorageUtil from '../../js/utils/storageUtil';
     import msgDlg from '../../js/utils/msgDialog'
+    import serverMap from '../../../config/serverMap'
+    import Axios from 'axios'
+    import { createHttp } from '../../js/utils/httpUtil'
 
+    const axios = Axios.create({
+        baseURL: serverMap.base,
+        withCredentials: true,
+        timeout: 20000
+    })
+    const httpUtil = createHttp(axios)
     const storageUtil = new StorageUtil()
     Vue.use(Row).use(Col).use(Input).use(Button).use(Form).use(FormItem).use(Select).use(Option)
 
@@ -140,7 +148,7 @@
             this.setApiData();
             this.changeServer();
 
-            httpUtil.axios.interceptors.request.use(config => {
+            axios.interceptors.request.use(config => {
                 this.axiosCfg = config
                 return config
             })
@@ -168,12 +176,12 @@
                 this.response.status = res.status || ((res.response && res.response.status) + ' ' + res.message);
                 this.response.json = JSON.stringify(res.data, null, 4)
             }
-            httpUtil.axios.interceptors.response.handlers.splice(0)
-            httpUtil.axios.interceptors.response.use(resp, resp)
+            axios.interceptors.response.handlers.splice(0)
+            axios.interceptors.response.use(resp, resp)
         },
         methods: {
             changeServer() {
-                httpUtil.axios.defaults.baseURL = this.config.server
+                axios.defaults.baseURL = this.config.server
             },
             changeImport(val) {
                 this.configJSON = val
@@ -207,6 +215,7 @@
                 }
             },
             saveToLocal(url, data) {
+                if (!data) return
                 url = url.replace(this.config.server, '')
                 if (typeof data !== 'string') {
                     data = JSON.stringify(data)
@@ -283,7 +292,7 @@
                 }
             },
             goLogin() {
-                location.href = '/?redirectUrl=zrest.html'
+                location.href = 'login.html#?redirectUrl=zrest.html'
             }
         },
         computed: {},
