@@ -44,7 +44,8 @@
                 this.goMenu(menu)
             },
             goMenu(menu) {
-                this.$router.push(menu.url)
+                if (this.$route.path !== menu.url)
+                    this.$router.push(menu.url)
             }
         }
     }

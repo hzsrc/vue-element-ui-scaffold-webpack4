@@ -51,7 +51,8 @@
                 this.$store.dispatch('setTopMenuIndex', index)
                 var topMenu = this.topMenus[index]
                 if (!topMenu.children || topMenu.children.length === 0) {
-                    this.$router.push(topMenu.url)
+                    if (this.$route.path !== topMenu.url)
+                        this.$router.push(topMenu.url)
                 }
             },
             logOut() {
