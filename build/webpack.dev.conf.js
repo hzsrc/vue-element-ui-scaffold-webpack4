@@ -19,7 +19,7 @@ module.exports = merge(baseWebpackConfig, {
     module: {
         rules: utils.styleLoaders({sourceMap: config.dev.cssSourceMap, extract: false})
     },
-    devtool: false, // see SourceMapDevToolPlugin
+    devtool: 'eval-source-map',
     plugins: [
         //new HardSourceWebpackPlugin(),
         // https://webpack.js.org/plugins/source-map-dev-tool-plugin/
