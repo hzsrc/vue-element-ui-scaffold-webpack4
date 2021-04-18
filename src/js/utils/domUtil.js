@@ -37,6 +37,20 @@ QueryEls.prototype = {
     elDo(doByEl, index = 0) { //针对第一个元素进行操作，或者返回值
         const e = this.els[index];
         return e && doByEl(e);
+    },
+    attr(name, val) {
+        return getOrSet(this.els, e => e.getAttribute(name), e => e.setAttribute(name, val), arguments)
+    },
+    prop(name, val) {
+        return getOrSet(this.els, e => e[name], e => e[name] = val, arguments)
+    }
+}
+
+function getOrSet(els, getter, setter, args) {
+    if (args.length === 1) {
+        return els[0] && getter(els[0])
+    } else {
+        callEach(els, el => setter(el))
     }
 }
 
@@ -44,8 +58,7 @@ function callEach(arr, fn) {
     for (let i = 0; i < arr.length; i++) {
         try {
             fn(arr[i], i);
-        }
-        catch (e) {
+        } catch (e) {
         }
     }
 }
