@@ -1,9 +1,9 @@
 /*
 使vue-router懒加载时可以显示一个加载提示，避免网速慢时无响应
 用法:
-const stage3 = () => {
-    spinRoute.show();
-    return import('../views/stage3/stage3.vue').then(spinRoute.resolve);
+const route = {
+    path: '/page-layout',
+    component: () => spinRoute.require(import('./pageLayout/pageLayout.vue'))
 };
 */
 
