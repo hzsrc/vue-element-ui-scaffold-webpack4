@@ -27,6 +27,7 @@
         "echarts": "^4.6.2",
         "element-ui": "^2.15.1",
         "qrcode-vue": "^1.2.0",
+        "slot-layout": "^1.0.3",
         "vue": "^2.6.12",
         "vue-router": "^3.5.1",
         "vue-smooth-dnd": "^0.8.1",
