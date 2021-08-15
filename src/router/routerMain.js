@@ -35,6 +35,10 @@ const router = new Router({
                     component: () => spinRoute.require(import('../views/iconfontPreview/iconfontPreview.vue'))
                 },
                 { path: '/zrest', component: () => spinRoute.require(import('../views/zrest/zrest.vue')) },
+                {
+                    path: '/layout',
+                    component: () => spinRoute.require(import('../views/slot-layout.vue'))
+                },
                 { path: '*', component: () => spinRoute.require(import('../views/home/404.vue')) }
             ],
         },

@@ -17,6 +17,11 @@ module.exports = {
                     icon: 'el-icon-theme'
                 },
                 {
+                    title: 'Layout',
+                    url: '/layout',
+                    icon: 'el-icon-grid'
+                },
+                {
                     title: 'Page1',
                     url: '/stage1',
                     children: [{

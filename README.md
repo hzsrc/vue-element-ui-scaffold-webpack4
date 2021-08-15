@@ -40,7 +40,7 @@ npm install
 
 启用方法：
 1、npm run dev默认会同时启动mock服务。
-2、单独运行：npm run mock
+2、单独运行：npm run mock。
 
 配置文件：
 1、config/serverMap.js中的接口服务地址为：base: '"//localhost:8085"'

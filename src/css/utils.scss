@@ -56,15 +56,20 @@ body, input, select, textarea, button {
 }
 
 .lined {
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAsMCwxLDEiPjxsaW5lIHkxPSIxMDAlIiB4MT0iMCIgeTI9IjEwMCUiIHgyPSI5OTk5IiBzdHJva2U9IiNjY2MiIGZpbGw9Im5vbmUiLz48L3N2Zz4=');
-    min-height: 1px;
+    border-bottom: 1px solid #eee;
+}
+
+.toplined {
+    border-top: 1px solid #eee;
+}
+
+.shaddowed {
+    box-shadow: 0 0 4px 1px rgba(#000, 0.1);
 }
 
 .pre {
     white-space: pre-wrap;
-    line-height: 1.1em;
+    line-height: 1.5;
     word-break: break-all;
 }
 
@@ -86,10 +91,13 @@ body, input, select, textarea, button {
 
 .bordered {
     border: 1px solid #ddd;
+}
+
+.radius {
     border-radius: 4px;
 }
 
-.pointer {
+.pointer, .pointer * {
     cursor: pointer;
 }
 
@@ -161,6 +169,14 @@ body, input, select, textarea, button {
     flex-shrink: 0;
 }
 
+.f-grow {
+    flex-grow: 1;
+}
+
+.f-end {
+    justify-content: flex-end;
+}
+
 .t-right {
     text-align: right;
 }
@@ -212,16 +228,12 @@ table {
     overflow: auto;
 }
 
-.pd-10 {
-    padding: 10px;
+.absolute {
+    position: absolute;
 }
 
-.pd-20 {
-    padding: 20px;
-}
-
-.mg-10 {
-    margin: 10px;
+.relative {
+    position: relative;
 }
 
 .white-bg {
@@ -230,4 +242,32 @@ table {
 
 .pre {
     white-space: pre-wrap;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+//最大4块，自动调整为4、3、2、1块并撑满
+.flex-4 {
+    flex-basis: 21%;
+    flex-grow: 1;
+}
+
+@media (max-width: 1400px) {
+    .flex-4 {
+        flex-basis: 26%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .flex-4 {
+        flex-basis: 34%;
+    }
+}
+
+@media (max-width: 800px) {
+    .flex-4 {
+        flex-basis: 51%;
+    }
 }

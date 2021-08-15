@@ -27,7 +27,7 @@
                 {{menu.title}}
             </nav>
         </div>
-        <debug-info :info="topMenus"></debug-info>
+        <!--<debug-info :info="topMenus"></debug-info>-->
     </header>
 </template>
 
