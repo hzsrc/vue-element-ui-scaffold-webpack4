@@ -1,5 +1,5 @@
 import client from 'webpack-theme-color-replacer/client'
-import getElementUISeries from 'webpack-theme-color-replacer/forElementUI/getElementUISeries'
+import themeUtil from 'webpack-theme-color-replacer/themeUtil'
 
 import appConfig from '../../config/app-config.js'
 
@@ -10,7 +10,7 @@ export function changeThemeColor(newColor) {
     var customB = parseInt(Math.random() * 256).toString(16); // 按你需要生成颜色
     if (customB.length == 1) customB = '0' + customB
     const options = {
-        newColors: appConfig.getThemeColors(newColor, getElementUISeries, client.varyColor, ['#88' + customB + customB, '#' + customB + '88' + customB]),
+        newColors: themeUtil.getMyColors(newColor, ['#88' + customB + customB, '#' + customB + '88' + customB]),
     }
     return client.changer.changeColor(options, Promise)
         .then(t => {

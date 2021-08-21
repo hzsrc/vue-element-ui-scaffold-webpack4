@@ -3,7 +3,7 @@
         <div>
             <span class="v-top" style="line-height: 30px">Change theme color to: </span>
             <change-color></change-color>
-            <el-button @click="reset" size="small" style="float: right;">Reset</el-button>
+            <el-button @click="reset" size="small" style="float: right;" type="primary" class="mg-10">Reset</el-button>
         </div>
         <hr/>
         <h2>

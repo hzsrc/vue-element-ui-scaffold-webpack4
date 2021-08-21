@@ -6,7 +6,7 @@ const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader');
 const appConfig = require('../config/app-config')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
-const forElementUI = require('webpack-theme-color-replacer/forElementUI')
+const themeUtil = require('webpack-theme-color-replacer/themeUtil')
 const JoinFileContentPlugin = require('join-file-content-plugin')
 
 function resolve(dir) {
@@ -98,9 +98,8 @@ module.exports = {
         new ThemeColorReplacer({
             fileName: 'css/theme-colors.[contenthash:8].css',
 
-            matchColors: appConfig.getThemeColors(appConfig.themeColor, forElementUI.getElementUISeries, ThemeColorReplacer.varyColor
-                , ['#0cdd3a', '#c655dd']),
-            changeSelector: forElementUI.changeSelector,
+            matchColors: themeUtil.getMyColors(appConfig.themeColor, ['#0cdd3a', '#c655dd']),
+            changeSelector: themeUtil.changeSelector,
             isJsUgly: config.isBuild,
             // injectCss: false,
             // resolveCss(resultCss) { // optional. Resolve result css code as you wish.

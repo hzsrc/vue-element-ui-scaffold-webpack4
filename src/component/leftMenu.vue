@@ -1,5 +1,5 @@
 <template>
-    <ul class="flex-column white-bg lft-menu">
+    <ul class="f-column white-bg lft-menu">
         <li v-for="(menu, index) in leftMenus" :index="String(index)" :key="menu.url"
             @click="clickMenu(menu,index)" :class="{active: index===curIndex}" class="pointer ellipsis">
             <i :class="menu.icon"></i>

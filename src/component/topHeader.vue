@@ -3,7 +3,7 @@
         <aside class="logo h100 left f-middle">
             <img src="../images/logo.jpg"/>
         </aside>
-        <aside v-if="userInfo" class="flex-center pd-10 right">
+        <aside v-if="userInfo" class="f-center pd-10 right">
             <el-avatar icon="el-icon-user-solid" size="small"></el-avatar>
             <el-dropdown>
                 <span class="pointer el-dropdown-link"
@@ -19,8 +19,8 @@
             &emsp;
             <a class="el-icon-switch-button" @click="logOut"></a>
         </aside>
-        <div class="h100 flex-center t-menus">
-            <nav class="h100 pointer flex-center"
+        <div class="h100 f-center t-menus">
+            <nav class="h100 pointer f-center"
                  v-for="(menu, index) in topMenus" :index="String(index)" :key="index"
                  :class="{active: curIndex==index}" @click="clickMenu(index)">
                 <i v-if="menu.icon" class="menu.icon"></i>

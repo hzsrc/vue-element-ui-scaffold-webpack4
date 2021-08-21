@@ -65,7 +65,7 @@ exports.styleLoaders = function (options) {
 
     const result = [
         getCssRule('css', false),
-        getCssRule('postcss', false),
+        //getCssRule('postcss', false),
         getCssRule('less', 'less'),
         getCssRule('sass', 'sass', { implementation: require('sass'), indentedSyntax: true }),
         getCssRule('scss', 'sass', { implementation: require('sass') }),
@@ -75,11 +75,3 @@ exports.styleLoaders = function (options) {
     return result;
 }
 
-function getPostCssLoader(sourceMap) {
-    return {
-        loader: 'postcss-loader',
-        options: {
-            sourceMap: sourceMap
-        }
-    }
-}
