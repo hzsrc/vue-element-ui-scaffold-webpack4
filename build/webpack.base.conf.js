@@ -101,7 +101,7 @@ module.exports = {
             matchColors: themeUtil.getMyColors(appConfig.themeColor, ['#0cdd3a', '#c655dd']),
             changeSelector: themeUtil.changeSelector,
             isJsUgly: config.isBuild,
-            // injectCss: false,
+            injectCss: true,
             // resolveCss(resultCss) { // optional. Resolve result css code as you wish.
             //     return resultCss + youCssCode
             // }
