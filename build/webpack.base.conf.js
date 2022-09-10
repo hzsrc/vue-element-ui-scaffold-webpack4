@@ -102,6 +102,7 @@ module.exports = {
             changeSelector: themeUtil.changeSelector,
             isJsUgly: config.isBuild,
             injectCss: true,
+            // injectToHtml: /\w+\.html$/i,
             // resolveCss(resultCss) { // optional. Resolve result css code as you wish.
             //     return resultCss + youCssCode
             // }

@@ -92,7 +92,7 @@
         "webpack-hot-middleware": "^2.25.0",
         "webpack-iconfont-plugin-nodejs": "^1.0.24",
         "webpack-merge": "^5.7.3",
-        "webpack-theme-color-replacer": "^1.4.1"
+        "webpack-theme-color-replacer": "^1.4.2"
     },
     "engines": {
         "node": ">= 4.0.0",
