@@ -31,7 +31,6 @@ const webpackConfig = merge(baseWebpackConfig, {
             // Options similar to the same options in webpackOptions.output
             // both options are optional
             filename: 'css/[name].[contenthash:8].css',
-            //chunkFilename: 'css/[id].css'
             ignoreOrder: true,
         }),
         new CssMinimizerWebpackPlugin({
