@@ -5,7 +5,6 @@ const config = require('../config')
 const {merge} = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const webpackIconfontPluginNodejs = require('./svg2font.js')
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 
 process.title = 'dev-server';
 
@@ -21,7 +20,6 @@ module.exports = merge(baseWebpackConfig, {
     },
     devtool: 'eval-source-map',
     plugins: [
-        //new HardSourceWebpackPlugin(),
         // https://webpack.js.org/plugins/source-map-dev-tool-plugin/
         new webpack.SourceMapDevToolPlugin(),
         // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
@@ -35,5 +33,8 @@ module.exports = merge(baseWebpackConfig, {
         minimize: false,
         //noEmitOnErrors: true,
         splitChunks: false
+    },
+    cache: {
+        type: 'filesystem', //启用文件缓存，加快后续启动
     },
 })

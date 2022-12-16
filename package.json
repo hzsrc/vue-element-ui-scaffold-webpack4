@@ -68,7 +68,6 @@
         "eventsource-polyfill": "^0.9.6",
         "express": "^4.17.1",
         "file-loader": "^6.2.0",
-        "hard-source-webpack-plugin": "^0.13.1",
         "html-webpack-plugin": "^5.2.0",
         "join-file-content-plugin": "^1.0.3",
         "js-conditional-compile-loader": "^1.0.15",
