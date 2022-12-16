@@ -40,11 +40,7 @@ module.exports = {
                 test: /\.vue$/,
                 use: [
                     {
-                        loader: 'vue-loader',
-                        options: {
-                            cacheDirectory: path.resolve(__dirname, '../node_modules/.cache/vue-loader'),
-                            cacheIdentifier: 'cache-loader:{version} {process.env.NODE_ENV}'
-                        }
+                        loader: 'vue-loader'
                     },
                     utils.conditionalCompiler
                 ],

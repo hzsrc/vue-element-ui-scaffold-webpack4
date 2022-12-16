@@ -32,6 +32,7 @@ const webpackConfig = merge(baseWebpackConfig, {
             // both options are optional
             filename: 'css/[name].[contenthash:8].css',
             //chunkFilename: 'css/[id].css'
+            ignoreOrder: true,
         }),
         new CssMinimizerWebpackPlugin({
             sourceMap: config.build.productionSourceMap ? {
