@@ -22,7 +22,7 @@
         "rmcache": "node -e \"require('rimraf')('./node_modules/.cache', console.log)\""
     },
     "dependencies": {
-        "axios": "^0.21.2",
+        "axios": "^1.6.0",
         "date-any": "^1.0.2",
         "echarts": "^4.6.2",
         "element-ui": "^2.15.1",
