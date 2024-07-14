@@ -1,7 +1,7 @@
 //本文件模拟根目录的响应数据（类似index.html的作用）
 var fs = require('fs')
 module.exports = {
-    disabled: 0,
+    disabled: 1,
     headers: {
         'Content-Type': 'text/html'
     },

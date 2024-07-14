@@ -54,7 +54,8 @@
             background: #ddd;
         }
         td { padding: 5px 10px; }
-        input { border: 0; outline: 0; width: 150px; text-align: center; background: transparent; }
+        .flex-tb input { border: 0; width: 150px; text-align: center; background: transparent; }
+        input { outline: 0;}
         section { position: relative; }
     </style>
     <script>
@@ -67,12 +68,13 @@
     </script>
 <body>
     <h3 align="center"><a href="https://segmentfault.com/a/1190000017480480">webpack-iconfont-plugin-nodejs</a></h3>
+    <div>Use textbox like password (prevent to save password): <input type="text" class="pw-msk"  /></div>
     <h4>
     Modify or add a svg file in dir [src/iconfont/svgs], they will be parsed to iconfonts with css, and hot-loaded. <br/>
     修改或者添加svg文件到[src/iconfont/svgs]目录，将自动生成为iconfonts以及配套的css，支持热重载。</h4>
     <hr/>
     <div class="info">
-        <h3>my-app-icon (5 icons, click to copy)</h3>
+        <h3>my-app-icon (6 icons, click to copy)</h3>
         Class name prefix: <b>my-icon-</b> &emsp; You can use it like: &lt;i class="my-icon-success"&gt;&lt;/i&gt;
     </div>
     <hr/>
@@ -101,6 +103,11 @@
         <section onclick="copyCls(this)">
             <input value="my-icon-warning" />
             <div><i class="my-icon-warning"></i></div>
+        </section>
+      
+        <section onclick="copyCls(this)">
+            <input value="my-icon-pwd_msk" />
+            <div><i class="my-icon-pwd_msk"></i></div>
         </section>
       
     </div>
