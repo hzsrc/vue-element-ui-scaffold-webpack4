@@ -8,6 +8,8 @@ exports.conditionalCompiler = {
         isDebug: process.env.NODE_ENV === 'development', // optional, this expression is default
         envTest: process.env.ENV_CONFIG === 'test', // any prop name you want, used for /* IFTRUE_evnTest ...js code... FITRUE_evnTest */
         isPreview: process.env.npm_config_preview, // npm run build-demo --preview, for mock client data
+        //java环境把.aspx替换为.do。 执行npm run build --java
+        changeSource: process.env.npm_config_java ? source => source.replace(/\.aspx\b/ig, '.do') : null,
     }
 }
 exports.assetsPath = function (_path) {
@@ -19,22 +21,17 @@ exports.assetsPath = function (_path) {
 
 exports.styleLoaders = function (options) {
     options = options || {}
+    const cssLoader = {
+        loader: 'css-loader',
+        options: {
+            sourceMap: options.sourceMap,
+            esModule: false
+        }
+    }
 
     function getCssRule(extension, loader, loaderOptions) {
-        const use = [
-            {
-                loader: 'css-loader',
-                options: {
-                    sourceMap: options.sourceMap,
-                    esModule: false
-                }
-            }, {
-                loader: 'postcss-loader',
-                options: {
-                    sourceMap: options.sourceMap
-                }
-            }
-        ];
+        const use = [ 'vue-style-loader', cssLoader]
+        use.push(getPostCssLoader(options.sourceMap));
         if (loader) {
             use.push({
                 loader: loader + '-loader',
@@ -42,19 +39,13 @@ exports.styleLoaders = function (options) {
             })
         }
         if (options.extract) {
-            use.splice(0, 0, {
+            use.splice(1, 0, {
                 loader: MiniCssExtractPlugin.loader,
                 options: {
-                    publicPath: '../', // dist 相对于 dist/css 目录
+                    publicPath: '../../', // index.html 相对于 h5/css 目录
+                    esModule: false,
                 }
             })
-        } else {
-            use.splice(0, 0, {
-                loader: 'vue-style-loader',
-                options: {
-                    sourceMap: options.sourceMap
-                }
-            });
         }
         use.push(exports.conditionalCompiler)
         return {
@@ -65,7 +56,7 @@ exports.styleLoaders = function (options) {
 
     const result = [
         getCssRule('css', false),
-        //getCssRule('postcss', false),
+        getCssRule('postcss', false),
         getCssRule('less', 'less'),
         getCssRule('sass', 'sass', { implementation: require('sass'), indentedSyntax: true }),
         getCssRule('scss', 'sass', { implementation: require('sass') }),
@@ -75,3 +66,16 @@ exports.styleLoaders = function (options) {
     return result;
 }
 
+function getPostCssLoader(sourceMap) {
+    return {
+        loader: 'postcss-loader',
+        options: {
+            sourceMap: sourceMap,
+            postcssOptions: {
+                plugins: [
+                    require('autoprefixer')({}),
+                ]
+            }
+        }
+    }
+}

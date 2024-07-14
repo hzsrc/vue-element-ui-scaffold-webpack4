@@ -6,7 +6,7 @@ const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader');
 const appConfig = require('../config/app-config')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
-const themeUtil = require('webpack-theme-color-replacer/themeUtil')
+const forElementUI = require('webpack-theme-color-replacer/forElementUI')
 const JoinFileContentPlugin = require('join-file-content-plugin')
 
 function resolve(dir) {
@@ -29,21 +29,13 @@ module.exports = {
             vue$: 'vue/dist/vue.esm.js',
             '@': resolve('src')
         },
-        fallback: {
-            fs: false
-        }
     },
     module: {
-        noParse: /^(vue|vue-router|vuex|vuex-router-sync)$/,
+        noParse: /^(vue|vue-router|vuex)$/,
         rules: [
             {
                 test: /\.vue$/,
-                use: [
-                    {
-                        loader: 'vue-loader'
-                    },
-                    utils.conditionalCompiler
-                ],
+                use: ['vue-loader', utils.conditionalCompiler],
             },
             {
                 test: /\.js$/,
@@ -63,7 +55,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('img/[name].[hash:7].[ext]'),
+                    name: utils.assetsPath('h5/img/[name].[hash:7].[ext]'),
                     esModule: false
                 }
             },
@@ -72,7 +64,8 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('font/[name].[hash:7].[ext]')
+                    name: utils.assetsPath('h5/css/[name].[hash:7].[ext]'),
+                    esModule: false,
                 }
             }
         ]
@@ -92,16 +85,16 @@ module.exports = {
         }),
         //生成仅包含颜色的替换样式（主题色等）
         new ThemeColorReplacer({
-            fileName: 'css/theme-colors.[contenthash:8].css',
-
-            matchColors: themeUtil.getMyColors(appConfig.themeColor, ['#0cdd3a', '#c655dd']),
-            changeSelector: themeUtil.changeSelector,
+            fileName: 'h5/css/theme-colors.[contenthash:8].css',
+            matchColors: appConfig.getThemeColors(appConfig.themeColor, appConfig.otherColors),
+            changeSelector: forElementUI.changeSelector,
             isJsUgly: config.isBuild,
-            injectCss: true,
-            // injectToHtml: /\w+\.html$/i,
+            // injectCss: false,
             // resolveCss(resultCss) { // optional. Resolve result css code as you wish.
             //     return resultCss + youCssCode
             // }
         })
     ],
+
+    target: 'browserslist',
 }

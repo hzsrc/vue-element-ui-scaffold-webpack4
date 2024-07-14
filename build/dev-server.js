@@ -24,15 +24,13 @@ webpackConfig.plugins.push(new webpack.ProgressPlugin((percentage, msg) => {
 }));
 
 const app = express()
-const compiler = webpack(webpackConfig);
+const compiler = webpack(webpackConfig, _ => {
+    console.log(_)
+});
 
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
     publicPath: webpackConfig.output.publicPath,
     serverSideRender: false,
-    //watchOptions: {
-    //ignored: 'node_modules/**/*.js', //忽略不用监听变更的目录
-    //    aggregateTimeout: 300, //防止重复保存频繁重新编译,500毫秒内重复保存不打包
-    //},
     writeToDisk: false,
     //logLevel: 'warn',
     //logTime: true,
@@ -42,16 +40,17 @@ const devMiddleware = require('webpack-dev-middleware')(compiler, {
 const hotMiddleware = require('webpack-hot-middleware')(compiler)
 
 // handle fallback for HTML5 history API
-app.use(require('connect-history-api-fallback')())
+//app.use(require('connect-history-api-fallback')())
 
 app.use(devMiddleware)
 app.use(hotMiddleware)
 
 // serve pure static assets
 const staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
-app.use(staticPath, express.static('./static'))
+app.use(staticPath || '/', express.static('./static'))
+app.use('/h5/_dev', express.static('./src'))
 
-const uri = 'http://localhost:' + port
+const uri = 'http://localhost:' + require('../mock/mock-config').port
 
 let _resolve
 const readyPromise = new Promise(resolve => {
@@ -78,5 +77,4 @@ module.exports = {
 }
 
 // 启用mock
-if (process.argv.indexOf('--mock') > -1) // --mock
-    require('dynamic-mocker').start('./mock/mock-config.js')
+require('dynamic-mocker').start('./mock/mock-config.js')
