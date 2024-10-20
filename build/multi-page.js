@@ -23,17 +23,17 @@ function readPages() {
                         template: 'src/index.html',
                     })
                 }
-            }
-            else { //文件夹
-                try {
-                    pageList.push({
-                        entry: fullPath + '/entry.js',
-                        chunkName: path.basename(pageFile),
-                        template: fullPath + '/template.html',
-                    })
-                }
-                catch (e) {
-                    console.error(fullPath + '/index.js not found.\n', e)
+            } else { //文件夹
+                if (fs.existsSync(fullPath + '/entry.js')) {
+                    try {
+                        pageList.push({
+                            entry: fullPath + '/entry.js',
+                            chunkName: path.basename(pageFile),
+                            template: fullPath + '/template.html',
+                        })
+                    } catch (e) {
+                        console.error(fullPath + '/index.js not found.\n', e)
+                    }
                 }
             }
         })

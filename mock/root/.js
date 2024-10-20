@@ -10,6 +10,9 @@ module.exports = {
 <html>
 <body>
 Hi, dynamic-mocker is running.
+<div>
+Go <a href="index.html">index.html</a>
+</div>
 </body>
 </html>
 `

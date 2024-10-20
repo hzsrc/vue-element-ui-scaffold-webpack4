@@ -129,7 +129,7 @@
             //         this.$router.addRoutes(routes)
             //         this.$router.push('/zrest')
             //     }
-            //     require('../js/utils/loadScripts')('http://localhost:63342/vue-element-plus-scaffold-webpack4/dist/js/../../dist/js/zrest-route.bee65ae7.js')
+            //     require('../js/utils/loadScripts')('http://localhost:63342/vue3-element-plus-webpack/dist/js/../../dist/js/zrest-route.bee65ae7.js')
             // }
         },
         components: {},

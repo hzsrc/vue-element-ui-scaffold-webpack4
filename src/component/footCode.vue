@@ -9,10 +9,10 @@
     >
         <i>Github source code：</i>
         <a
-            href="https://github.com/hzsrc/vue-element-plus-scaffold-webpack4"
+            href="https://github.com/hzsrc/vue3-element-plus-webpack"
             target="_blank"
         >
-            vue-element-plus-scaffold-webpack4
+            vue3-element-plus-webpack
         </a>
         <div>
             <i>{{ testMsg }}</i>

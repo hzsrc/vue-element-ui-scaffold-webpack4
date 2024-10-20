@@ -22,7 +22,7 @@
             flex-flow: column;
             flex: 0 0 240px;
             align-items: center;
-            margin-bottom: 50px;
+            padding-bottom: 50px;
         }
 
         .flex-tb > section > header {
@@ -38,48 +38,76 @@
 
         .flex-tb div:hover {
             position: absolute;
+        }
+        .flex-tb div:hover {
             background: #fff;
             border: 1px solid #ddd;
+            top: 20px;
+            z-index: 99;
         }
 
         .flex-tb div:hover > i {
             font-size: 200px;
+            transition: font-size 0.1s;
         }
         body{
             background: #ddd;
         }
+        td { padding: 5px 10px; }
+        .flex-tb input { border: 0; width: 150px; text-align: center; background: transparent; }
+        input { outline: 0;}
+        section { position: relative; }
     </style>
+    <script>
+        function copyCls(el){
+            el = el.querySelector('input')
+            el.focus();
+            el.select()
+            document.execCommand('copy', false, null);
+        }
+    </script>
 <body>
+    <h3 align="center"><a href="https://segmentfault.com/a/1190000017480480">webpack-iconfont-plugin-nodejs</a></h3>
+    <div>Use textbox like password (prevent to save password): <input type="text" class="pw-msk"  /></div>
+    <h4>
+    Modify or add a svg file in dir [src/iconfont/svgs], they will be parsed to iconfonts with css, and hot-loaded. <br/>
+    修改或者添加svg文件到[src/iconfont/svgs]目录，将自动生成为iconfonts以及配套的css，支持热重载。</h4>
+    <hr/>
     <div class="info">
-        <h3>my-app-icon (5)</h3>
-        <div>Class name prefix: my-icon-</div>
+        <h3>my-app-icon (6 icons, click to copy)</h3>
+        Class name prefix: <b>my-icon-</b> &emsp; You can use it like: &lt;i class="my-icon-success"&gt;&lt;/i&gt;
     </div>
     <hr/>
     <div class="flex-tb">
       
-        <section>
-            <header contenteditable>my-icon-bookmark</header>
+        <section onclick="copyCls(this)">
+            <input value="my-icon-bookmark" />
             <div><i class="my-icon-bookmark"></i></div>
         </section>
       
-        <section>
-            <header contenteditable>my-icon-calendar</header>
+        <section onclick="copyCls(this)">
+            <input value="my-icon-calendar" />
             <div><i class="my-icon-calendar"></i></div>
         </section>
       
-        <section>
-            <header contenteditable>my-icon-state-beinvited</header>
+        <section onclick="copyCls(this)">
+            <input value="my-icon-state-beinvited" />
             <div><i class="my-icon-state-beinvited"></i></div>
         </section>
       
-        <section>
-            <header contenteditable>my-icon-success</header>
+        <section onclick="copyCls(this)">
+            <input value="my-icon-success" />
             <div><i class="my-icon-success"></i></div>
         </section>
       
-        <section>
-            <header contenteditable>my-icon-warning</header>
+        <section onclick="copyCls(this)">
+            <input value="my-icon-warning" />
             <div><i class="my-icon-warning"></i></div>
+        </section>
+      
+        <section onclick="copyCls(this)">
+            <input value="my-icon-pwd_msk" />
+            <div><i class="my-icon-pwd_msk"></i></div>
         </section>
       
     </div>

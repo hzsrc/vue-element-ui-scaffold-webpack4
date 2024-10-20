@@ -5,7 +5,8 @@ import debugInfo from '../component/debugInfo.vue';
 import { initThemeColor } from '../js/themeColorClient';
 
 require('../css/index.scss');
-require('element-plus/packages/theme-chalk/src/icon.scss');
+require('element-plus/theme-chalk/src/icon.scss');
+
 
 // 仅对 npm run build-preview 时，使用客户端mock数据（拦截XMLHttpRequest）
 /* IFTRUE_isPreview */

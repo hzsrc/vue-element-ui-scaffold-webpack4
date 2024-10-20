@@ -1,7 +1,39 @@
+@use 'sass:color';
 @import "./element-var-changed.scss";
 //导入element-theme-chalk的变量名
-@import "../../node_modules/element-plus/packages/theme-chalk/src/common/var.scss";
+@import "../../node_modules/element-plus/theme-chalk/src/common/var.scss";
+
+//覆盖主色
+$--color-primary: #2EAEFF; //去掉 !default
+
+$--color-primary-light-95: color.mix(#fff, $--color-primary, 95%);
+
+$--color-black: #000000 !default;
+$--color-white: #FFFFFF !default;
+$--border-color-lighter: #EBEEF5 !default;
+$--table-border-color: $--border-color-lighter !default;
+$--table-border: 1px solid $--table-border-color !default;
 
 //自定义颜色变量
 $my-custom-color: #0cdd3a;
 $my-custom-color2: #c655dd;
+
+$--color-primary-light-95: var(#fff, $--color-primary, 95%);
+$--color-primary-dark-1: var(#000, $--color-primary, 10%);
+$--color-primary-dark-2: var(#000, $--color-primary, 20%);
+$--color-primary-dark-3: var(#000, $--color-primary, 30%);
+$--color-primary-dark-4: var(#000, $--color-primary, 40%);
+$--color-primary-dark-5: var(#000, $--color-primary, 50%);
+$--color-primary-dark-6: var(#000, $--color-primary, 60%);
+$--color-primary-dark-7: var(#000, $--color-primary, 70%);
+
+
+$--color-primary-light-1: color.mix($--color-white, $--color-primary, 10%) !default; /* 53a8ff */
+$--color-primary-light-2: color.mix($--color-white, $--color-primary, 20%) !default; /* 66b1ff */
+$--color-primary-light-3: color.mix($--color-white, $--color-primary, 30%) !default; /* 79bbff */
+$--color-primary-light-4: color.mix($--color-white, $--color-primary, 40%) !default; /* 8cc5ff */
+$--color-primary-light-5: color.mix($--color-white, $--color-primary, 50%) !default; /* a0cfff */
+$--color-primary-light-6: color.mix($--color-white, $--color-primary, 60%) !default; /* b3d8ff */
+$--color-primary-light-7: color.mix($--color-white, $--color-primary, 70%) !default; /* c6e2ff */
+$--color-primary-light-8: color.mix($--color-white, $--color-primary, 80%) !default; /* d9ecff */
+$--color-primary-light-9: color.mix($--color-white, $--color-primary, 90%) !default; /* ecf5ff */

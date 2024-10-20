@@ -1,9 +1,2 @@
 //可在本文件中覆盖element-theme-chalk同名变量
-//会将此文件附加在 "~element-plus/packages/theme-chalk/src/common/var.scss" 之前（通过join-file-content-plugin实现）;
-
-//覆盖主色
-$--color-primary: #f67a17; //去掉 !default
-
-$--color-primary-light-95: mix(#fff, $--color-primary, 95%);
-$--color-primary-dark-1: mix(#000, $--color-primary, 10%);
-$--color-primary-dark-2: mix(#000, $--color-primary, 20%);
+//会将此文件附加在 "~element-plus/theme-chalk/src/common/var.scss" 之前（通过join-file-content-plugin实现）;

@@ -9,6 +9,11 @@ const ThemeColorReplacer = require('webpack-theme-color-replacer')
 const forElementUI = require('webpack-theme-color-replacer/forElementUI')
 const JoinFileContentPlugin = require('join-file-content-plugin')
 
+// vue按需导入
+//const AutoImport = require('unplugin-auto-import/webpack').default;
+const Components = require('unplugin-vue-components/webpack').default;
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers');
+
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
@@ -26,31 +31,18 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
-            '@': resolve('src'),
-            'vue$': 'vue/dist/vue.esm-browser.js'
+            '@': resolve('src')
         },
-        fallback: {
-            fs: false
-        }
     },
     module: {
         noParse: /^(vue|vue-router|vuex|vuex-router-sync)$/,
         rules: [
             {
                 test: /\.vue$/,
-                use: [
-                    {
-                        loader: 'vue-loader',
-                        options: {
-                            cacheDirectory: path.resolve(__dirname, '../node_modules/.cache/vue-loader'),
-                            cacheIdentifier: 'cache-loader:{version} {process.env.NODE_ENV}'
-                        }
-                    },
-                    utils.conditionalCompiler
-                ],
+                use: ['vue-loader', utils.conditionalCompiler],
             },
             {
-                test: /\.js$/,
+                test: /\.m?jsx?$/,
                 include: [resolve('src'), resolve('test')],
                 use: [
                     //step-2
@@ -67,7 +59,8 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('img/[name].[hash:7].[ext]')
+                    name: utils.assetsPath('h5/img/[name].[hash:7].[ext]'),
+                    esModule: false
                 }
             },
             {
@@ -75,33 +68,32 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('font/[name].[hash:7].[ext]')
+                    name: utils.assetsPath('h5/css/[name].[hash:7].[ext]'),
+                    esModule: false,
                 }
             }
         ]
     },
     plugins: [
+        //AutoImport({ resolvers: [ElementPlusResolver()] }),
+        Components({ resolvers: [ElementPlusResolver()] }),
         new VueLoaderPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
                 ENV_CONFIG: JSON.stringify(process.env.ENV_CONFIG),
             },
-            __VUE_PROD_DEVTOOLS__: false
+            __VUE_PROD_DEVTOOLS__: false,
         }),
         // 将theme-changed.scss应用到element-plus，供babel-plugin-component按需加载
         new JoinFileContentPlugin({
-            file: 'node_modules/element-plus/packages/theme-chalk/src/common/var.scss',
+            file: 'node_modules/element-plus/theme-chalk/src/common/var.scss',
             prependFile: 'src/css/element-var-changed.scss'
         }),
         //生成仅包含颜色的替换样式（主题色等）
         new ThemeColorReplacer({
-            fileName: 'css/theme-colors.[contenthash:8].css',
-            matchColors: [
-                ...forElementUI.getElementUISeries(appConfig.themeColor), //element-plus主色系列
-                '#0cdd3a', //自定义颜色
-                '#c655dd',
-            ],
+            fileName: 'h5/css/theme-colors.[contenthash:8].css',
+            matchColors: appConfig.getThemeColors(appConfig.themeColor, appConfig.otherColors),
             changeSelector: forElementUI.changeSelector,
             isJsUgly: config.isBuild,
             // injectCss: false,
@@ -110,4 +102,6 @@ module.exports = {
             // }
         })
     ],
+
+    target: 'browserslist',
 }

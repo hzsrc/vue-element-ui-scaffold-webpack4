@@ -16,6 +16,7 @@
             </el-form-item>
             <el-form-item label="">
                 <table class="w100">
+                    <tbody>
                     <tr>
                         <td colspan="2">
                             <el-button
@@ -27,6 +28,7 @@
                             >
                         </td>
                     </tr>
+                    </tbody>
                 </table>
             </el-form-item>
             <hr/>
@@ -39,6 +41,7 @@
             </el-form-item>
             <el-form-item label="加载配置">
                 <table class="w100">
+                    <tbody>
                     <tr>
                         <td>
                             <el-input
@@ -53,6 +56,7 @@
                             >
                         </td>
                     </tr>
+                    </tbody>
                 </table>
             </el-form-item>
             <hr/>
@@ -79,6 +83,7 @@
             </el-form-item>
             <el-form-item label="接口地址">
                 <table class="w100">
+                    <tbody>
                     <tr>
                         <td style="width: 12%">
                             <el-select size="small" v-model="request.method">
@@ -99,6 +104,7 @@
                             ></el-input>
                         </td>
                     </tr>
+                    </tbody>
                 </table>
             </el-form-item>
             <el-form-item label="请求数据">
@@ -155,8 +161,16 @@
                 config: {
                     server: 'http://localhost:8087',
                     apiList: [
-                        { url: '/api/test_data', text: 'test_data', data: {} },
-                        { url: '/getProducts', text: 'getProducts', data: {} },
+                        {
+                            url: '/api/test_data',
+                            text: 'test_data',
+                            data: {}
+                        },
+                        {
+                            url: '/getProducts',
+                            text: 'getProducts',
+                            data: {}
+                        },
                     ],
                 },
                 showConfig: false,
@@ -275,7 +289,10 @@
                 const apis = this.config.apiList;
                 const index = apis.findIndex((api) => api.url == url);
                 if (index == -1) {
-                    apis.push({ url, data: JSON.parse(data) });
+                    apis.push({
+                        url,
+                        data: JSON.parse(data)
+                    });
                 } else {
                     apis[index].data = JSON.parse(data);
                 }
@@ -284,7 +301,10 @@
                 storageUtil.setObj('zrest_apis', apis);
             },
             exportConfig() {
-                let r = { request: this.request, config: this.config };
+                let r = {
+                    request: this.request,
+                    config: this.config
+                };
                 let json = JSON.stringify(r, null, 4);
                 r = JSON.parse(json);
                 //r.request.headers = undefined

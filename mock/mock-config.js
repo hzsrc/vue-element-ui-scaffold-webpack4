@@ -1,7 +1,12 @@
 const config = {
     mockEnabled: true,
     mockPath: ['root', 'root-old'], //模拟文件根目录
-    proxyTarget: 'http://aaa.bbb.com', //后台接口服务地址（代理目标），为空表示不代理
+    proxyTarget(uri) {
+        if (/^\/?api/.test(uri.pathname))
+            return 'http://aaa.bbb.com' //替换为后端服务域名路径
+        else
+            return 'http://localhost:8090'
+    }, //后台接口服务地址（代理目标），为空表示不代理
     isHttps: false, //是否https
     port: 8087, //端口
     checkPath: function (urlPath) {

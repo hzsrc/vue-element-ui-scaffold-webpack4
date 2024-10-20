@@ -1,15 +1,23 @@
 @font-face {
     font-family: my-app-icon;
-    src: url("my-app-icon.woff2?891ddab4") format("woff2"),
-             url("my-app-icon.woff?891ddab4") format("woff"),
-             url("my-app-icon.ttf?891ddab4") format("truetype"),
-             url("my-app-icon.svg?891ddab4#my-app-icon") format("svg");
+    src: url("my-app-icon.woff2?948e5646") format("woff2"),
+             url("my-app-icon.woff?948e5646") format("woff"),
+             url("my-app-icon.ttf?948e5646") format("truetype"),
+             url("my-app-icon.svg?948e5646#my-app-icon") format("svg");
     font-weight: normal;
     font-style: normal;
 }
 
-[class^="my-icon"], [class*=" my-icon"] {
+.pw-msk, .pw-msk input[type=text] {
     font-family: 'my-app-icon';
+}
+
+.pw-msk::placeholder, .pw-msk input[type=text]::placeholder {
+    font-family: initial;
+}
+
+[class^="my-icon"]::before, [class*=" my-icon"]::before {
+    font-family: 'my-app-icon' !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-style: normal;
@@ -34,5 +42,9 @@
 
 .my-icon-warning::before {
     content: "\130";
+}
+
+.my-icon-pwd_msk::before {
+    content: "\7f";
 }
 

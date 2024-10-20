@@ -1,9 +1,5 @@
-# vue-element-plus-scaffold-webpack4
+# vue3-element-plus-webpack
 
-# 注：
-* **目前已升级为webpack5**，如需要使用webpack4，可切换分支：`git checkout webpack4`。
-
-* **vue3 + element-plus + webpack5 版本：可切换分支：`git checkout vue3` **
 
 本项目为vue下使用了element-plus并基于webpack5构建的多页面、多环境方案脚手架项目。
 
@@ -13,8 +9,8 @@
 
 ## 1. 安装
 ```
-git clone https://github.com/hzsrc/vue-element-plus-scaffold-webpack4.git
-cd vue-element-plus-scaffold-webpack4
+git clone https://github.com/hzsrc/vue3-element-plus-webpack.git
+cd vue3-element-plus-webpack
 npm install
 ```
 
